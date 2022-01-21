@@ -1,0 +1,29 @@
+.pageWrapper{
+    display: inline-block;
+    position: fixed;
+    float: left;
+    width: 75%;
+    position: fixed;
+}
+
+.columnMain{
+    display: inline-block;
+    float: right;
+    width: 375px;
+    height: auto;
+}
+
+.bannerWrapper{
+    height: 100vh;
+}
+
+/* MOBILE */
+@media (max-width: 426px){
+    .pageWrapper{
+        display: none;
+    }
+
+    .columnMain{
+        width: 100%;
+    }
+}
