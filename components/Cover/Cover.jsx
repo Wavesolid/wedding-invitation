@@ -1,4 +1,5 @@
 import styles from './Cover.module.css';
+import Link from 'next/link';
 
 export default function Cover()
 {
@@ -42,9 +43,11 @@ export default function Cover()
                     <div className='mb-4'>
                         <img src="/Icon/Arrow.svg"></img>
                     </div>
-                    <button type='button' className={styles.buttonCover}>
-                        <span>Open Invitation</span>
-                    </button>
+                    <Link href="/Home">
+                        <button type='button' className={styles.buttonCover}>
+                            <span>Open Invitation</span>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
