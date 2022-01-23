@@ -1,14 +1,12 @@
 import styles from '../styles/Index.module.css';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
+import GuestForm from '../components/Form/GuestForm';
 
 export default function Form(){
     return(
         <div className={styles.columnMain}>
-            {/* edit dari sini */}
-            <div className="bg-[#0D0D0D] h-[100vh] text-[white]">
-                form
-            </div>
+            <GuestForm/>
         </div>
     )
 }
