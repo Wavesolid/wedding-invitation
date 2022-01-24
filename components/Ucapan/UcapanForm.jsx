@@ -10,7 +10,7 @@ export default function UcapanForm() {
                 <label className="mb-[8px]" for="ucapan">Kirim ucapan mu</label>
                 <textarea className="w-[335px] h-[66px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] p-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="ucapan">
                 </textarea>
-                <button className="w-[332px] h-[31px] bg-[#F2C777] rounded-[15px]">
+                <button className="w-[332px] h-[31px] bg-[#F2C777] rounded-[15px] mb-[36px]">
                     <span className=" text-[#0D0D0D] text-[12px] font-bold">Kirim Sekarang</span>
                 </button>
             </form>
