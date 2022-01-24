@@ -11,6 +11,7 @@ import Youtube from '../components/Youtube/Youtube';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import Ucapan from '../components/Ucapan/Ucapan';
+import Gallery from '../components/Gallery/Gallery';
 
 export default function Home(){
     return(
@@ -24,6 +25,7 @@ export default function Home(){
             <Transition/>
             <Youtube/>
             <Ucapan/>
+            <Gallery/>
         </div>
     )
 }
