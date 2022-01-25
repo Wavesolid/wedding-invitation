@@ -1,12 +1,25 @@
+/* crossfade image background */
+@keyframes fader{
+    0% {background: url('/Photo/image-slide1.png')}
+    33% {background: url('/Photo/image-slide2.png')}
+    67% {background: url('/Photo/image-slide3.png')}
+    100% {background: url('/Photo/image-slide1.png')}
+}
+
 .cover{
     width: 100%;
     height: 100vh;
-    background-color: #0D0D0D;
     color: white;
     align-items: center;
     justify-content: center;
     display: flex;
+    animation: fader 20s linear infinite;
 }
+
+.cover:after {
+    content: ""; 
+    background: rgba(0,0,0,0.47);
+  }
 
 .coverMain{
     height: auto;
