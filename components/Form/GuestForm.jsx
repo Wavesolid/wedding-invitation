@@ -17,11 +17,11 @@ export default function GuestForm()
                     </div>
                     <div className="pt-[10px] email-input">
                         <label className="text-[#735032] text-[12px]" htmlFor="email">Email</label>
-                        <input className="w-[222px] h-7 border border-[#735032] focus:outline-none rounded-full pt-2 text-4 px-2 py-2 text-[12px] text-[#735032]" type="text" id="email"></input>
+                        <input className="w-[222px] h-7 border border-[#735032] focus:outline-none rounded-full px-2 py-2 text-[12px] text-[#735032]" type="text" id="email"></input>
                     </div>
                     <div className="pt-[10px] wa-input">
                         <label className="text-[#735032] text-[12px]" htmlFor="wa">No.WA</label>
-                        <input className="w-[222px] h-7 border border-[#735032] focus:outline-none rounded-full pt-2 text-4 px-2 py-2 text-[12px] text-[#735032]" type="text" id="wa"></input>
+                        <input className="w-[222px] h-7 border border-[#735032] focus:outline-none rounded-full px-2 py-2 text-[12px] text-[#735032]" type="text" id="wa"></input>
                     </div>
                     <div className="pt-[10px] notes">
                         <p className="text-[8px] text-[#735032]">*Email/Nomor Whatsapp wajib diisi karena kami akan mengirimkan barcode berisi nomor tempat duduk.</p>
