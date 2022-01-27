@@ -43,7 +43,7 @@ export default function Cover()
                     <div className='mb-4'>
                         <img src="/Icon/Arrow.svg"></img>
                     </div>
-                    <Link href="/Home">
+                    <Link href="/home">
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>
                         </button>
