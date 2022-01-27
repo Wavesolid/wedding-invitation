@@ -17,7 +17,7 @@ export default function EntryForm(){
                     <span className="text-[14px]">11 mei 2022</span>
                     <span>-</span>
                 </div>
-                <Link href='/Form'>
+                <Link href='/form'>
                 <button className="border rounded-[15px] border-current py-[2px] px-[21px] mb-[-1.5rem]">
                     <span className="text-[14px]" >Klik Disini</span>
                 </button>
