@@ -13,7 +13,7 @@ export default function Ucapan() {
                         <div className="flex flex-col ml-[18px] text-[14px]">
                             <span className="font-normal">Siti Nurbaya</span>
                             <span className="font-light">dari <span className="font-normal">Jakarta</span></span>
-                            <span className="font-light">"selalu sehat dan bahagia"</span>
+                            <span className="font-light">selalu sehat dan bahagia</span>
                         </div>
                     </div>
                 </div>

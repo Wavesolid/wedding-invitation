@@ -1,7 +1,7 @@
 import styles from './Cover.module.css';
 import Link from 'next/link';
 
-export default function Cover()
+export default function Cover(props)
 {
     return (
         <div className={styles.cover}>
@@ -33,7 +33,7 @@ export default function Cover()
                         Kepada yth Bapak/Ibu/Saudara/i
                     </span>
                     <span className={styles.nameGuest}>
-                        Gifino dan Partner
+                        {props.name} dan Partner.
                     </span>
                     <span className={styles.alertGuest}>
                         *mohon maaf apabila ada kesalahan kata dan gelar
@@ -43,7 +43,7 @@ export default function Cover()
                     <div className='mb-4'>
                         <img src="/Icon/Arrow.svg"></img>
                     </div>
-                    <Link href="/home">
+                    <Link href={`/home/${props.name}`}>
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>
                         </button>
