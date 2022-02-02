@@ -1,5 +1,6 @@
 import connectDB from '../../helper/connectDB';
-const objectId = require('mongodb').ObjectId;
+import guestModel from '../../Model/GuestModel';
+
 
 async function Handler(req, res)
 {
@@ -12,8 +13,18 @@ async function Handler(req, res)
             }
         case 'POST':
             {
-                console.log('post');
-                break;
+                console.log(req.body.name);
+                const {name, totalPerson, email, waNumber} = req.body;
+                const newGuest = new guestModel({
+                    name,
+                    totalPerson,
+                    email,
+                    waNumber
+                });
+                await newGuest.save()
+                return res.status(201).json({
+                    message: "Data registered"
+                })
             }
         case 'PUT':
             {
