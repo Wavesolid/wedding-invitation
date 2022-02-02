@@ -16,7 +16,7 @@ export default function Youtube(){
                 </p>
                 <img className="mb-[12px]" src="/Icon/asset-batik-5.svg" alt="" />
                 <span className="text-[#735032] text-[14px] mb-[12px]">Link Youtube</span>
-                <button onClick={handlerClick} className="border rounded-[15px] border-[#735032] py-[2px] px-[21px] mb-[-1.5rem] text-[#735032] hover:text-[#F2C777] hover:bg-[#735032] transition  " type="button">
+                <button onClick={handlerClick} className="border rounded-[15px] border-[#735032] py-[2px] px-[21px] mb-[-1.5rem] text-[#735032] hover:text-[#F2C777] hover:bg-[#735032] transition duration-700 ease-in-out " type="button">
                     <span className="text-[14px] text-[14px]">Klik Disini</span>
                 </button>
             </div>
