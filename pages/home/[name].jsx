@@ -26,7 +26,7 @@ export default function Home(){
             <EntryForm name={Router.name}/>
             <Transition/>
             <Youtube/>
-            <Ucapan/>
+            <Ucapan name={Router.name}/>
             <Gallery/>
         </div>
     )
