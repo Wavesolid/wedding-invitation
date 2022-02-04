@@ -1,8 +1,9 @@
 import styles from './Cover.module.css';
 import Link from 'next/link';
+import {useState} from 'react';
 
 export default function Cover(props)
-{
+{  
     return (
         <div className={styles.cover}>
             <div className={styles.coverMain}>
@@ -33,7 +34,7 @@ export default function Cover(props)
                         Kepada yth Bapak/Ibu/Saudara/i
                     </span>
                     <span className={styles.nameGuest}>
-                        {props.name} dan Partner.
+                        {props.name === undefined ? 'default' : props.name} dan Partner.
                     </span>
                     <span className={styles.alertGuest}>
                         *mohon maaf apabila ada kesalahan kata dan gelar
@@ -43,7 +44,7 @@ export default function Cover(props)
                     <div className='mb-4'>
                         <img src="/Icon/Arrow.svg"></img>
                     </div>
-                    <Link href={`/home/${props.name}`}>
+                    <Link href= {`${props.name === undefined ? `/home` : `/home/${props.name}` }`}>
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>
                         </button>
