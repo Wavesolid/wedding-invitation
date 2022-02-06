@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import {useState} from 'react';
+import { useState } from 'react';
 import ErrorModal from '../ErrorModal/ErrorModal';
+import Loader from '../Loader/Loader';
 
 export default function GuestForm({name})
 {
-
-
     const [invalid,setInvalid] = useState();
+    const [load,setLoad] = useState(false);
 
     const [data, setData] = useState({
         totalPerson: 1,
@@ -36,7 +36,7 @@ export default function GuestForm({name})
             return;
         }
 
-        if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(data.email)) && data.email.trim().length > 0 ){
+        if (!(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(data.email)) && data.email.trim().length > 0 ){
             setInvalid({
                 title: "Invalid Email Format",
                 content: "Format email salah ex.(name@email.com)"
@@ -54,6 +54,7 @@ export default function GuestForm({name})
             return;
         }
 
+        setLoad(true);
         const response = await fetch('/api/handler', {
             method: 'POST',
             headers: {
@@ -64,9 +65,9 @@ export default function GuestForm({name})
                 ...data
             })
         });
-
         const responseJson = await response.json();
-        return router.replace(`/qrcode/${name}`);
+        setLoad(false);
+        return router.replace(`/qrcode/${name}`);  
     }
 
     const invalidHandler = () => {
@@ -75,7 +76,8 @@ export default function GuestForm({name})
 
     return(
         <div>
-            {invalid && <ErrorModal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} ></ErrorModal>}
+            {load === true && <Loader/>}
+            {invalid && <ErrorModal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
             <div className="h-screen bg-[#0D0D0D] bg-[url('/Photo/bg-batik.png')] flex flex-col items-center justify-center">
                 <h1 className="text-[#F2C777] text-[24px] mb-[40px] font-bold">Form Kehadiran</h1>
                 <div className="w-[247px] h-[400px] bg-[#F2C777] rounded-[12px]">
