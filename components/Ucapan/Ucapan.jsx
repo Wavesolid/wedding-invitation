@@ -25,7 +25,7 @@ export default function Ucapan(props) {
                     </button>
                 }
             </div>
-            {props.name !== undefined && <UcapanForm/> }
+            {props.name !== undefined && <UcapanForm name={props.name}/> }
         </div>
     )
 }

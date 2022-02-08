@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from 'react';
-import ErrorModal from '../ErrorModal/ErrorModal';
+import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
 
 export default function GuestForm({name})
@@ -77,7 +77,7 @@ export default function GuestForm({name})
     return(
         <div>
             {load === true && <Loader/>}
-            {invalid && <ErrorModal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
+            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
             <div className="h-screen bg-[#0D0D0D] bg-[url('/Photo/bg-batik.png')] flex flex-col items-center justify-center">
                 <h1 className="text-[#F2C777] text-[24px] mb-[40px] font-bold">Form Kehadiran</h1>
                 <div className="w-[247px] h-[400px] bg-[#F2C777] rounded-[12px]">
