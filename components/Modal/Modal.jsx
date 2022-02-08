@@ -1,4 +1,4 @@
-export default function ErrorModal(props){
+export default function Modal(props){
     return(
         <div>
             <div className="fixed top-0 left-0 w-[100%] h-screen z-[10] bg-black-rgba"></div>

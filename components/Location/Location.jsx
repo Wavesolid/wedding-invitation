@@ -33,8 +33,8 @@ export default function Location(){
             animation2.start({
                 y:0,
                 opacity:1,
-                tranisiton:{
-                    duration: 5,
+                transition:{
+                    duration: 1.5
                 }
             })
 
