@@ -6,12 +6,11 @@ import { useState } from 'react';
 
 export default function Form(props){
   const [guest,setGuest] = useState(
-    props.responseJson.data.name
+    props.responseJson.data
   );
-    
     return(
         <div className={styles.columnMain}>
-            <GuestForm name={guest}/>
+            <GuestForm props={guest}/>
         </div>
     )
 }
