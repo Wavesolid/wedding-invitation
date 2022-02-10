@@ -2,22 +2,24 @@ import { useRouter } from "next/router";
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
+import SchemaValidation from '../../validation/GuestValidation';
 
-export default function GuestForm({name})
+export default function GuestForm({props})
 {
     const [invalid,setInvalid] = useState();
     const [load,setLoad] = useState(false);
 
     const [data, setData] = useState({
-        totalPerson: 1,
+        totalPerson: props.totalPerson,
         email: '',
         waNumber : ''
     });
-
+    console.log(props.totalPerson);
     const router = useRouter();
 
     const onChangeHandler = (e) => {
         const {name, value} = e.target;
+        console.log(value);
         setData({
             ...data,
             [name]: value
@@ -25,34 +27,28 @@ export default function GuestForm({name})
     }
 
     const submitHandler = async (e) => {
+        const name = props.name;
         e.preventDefault();
 
-        if(data.email.trim().length === 0 && data.waNumber.trim().length === 0 ){
+        const Validation = SchemaValidation(data.email, data.waNumber);
+
+        if(data.email === '' && data.waNumber === '')
+        {
             setInvalid({
-                title: "Invalid Input",
-                content: "Salah satu dari email atau nomor whatsapp harus diisi"
-            })
-
-            return;
+                title: "Invalid Form",
+                content: `pilih salah satu`
+            });
+            return ; 
         }
-
-        if (!(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(data.email)) && data.email.trim().length > 0 ){
+        else if(Validation.error !== undefined)
+        {
             setInvalid({
-                title: "Invalid Email Format",
-                content: "Format email salah ex.(name@email.com)"
-            })
-
-            return;
+                title: "Invalid Form",
+                content: `${Validation.error}`
+            });
+            return ;
         }
-
-        if(!(/[0-9]{11,13}/.test(data.waNumber))){
-            setInvalid({
-                title: "Invalid Number Format",
-                content: "Format nomor salah ex.(08xxxxxxxxxx)"
-            })
-
-            return;
-        }
+        
 
         setLoad(true);
         const response = await fetch('/api/handler', {
@@ -65,9 +61,8 @@ export default function GuestForm({name})
                 ...data
             })
         });
-        const responseJson = await response.json();
         setLoad(false);
-        return router.replace(`/qrcode/${name}`);  
+        return router.replace(`/qrcode/${props.name}`);  
     }
 
     const invalidHandler = () => {
@@ -84,14 +79,16 @@ export default function GuestForm({name})
                     <form className="pl-4 pt-2" onSubmit={submitHandler}>
                         <div className="pt-[7.5px] nama-input">
                             <label className="text-[#735032] text-[12px]" htmlFor="nama">Nama</label>
-                            <input className="w-[222px] h-[28px] border border-[#735032] focus:outline-none rounded-full text-[12px] px-2 py-2 text-[#735032]" disabled value={name} type="text" id="nama"/>
+                            <input className="w-[222px] h-[28px] border border-[#735032] focus:outline-none rounded-full text-[12px] px-2 py-2 text-[#735032]" disabled value={props.name} type="text" id="nama"/>
                         </div>
                         <div className="pt-[16px] presence-selector">
                             <label className="text-[#735032] pr-[9px] text-[12px]" htmlFor="presence">Jumlah Hadir</label>
                             <select className="rounded-full w-[96px] h-[25px] border border-[#735032] focus:outline-none text-center text-[12px] text-[#735032]" name="totalPerson" id="presence" value={data.totalPerson} onChange={onChangeHandler}>
-                                <option value="1">1 Orang</option>
-                                <option value="2">2 Orang</option>
-                                <option value="3">3 Orang</option>
+                                {
+                                    Array(props.totalPerson).fill().map((_, i) => (
+                                        <option key={i+1} value={i+1}>{i+1} Orang</option>
+                                    ))
+                                }
                             </select>
                         </div>
                         <div className="pt-[16px] email-input">
