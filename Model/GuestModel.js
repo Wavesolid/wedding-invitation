@@ -12,11 +12,13 @@ const Guest = new Schema({
         required: true
     },
     email: {
-        type: String,
-        required: true
+        type: String
     },
     waNumber: {
-        type: String,
+        type: String
+    },
+    isFilled:{
+        type: Boolean,
         required: true
     }
 }, {
