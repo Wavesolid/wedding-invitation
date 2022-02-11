@@ -32,15 +32,7 @@ export default function GuestForm({props})
 
         const Validation = SchemaValidation(data.email, data.waNumber);
 
-        if(data.email === '' && data.waNumber === '')
-        {
-            setInvalid({
-                title: "Invalid Form",
-                content: `pilih salah satu`
-            });
-            return ; 
-        }
-        else if(Validation.error !== undefined)
+        if(Validation.error !== undefined)
         {
             setInvalid({
                 title: "Invalid Form",
@@ -48,7 +40,6 @@ export default function GuestForm({props})
             });
             return ;
         }
-        
 
         setLoad(true);
         const response = await fetch('/api/handler', {

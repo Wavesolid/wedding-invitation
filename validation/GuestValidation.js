@@ -19,11 +19,17 @@ const Schema = Joi.object({
 });
 
 const GuestValidation = (email, waNumber) => {
+    if(email === '' && waNumber === '')
+    {
+        return {
+            error: 'Please fill out either Email or Whatsapp Number'
+        };
+    }
     const Validation = Schema.validate({
         Email: email,
         WaNumber: waNumber
     });
-
+    
     return Validation;
 };
 
