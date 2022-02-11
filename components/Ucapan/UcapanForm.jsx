@@ -1,10 +1,9 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from '../Modal/Modal';
+import SchemaValidation from '../../validation/UcapanValidation';
 
-export default function UcapanForm({name}) {
-    const router = useRouter();
-    
+export default function UcapanForm(props) {
+
     const [data, setData] = useState({
         displayName: '',
         domisili: '',
@@ -13,25 +12,6 @@ export default function UcapanForm({name}) {
 
     const [success,setSuccess] = useState(false);
     const [error,setError] = useState();
-
-    //joi validation
-    const Joi = require('joi');
-    const schema = Joi.object({
-        displayName: Joi.string()
-            .min(3)
-            .max(15)
-            .required(),
-
-        domisili: Joi.string()
-            .min(5)
-            .max(15)
-            .required(),
-    
-        message: Joi.string()
-            .min(3)
-            .max(200)
-            .required()
-    });
 
     const onChangeHandler = (e) => {
         const {name, value} = e.target;
@@ -44,16 +24,14 @@ export default function UcapanForm({name}) {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const value = schema.validate({ 
-            displayName: data.displayName, 
-            domisili: data.domisili,
-            message: data.message 
-        });
+        const name = props.name;
 
-        if(value.error === undefined) {
+        const Validation = SchemaValidation(data.displayName, data.domisili, data.message)
+
+        if(Validation.error !== undefined) {
             setError({
                 title: "Invalid form",
-                content: `${value.error}`
+                content: `${Validation.error}`
             });
     
             return;            
@@ -71,6 +49,7 @@ export default function UcapanForm({name}) {
         });
 
         const responseJson = await response.json();
+
         setSuccess({
             title: "Berhasil terkirim",
             content: "Ucapan anda sudah terkirim, terima kasih !"
