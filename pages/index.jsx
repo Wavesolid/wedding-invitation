@@ -8,7 +8,6 @@ export default function index()
     return (
         <div className={styles.columnMain}>
           <Cover/>
-            {/* <Home/> */}
         </div>
     );
 }

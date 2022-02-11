@@ -1,6 +1,10 @@
 import UcapanForm from "./UcapanForm";
 
-export default function Ucapan(props) {
+export default function Ucapan({name}) {
+
+    const handlerClick = () => {
+        window.open('https://www.google.com');
+    }
 
     return(
         <div className="bg-[#0D0D0D] text-[#F2C777]">
@@ -19,13 +23,13 @@ export default function Ucapan(props) {
                     </div>
                 </div>
                 <img className="my-[16px]" src="/Icon/asset-batik-8.svg" alt="" />
-                {props.name === undefined && 
-                    <button className="w-[332px] h-[35px] bg-[#F2C777] rounded-[15px] mb-[36px] self-center hover:bg-gradient-[(rgba(0, 0, 0, 0.4) 0 0)]">
+                {name === undefined && 
+                    <button className="w-[332px] h-[35px] bg-[#F2C777] rounded-[15px] mb-[36px] self-center hover:bg-gradient-[(rgba(0, 0, 0, 0.4) 0 0)]" onClick={handlerClick}>
                         <span className=" text-[#0D0D0D] text-[12px] font-bold">Kirim Ucapanmu</span>
                     </button>
                 }
             </div>
-            {props.name !== undefined && <UcapanForm name={props.name}/> }
+            {name !== undefined && <UcapanForm name={name}/> }
         </div>
     )
 }

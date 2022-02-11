@@ -2,15 +2,18 @@ import styles from '../../styles/Index.module.css';
 import Cover from '../../components/Cover/Cover';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
-import {useRouter} from 'next/router';
+import { useState } from 'react';
 
-export default function Mulai()
+
+export default function Mulai(props)
 {
-    const Router = useRouter().query; 
+    const [guest, setGuest] = useState(
+        props.responseJson.data.name
+    );
+
     return (
         <div className={styles.columnMain}>
-            <Cover name={Router.name}/>
-            {/* <Home/> */}
+            <Cover name={guest}></Cover>
         </div>
     );
 }
@@ -22,4 +25,22 @@ Mulai.getLayout = function getLayout(page) {
         {page}
     </Layout>
     )
+}
+
+export async function getServerSideProps(context)
+{    
+    const {name} = context.query;
+
+    const response = await fetch(`http://localhost:3000/api/guest/${name}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const responseJson = await response.json();
+    const {data} = responseJson;
+
+    return (data === null ? {redirect: {
+        destination: '/'
+    }} : {props:{responseJson}})
 }
