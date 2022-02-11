@@ -14,12 +14,11 @@ export default function GuestForm({props})
         email: '',
         waNumber : ''
     });
-    console.log(props.totalPerson);
+
     const router = useRouter();
 
     const onChangeHandler = (e) => {
         const {name, value} = e.target;
-        console.log(value);
         setData({
             ...data,
             [name]: value
@@ -27,9 +26,10 @@ export default function GuestForm({props})
     }
 
     const submitHandler = async (e) => {
-        const name = props.name;
         e.preventDefault();
-
+        const name = props.name;
+        const isFilled = !props.isFilled;
+        
         const Validation = SchemaValidation(data.email, data.waNumber);
 
         if(Validation.error !== undefined)
@@ -43,13 +43,14 @@ export default function GuestForm({props})
 
         setLoad(true);
         const response = await fetch('/api/handler', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 name,
-                ...data
+                ...data,
+                isFilled
             })
         });
         setLoad(false);

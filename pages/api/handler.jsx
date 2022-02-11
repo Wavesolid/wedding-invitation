@@ -1,7 +1,6 @@
 import connectDB from '../../helper/connectDB';
 import guestModel from '../../Model/GuestModel';
 
-
 async function Handler(req, res)
 {
     switch(req.method) 
@@ -13,23 +12,24 @@ async function Handler(req, res)
             }
         case 'POST':
             {
-                console.log(req.body.name);
-                const {name, totalPerson, email, waNumber} = req.body;
-                const newGuest = new guestModel({
-                    name,
-                    totalPerson,
-                    email,
-                    waNumber
-                });
-                await newGuest.save()
-                return res.status(201).json({
-                    message: "Data registered"
-                })
+                break;;
             }
         case 'PUT':
             {
-                console.log('put');
-                break;
+                const {name, isFilled, totalPerson, email, waNumber} = req.body;
+                const guest = await guestModel.findOneAndUpdate({
+                    name
+                }, {
+                    totalPerson,
+                    email,
+                    waNumber,
+                    isFilled
+                },{
+                    new: true
+                }); 
+                return res.status(201).json({
+                    data: guest
+                })
             }
         case 'DELETE':
             {
