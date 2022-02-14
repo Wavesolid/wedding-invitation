@@ -15,6 +15,11 @@ import { useState } from 'react';
 
 export default function Home(props)
 {  
+
+    const [ucapan,setUcapan] = useState(
+      props.ucapanResponseJson.ucapan
+    )
+
     const [guest, setGuest] = useState(
       props.responseJson.data.name
     );
@@ -29,7 +34,7 @@ export default function Home(props)
             <EntryForm name={guest}/>
             <Transition/>
             <Youtube/>
-            <Ucapan name={guest}/>
+            <Ucapan name={guest} ucapan={ucapan}/>
             <Gallery/>
         </div>
     )
@@ -54,11 +59,18 @@ export async function getServerSideProps(context)
     }
   });
 
+  const ucapanResponse = await fetch(`http://localhost:3000/api/UcapanHandler`,{
+    method: 'GET'
+  });
+
   const responseJson = await response.json();
+
+  const ucapanResponseJson = await ucapanResponse.json();
+
   const {data} = responseJson;
 
   return(data === null ? {redirect: {
     destination: '/home'
-  }} : {props:{responseJson}})
+  }} : {props:{responseJson,ucapanResponseJson}})
 
 }
