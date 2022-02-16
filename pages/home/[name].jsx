@@ -24,6 +24,10 @@ export default function Home(props)
       props.responseJson.data.name
     );
 
+    const [isFilled, setIsFilled] = useState(
+      props.responseJson.data.isFilled
+    );
+
     return(
         <div className={styles.columnMain}>
             <Intro/>
@@ -31,7 +35,7 @@ export default function Home(props)
             <Profile/>
             <Location/>
             <Datetime/>
-            <EntryForm name={guest}/>
+            <EntryForm name={guest} isFilled={isFilled}/>
             <Transition/>
             <Youtube/>
             <Ucapan name={guest} ucapan={ucapan}/>
