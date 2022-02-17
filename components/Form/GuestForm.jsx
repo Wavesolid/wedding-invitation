@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
 import SchemaValidation from '../../validation/GuestValidation';
@@ -53,8 +53,13 @@ export default function GuestForm({props})
                 isFilled
             })
         });
-        setLoad(false);
-        return router.replace(`/qrcode/${props.name}`);  
+        const {status} = response;
+        const responseJson = await response.json();
+        if(status === 201)
+        {
+            setLoad(false);
+            return router.replace(`/qrcode/${props.name}`);  
+        }
     }
 
     const invalidHandler = () => {
