@@ -7,12 +7,14 @@ async function Handler(req, res)
     {
         case 'GET': 
             {
-                console.log('get');
-                break;
+                const data = await guestModel.find({});
+                return res.status(201).json({
+                    dataGuest: data
+                })
             }
         case 'POST':
             {
-                break;;
+                break;
             }
         case 'PUT':
             {
