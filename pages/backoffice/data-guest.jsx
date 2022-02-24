@@ -1,6 +1,7 @@
 import DataGuest from "../../components/Backoffice/DataGuest";
 import DataGuestForm from "../../components/Backoffice/DataGuestForm";
 import {useState} from 'react';
+import { getSession } from "next-auth/react";
 
 export default function dataguest(props) {
     
@@ -24,13 +25,22 @@ export default function dataguest(props) {
 
 export async function getServerSideProps(context)
 {
-  const {name} = context.query;
-
-  const dataGuestResponse = await fetch(`http://localhost:3000/api/handler`,{
-    method: 'GET'
-  });
-
-  const dataGuestResponseJson = await dataGuestResponse.json();
-
-  return {props:{dataGuestResponseJson}}
+    const session = await getSession({req: context.req});
+    if(session)
+    {
+        const dataGuestResponse = await fetch(`http://localhost:3000/api/handler`,{
+            method: 'GET'
+        });
+    
+        const dataGuestResponseJson = await dataGuestResponse.json();
+    
+        return {props:{dataGuestResponseJson}}
+    } else {
+        return {
+            redirect: {
+                destination: '/backoffice',
+                permanent: false
+            }
+        };
+    }
 }

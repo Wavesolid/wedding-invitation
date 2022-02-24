@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { signOut } from 'next-auth/react';
 
 export default function DataGuestForm(props) {
     
@@ -41,6 +42,12 @@ export default function DataGuestForm(props) {
         console.log("berhasil update");
     }
 
+    const logoutHandler = (e) =>
+    {
+        e.preventDefault();
+        signOut({callbackUrl: '/backoffice'})
+    }
+
     return(
         <div className="w-[80%] my-4 mx-auto">
             <form className="grid grid-cols-2 grid-rows-3 auto-cols-auto auto-rows-auto">
@@ -67,6 +74,7 @@ export default function DataGuestForm(props) {
                 <div className="flex flex-wrap gap-4 mb-4 text-left">
                     <button onClick={clickCancelHandler}>Cancel</button>
                     <button onClick={clickUpdateHandler}>Update</button>
+                    <button className='border-2 border-white bg-rose-600 text-white' onClick={logoutHandler}>Logout</button>
                 </div>
             </form>
         </div>
