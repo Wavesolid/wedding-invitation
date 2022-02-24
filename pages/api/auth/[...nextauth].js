@@ -31,5 +31,5 @@ export default connectDB(NextAuth({
         signIn: '/backoffice'
     },
     database: process.env.MONGODB_URI,
-    secret: 'secret'
+    secret: process.env.SECRET
 }));
