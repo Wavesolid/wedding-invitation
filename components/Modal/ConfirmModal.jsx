@@ -10,7 +10,8 @@ export default function Modal(props){
                     {props.content}
                 </div>
                 <footer className="flex p-4 justify-end">
-                    <button className="border-[1px] border-[#0D0D0D] bg-[#0D0D0D] text-[#F2C777] py-1 px-4" onClick={props.onConfirm}> Okay </button>
+                    <button className="border-[1px] border-[#0D0D0D] bg-[#0D0D0D] text-[#F2C777] py-1 px-4 mr-[24px]" onClick={props.onConfirm}> Okay </button>
+                    <button className="border-[1px] border-[#0D0D0D] bg-[#0D0D0D] text-[#F2C777] py-1 px-4" onClick={props.onCancel}> Cancel </button>
                 </footer>
             </div>
         </div>
