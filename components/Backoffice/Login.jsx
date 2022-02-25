@@ -53,7 +53,7 @@ export default function Login(props) {
     return(
         <div>
             {load === true && <Loader/>}
-            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
+            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} positionBox={`md:left-[37rem]`} />}
             <div className="flex items-center justify-center h-screen flex-col">
             <h1 className="text-[24px] bold">Login Backoffice</h1>
             <div className="w-[20rem] p-[16px] shadow-md">

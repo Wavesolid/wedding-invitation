@@ -1,5 +1,6 @@
 import DataGuest from "../../components/Backoffice/DataGuest";
 import DataGuestForm from "../../components/Backoffice/DataGuestForm";
+import HeadDataGuest from "../../components/Backoffice/HeadDataGuest";
 import {useState} from 'react';
 import { getSession } from "next-auth/react";
 
@@ -17,6 +18,7 @@ export default function dataguest(props) {
 
     return(
         <div>
+            <HeadDataGuest/>
             <DataGuestForm editDataGuest={editDataGuest}/>
             <DataGuest dataGuest={dataGuest} onEditDataGuest={setEditDataGuestHandler}/>
         </div>
