@@ -20,6 +20,9 @@ const Guest = new Schema({
     isFilled:{
         type: Boolean,
         required: true
+    },
+    seatNumber: {
+        type: String
     }
 }, {
     timestamps: true
