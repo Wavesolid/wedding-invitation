@@ -6,16 +6,16 @@ import { getSession } from "next-auth/react";
 
 export default function dataguest(props) {
     
-    const [editDataGuest,setEditDataGuest] = useState();
+    const [editDataGuest,setEditDataGuest] = useState([]);
 
     const [dataGuest, setDataGuest] = useState(
-        props.dataGuestResponseJson.dataGuest
+        props.dataGuest
     );
-    
-    const setEditDataGuestHandler = (dataGuest) => {
-        setEditDataGuest(dataGuest);
+    const setEditDataGuestHandler = (newDataGuest) => {
+        setEditDataGuest(newDataGuest);
     }
-
+    
+    console.log(editDataGuest)
     return(
         <div>
             <HeadDataGuest/>
@@ -33,10 +33,11 @@ export async function getServerSideProps(context)
         const dataGuestResponse = await fetch(`http://localhost:3000/api/handler`,{
             method: 'GET'
         });
-    
+        
         const dataGuestResponseJson = await dataGuestResponse.json();
-    
-        return {props:{dataGuestResponseJson}}
+        const {dataGuest} = dataGuestResponseJson;
+        
+        return {props:{dataGuest}}
     } else {
         return {
             redirect: {

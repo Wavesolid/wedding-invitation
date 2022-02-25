@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
-
+import Loader from '../Loader/Loader';
+import Modal from '../Modal/Modal';
 
 export default function DataGuestForm(props) {
-    
+    const [invalid,setInvalid] = useState();
+    const [load,setLoad] = useState(false);
     const [dataGuest, setDataGuest] = useState({
         name : '',
         email : '',
         waNumber: '',
         totalPerson: '',
-        nomorBangku: ''
+        seatNumber: '',
+        isFilled: true
     })
 
 
@@ -19,12 +22,21 @@ export default function DataGuestForm(props) {
                 email : props.editDataGuest.email,
                 waNumber: props.editDataGuest.waNumber,
                 totalPerson: props.editDataGuest.totalPerson,
-                nomorBangku: props.editDataGuest.nomorBangku
+                seatNumber: props.editDataGuest.seatNumber
             })
             
         }
     
     },[props.editDataGuest])
+
+    const onChangeHandler = (e) => {
+        const {name, value} = e.target;
+        setDataGuest({
+            ...dataGuest,
+            [name]: value,
+            isFilled: true
+        });
+    }
 
     const clickCancelHandler = (e) => {
         e.preventDefault()
@@ -33,43 +45,75 @@ export default function DataGuestForm(props) {
             email : '',
             waNumber: '',
             totalPerson: '',
-            nomorBangku: ''
+            seatNumber: '',
         })
     }
 
-    const clickUpdateHandler = (e) => {
+    const clickUpdateHandler = async (e) => {
         e.preventDefault();
-        console.log("berhasil update");
+        console.log(dataGuest.totalPerson);
+        console.log(dataGuest.seatNumber.split(" ").length);
+        
+        if(dataGuest.totalPerson === dataGuest.seatNumber.trim().split(" ").length)
+        {
+            setLoad(true);
+            const response = await fetch('/api/handler', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...dataGuest
+                })
+            });
+            const responseJson = await response.json();
+            setLoad(false);
+            location.reload();
+        } else {
+            setInvalid({
+                title: "Jumlah bangku tidak sesuai",
+                content: `Total orang yang mendaftar ${dataGuest.totalPerson}, Jumlah bangku yang diberikan ${dataGuest.seatNumber.trim().split(" ").length}`
+            });
+            return ;
+        }
+    }
+
+    const invalidHandler = () => {
+        setInvalid(null);
     }
 
     return(
-        <div className="w-[80%] my-4 mx-auto">
-            <form className="grid grid-cols-2 grid-rows-3 auto-cols-auto auto-rows-auto">
-                <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
-                    <label className="bold mb-2 block">Name</label>
-                    <input value={dataGuest.name} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
-                </div>
-                <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
-                    <label className="bold mb-2 block">Email</label>
-                    <input value={dataGuest.email} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
-                </div>
-                <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
-                    <label className="bold mb-2 block">No. Wa</label>
-                    <input value={dataGuest.waNumber} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
-                </div>
-                <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
-                    <label className="bold mb-2 block">Total Person</label>
-                    <input value={dataGuest.totalPerson} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
-                </div>
-                <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
-                    <label className="bold mb-2 block">Nomor Bangku</label>
-                    <input value={dataGuest.nomorBangku}  className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
-                </div>
-                <div className="flex flex-wrap gap-4 mb-4 text-left">
-                    <button onClick={clickCancelHandler}>Cancel</button>
-                    <button onClick={clickUpdateHandler}>Update</button>
-                </div>
-            </form>
+        <div>
+            {load === true && <Loader/>}
+            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
+            <div className="w-[80%] my-4 mx-auto">
+                <form className="grid grid-cols-2 grid-rows-3 auto-cols-auto auto-rows-auto">
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">Name</label>
+                        <input value={dataGuest.name} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">Email</label>
+                        <input value={dataGuest.email} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">No. Wa</label>
+                        <input value={dataGuest.waNumber} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">Total Person</label>
+                        <input value={dataGuest.totalPerson} disabled className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full"></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">Nomor Bangku</label>
+                        <input value={dataGuest.seatNumber}  onChange={onChangeHandler} className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='seatNumber'></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left">
+                        <button onClick={clickCancelHandler}>Cancel</button>
+                        <button onClick={clickUpdateHandler}>Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

@@ -37,6 +37,7 @@ export default function DataGuest(props){
                                 email={dataGuests.email}
                                 waNumber={dataGuests.waNumber}
                                 totalPerson={dataGuests.totalPerson}
+                                seatNumber={dataGuests.seatNumber}
                             />
                             
                             ))
