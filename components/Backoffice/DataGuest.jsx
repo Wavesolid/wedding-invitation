@@ -1,12 +1,40 @@
 import DataGuestItem from './DataGuestItem';
+import { CSVLink } from 'react-csv';
+import { useState } from 'react';
 
 export default function DataGuest(props){
-
+    const [dataCsv, setDataCsv] = useState([]);
+    const dataCollection = [];
+    const headers = [
+        {label: "Nama", key: "name"},
+        {label: "Email", key: "email"},
+        {label: "WaNumber", key: "waNumber"},
+        {label: "TotalPerson", key: "totalPerson"},
+        {label: "SeatNumber", key: "seatNumber"},
+        {label: "FilledOn", key: "filledOn"},
+    ]
+    
     const setEditHandler = (dataGuestEdit) => {
         const guestData = {
             ...dataGuestEdit,
         };
         props.onEditDataGuest(guestData);
+    }
+
+    const onClickHandler = () => 
+    {
+        const {dataGuest} = props;
+        dataGuest.forEach((data) => {
+            dataCollection.push({
+                name: data.name,
+                email: data.email,
+                waNumber: data.waNumber,
+                totalPerson: data.totalPerson,
+                seatNumber: data.seatNumber,
+                filledOn: data.updatedAt
+            })
+        });
+        setDataCsv(dataCollection);
     }
 
     return(
@@ -39,13 +67,15 @@ export default function DataGuest(props){
                                 totalPerson={dataGuests.totalPerson}
                                 seatNumber={dataGuests.seatNumber}
                             />
-                            
                             ))
                         }
                     </tbody>
                     </table>
                 </div>
                 </div>
+            </div>
+            <div className='inline-block pt-2'>
+                <CSVLink className='text-indigo-700 hover:text-indigo-400 font-bold' data={dataCsv} headers={headers} onClick={onClickHandler} filename={"Data Guest Wedding"}>Download CSV Here</CSVLink>
             </div>
         </div>
     )

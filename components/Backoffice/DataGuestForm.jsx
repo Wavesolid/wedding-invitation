@@ -51,10 +51,8 @@ export default function DataGuestForm(props) {
 
     const clickUpdateHandler = async (e) => {
         e.preventDefault();
-        console.log(dataGuest.totalPerson);
-        console.log(dataGuest.seatNumber.split(" ").length);
-        
-        if(dataGuest.totalPerson === dataGuest.seatNumber.trim().split(" ").length)
+        const formatSeatNumber = dataGuest.seatNumber.split(",").filter((x) => x.trim() !== '').length;
+        if(dataGuest.totalPerson === formatSeatNumber)
         {
             setLoad(true);
             const response = await fetch('/api/handler', {
@@ -66,13 +64,12 @@ export default function DataGuestForm(props) {
                     ...dataGuest
                 })
             });
-            const responseJson = await response.json();
             setLoad(false);
             location.reload();
         } else {
             setInvalid({
                 title: "Jumlah bangku tidak sesuai",
-                content: `Total orang yang mendaftar ${dataGuest.totalPerson}, Jumlah bangku yang diberikan ${dataGuest.seatNumber.trim().split(" ").length}`
+                content: `Total orang yang mendaftar ${dataGuest.totalPerson}, Jumlah bangku yang diberikan ${formatSeatNumber}`
             });
             return ;
         }
@@ -109,8 +106,8 @@ export default function DataGuestForm(props) {
                         <input value={dataGuest.seatNumber}  onChange={onChangeHandler} className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='seatNumber'></input>
                     </div>
                     <div className="flex flex-wrap gap-4 mb-4 text-left">
-                        <button onClick={clickCancelHandler}>Cancel</button>
-                        <button onClick={clickUpdateHandler}>Update</button>
+                        <button className='text-red-500 hover:text-red-300 font-bold' onClick={clickCancelHandler}>Cancel</button>
+                        <button className='text-green-500 hover:text-green-300 font-bold' onClick={clickUpdateHandler}>Update</button>
                     </div>
                 </form>
             </div>
