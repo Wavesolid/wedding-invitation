@@ -3,6 +3,8 @@ import { CSVLink } from 'react-csv';
 import { useState } from 'react';
 
 export default function DataGuest(props){
+    const [guestData, setGuestData] = useState(props.dataGuest)
+    const [filterGuest, setFilterGuest] = useState({});
     const [dataCsv, setDataCsv] = useState([]);
     const dataCollection = [];
     const headers = [
@@ -21,6 +23,18 @@ export default function DataGuest(props){
         props.onEditDataGuest(guestData);
     }
 
+    const onFilterHandler = (e) =>
+    {
+        const {name, value} = e.target
+        setFilterGuest({
+            ...filterGuest,
+            [name]: value,
+        });
+
+        value !== '' ? setGuestData(guestData.filter((x) => x[name].toString().includes(value.toLowerCase()))) : setGuestData(props.dataGuest);
+        
+    }
+
     const onClickHandler = () => 
     {
         const {dataGuest} = props;
@@ -35,6 +49,18 @@ export default function DataGuest(props){
             })
         });
         setDataCsv(dataCollection);
+    }
+
+    const onResetHandler = () => 
+    {
+        setGuestData(props.dataGuest);
+        setFilterGuest({
+            name : '',
+            email : '',
+            waNumber: '',
+            totalPerson: '',
+            seatNumber: '',
+        });
     }
 
     return(
@@ -56,8 +82,28 @@ export default function DataGuest(props){
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td>
+                                <input className='border-2' type='text' name='name' value={filterGuest.name} onChange={onFilterHandler}/>
+                            </td>
+                            <td>
+                                <input className='border-2' type='email' name='email' value={filterGuest.email} onChange={onFilterHandler}/>
+                            </td>
+                            <td>
+                                <input className='border-2' type='tel' name='waNumber' value={filterGuest.waNumber} onChange={onFilterHandler}/>
+                            </td>
+                            <td>
+                                <input className='border-2'  type='text' name='totalPerson' value={filterGuest.totalPerson} onChange={onFilterHandler}/>
+                            </td>
+                            <td>
+                                <input className='border-2'  type='text' name='seatNumber' value={filterGuest.seatNumber} onChange={onFilterHandler}/>
+                            </td>
+                            <td className='flex justify-center'>
+                                <button className='text-indigo-600 hover:text-indigo-900' onClick={onResetHandler}>Reset</button>
+                            </td>
+                        </tr>
                         {
-                            props.dataGuest.map((dataGuests)=>(
+                            guestData.map((dataGuests)=>(
                             <DataGuestItem
                                 onEdit={setEditHandler}
                                 key={dataGuests._id}
@@ -66,6 +112,7 @@ export default function DataGuest(props){
                                 waNumber={dataGuests.waNumber}
                                 totalPerson={dataGuests.totalPerson}
                                 seatNumber={dataGuests.seatNumber}
+                                
                             />
                             ))
                         }
