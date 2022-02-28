@@ -31,7 +31,7 @@ export default function DataGuest(props){
             [name]: value,
         });
 
-        value !== '' ? setGuestData(guestData.filter((x) => x[name].toString().includes(value.toLowerCase()))) : setGuestData(props.dataGuest);
+        value !== '' ? setGuestData(props.dataGuest.filter((x) => x[name].toString().includes(value.toLowerCase()))) : setGuestData(props.dataGuest);
         
     }
 
