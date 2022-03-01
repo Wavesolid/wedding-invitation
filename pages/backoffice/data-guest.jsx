@@ -4,7 +4,7 @@ import HeadDataGuest from "../../components/Backoffice/HeadDataGuest";
 import {useState} from 'react';
 import { getSession } from "next-auth/react";
 
-export default function dataguest(props) {
+export default function DataGuests(props) {
     
     const [editDataGuest,setEditDataGuest] = useState([]);
 

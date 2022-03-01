@@ -2,24 +2,24 @@ import styles from './Profile.module.css';
 import { motion, useAnimation } from 'framer-motion';
 import { InView} from 'react-intersection-observer';
 
-export default function profile() {
+export default function Profile() {
 
     // set animation
-    const animation = useAnimation();
+    const Animation = useAnimation();
 
-    const animation2 = useAnimation();
+    const Animation2 = useAnimation();
 
-    const animation3 = useAnimation();
+    const Animation3 = useAnimation();
 
-    const animation4 = useAnimation();
+    const Animation4 = useAnimation();
     
-    const animation5 = useAnimation();
+    const Animation5 = useAnimation();
 
-    const animation6 = useAnimation();
+    const Animation6 = useAnimation();
 
     const viewHandler = (inView) => {
         if(inView){
-            animation.start({
+            Animation.start({
                 y: 0,
                 opacity: 1,
                 transition:{
@@ -29,7 +29,7 @@ export default function profile() {
         }
 
         if(!inView){
-            animation.start({
+            Animation.start({
                 y: -30,
                 opacity: 0.2,
             });
@@ -39,14 +39,14 @@ export default function profile() {
     const viewHandler2 = (inView) => {
 
         if(inView){
-            animation2.start({
+            Animation2.start({
                 opacity: 1,
                 transition:{
                     duration: 2
                 }
             });
 
-            animation3.start({
+            Animation3.start({
                 x:0,
                 opacity:1,
                 transition: {
@@ -58,11 +58,11 @@ export default function profile() {
         }
 
         if(!inView){
-            animation2.start({
+            Animation2.start({
                 opacity: 0.2,
             });
 
-            animation3.start({
+            Animation3.start({
                 x: -10,
                 opacity: 0.6
             });
@@ -71,7 +71,7 @@ export default function profile() {
 
     const viewHandler3 = (inView) => {
         if(inView){
-            animation4.start({
+            Animation4.start({
                 y: 0,
                 opacity: 1,
                 transition:{
@@ -81,7 +81,7 @@ export default function profile() {
         }
 
         if(!inView){
-            animation4.start({
+            Animation4.start({
                 y: -30,
                 opacity: 0.2,
             });
@@ -91,14 +91,14 @@ export default function profile() {
     const viewHandler4 = (inView) => {
 
         if(inView){
-            animation5.start({
+            Animation5.start({
                 opacity: 1,
                 transition:{
                     duration: 2
                 }
             });
 
-            animation6.start({
+            Animation6.start({
                 x: 0,
                 opacity:1,
                 transition: {
@@ -108,11 +108,11 @@ export default function profile() {
         }
 
         if(!inView){
-            animation5.start({
+            Animation5.start({
                 opacity: 0.2,
             });
 
-            animation6.start({
+            Animation6.start({
                 x:-10,
                 opacity: 0.6
             });
@@ -129,11 +129,11 @@ export default function profile() {
             </InView>
             <div>
                 <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler2}>
-                    <motion.div animate={animation} className={styles.circleStroke}>
+                    <motion.div animate={Animation} className={styles.circleStroke}>
                         <img className="mx-auto my-0 pt-[10px]" src="/Photo/fotoWanita.png" alt="foto wanita"></img>
                     </motion.div>
                 </InView>
-                <motion.div animate={animation2} className='flex flex-col items-center mt-[14px]'>
+                <motion.div animate={Animation2} className='flex flex-col items-center mt-[14px]'>
                     <span className='text-[20px] font-bold'>Jennifer Sitompul</span>
                     <span className='mb-[8px]'>Putri pertama dari</span>
                     <span>Ahmad</span>
@@ -148,11 +148,11 @@ export default function profile() {
             </div>
             <div>
                 <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler4}>
-                    <motion.div animate={animation4} className={styles.circleStroke}>
+                    <motion.div animate={Animation4} className={styles.circleStroke}>
                         <img className="mx-auto my-0 pt-[10px]" src="/Photo/fotoPria.png" alt="foto pria"></img>
                     </motion.div>
                 </InView>
-                <motion.div animate={animation5} className='flex flex-col items-center mt-[14px]'>
+                <motion.div animate={Animation5} className='flex flex-col items-center mt-[14px]'>
                     <span className='text-[20px] font-bold'>Amir Hamzah</span>
                     <span className='mb-[8px]'>Putra pertama dari</span>
                     <span>Miftah</span>
@@ -164,8 +164,8 @@ export default function profile() {
                 </motion.div>
             </div>
             <div>
-                <motion.img animate={animation6} className='float-right mt-[-13rem]' src='/Icon/asset-wayang-2.svg'></motion.img>
-                <motion.img animate={animation3} className='float-left  mt-[-40rem]' src='/Icon/asset-wayang-1.svg'></motion.img>
+                <motion.img animate={Animation6} className='float-right mt-[-13rem]' src='/Icon/asset-wayang-2.svg'></motion.img>
+                <motion.img animate={Animation3} className='float-left  mt-[-40rem]' src='/Icon/asset-wayang-1.svg'></motion.img>
             </div>
         </div>
     )
