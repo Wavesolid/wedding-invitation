@@ -9,6 +9,7 @@ import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import Ucapan from '../components/Ucapan/Ucapan';
 import Gallery from '../components/Gallery/Gallery';
+import AudioPlayer from '../components/Audio/AudioPlayer';
 import { useState } from 'react';
 
 export default function Home(props){
@@ -34,6 +35,7 @@ Home.getLayout = function getLayout(page) {
     return (
       <Layout>
         <Banner />
+        <AudioPlayer/>
         {page}
       </Layout>
     )
