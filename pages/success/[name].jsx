@@ -30,7 +30,7 @@ export async function getServerSideProps(context)
 {    
     const {name} = context.query;
 
-    const response = await fetch(`http://localhost:3000/api/guest/${name}`, {
+    const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`, {
         headers: {
             'Content-Type': 'application/json'
         }

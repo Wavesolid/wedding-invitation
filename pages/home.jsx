@@ -46,7 +46,7 @@ export async function getServerSideProps(context)
 {
   const {name} = context.query;
 
-  const ucapanResponse = await fetch(`http://localhost:3000/api/UcapanHandler`,{
+  const ucapanResponse = await fetch(`${process.env.BASE_URL}/api/UcapanHandler`,{
     method: 'GET'
   });
 

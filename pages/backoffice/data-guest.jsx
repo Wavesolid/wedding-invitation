@@ -30,7 +30,7 @@ export async function getServerSideProps(context)
     const session = await getSession({req: context.req});
     if(session)
     {
-        const dataGuestResponse = await fetch(`http://localhost:3000/api/handler`,{
+        const dataGuestResponse = await fetch(`${process.env.BASE_URL}/api/handler`,{
             method: 'GET'
         });
         

@@ -26,10 +26,10 @@ QrCodes.getLayout = function getLayout(page) {
 export async function getServerSideProps(context) {
     const { name } = context.query;
 
-    const response = await fetch(`http://localhost:3000/api/guest/${name}`);
+    const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`);
     const responseJson = await response.json();
     const { data } = responseJson;
-    const link = `http://localhost:3000/seat/${data.name}`;
+    const link = `${process.env.BASE_URL}/seat/${data.name}`;
 
     if (data === null) {
         return {
