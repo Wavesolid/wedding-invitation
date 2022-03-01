@@ -35,7 +35,7 @@ export default function Datetime(){
 
         if(!inView){
             animation.start({
-                x: 100,
+                x: -10,
                 opacity:0
             });
 

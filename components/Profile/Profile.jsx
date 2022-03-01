@@ -113,7 +113,7 @@ export default function profile() {
             });
 
             animation6.start({
-                x:100,
+                x:-10,
                 opacity: 0.6
             });
         }

@@ -25,7 +25,7 @@ export default function EntryForm({name,isFilled}){
                 x: 0,
                 opacity: 1,
                 transition:{
-                    duration:3
+                    duration:1.3
                 }
             })
 
@@ -41,7 +41,7 @@ export default function EntryForm({name,isFilled}){
                 x: 0,
                 opacity: 1,
                 transition:{
-                    duration:4
+                    duration:1.5
                 }
             })
 
@@ -50,29 +50,29 @@ export default function EntryForm({name,isFilled}){
                 x: 0,
                 opacity: 1,
                 transition:{
-                    duration:2
+                    duration:1.2
                 }
             })
         }
 
         if(!inView){
             animation.start({
-                x: 100,
+                x: -100,
                 opacity: 0
             })
 
             animation2.start({
-                x: -100,
+                x: -10,
                 opacity: 0
             })
 
             animation3.start({
-                x: 100,
+                x: -100,
                 opacity: 0
             })
 
             animation4.start({
-                x: -100,
+                x: -10,
                 opacity: 0
             })
         }
