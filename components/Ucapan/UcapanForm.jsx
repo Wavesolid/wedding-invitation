@@ -79,23 +79,23 @@ export default function UcapanForm(props) {
 
 
     return(
-        <div className="ml-[10px]">
+        <div>
             {load === true && <Loader/>}
             {success && <Modal title={success.title} content={success.content} onConfirm={successHandler} /> }
             {error && <Modal title={error.title} content={error.content} onConfirm={modalHandler} />}
              
-            <div>
-                <span className="font-bold text-[18px] mb-[16px]">Form Ucapan</span>
+            <div className="px-[12px] flex flex-col">
+                <span className="font-bold text-[24px] self-center mb-[16px] mt-[24px]">Doa dan Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
                         <label className="mb-[8px]" htmlFor="nama">Nama</label>
-                        <input name="displayName" onChange={onChangeHandler} className="w-[335px] h-[30px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] pl-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="nama"/>
+                        <input name="displayName" onChange={onChangeHandler} className="w-full h-[30px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] pl-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="nama"/>
                         <label className="mb-[8px]" htmlFor="domisili">Domisili</label>
-                        <input onChange={onChangeHandler} name="domisili" className="w-[335px] h-[30px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] pl-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="domisli"/>
+                        <input onChange={onChangeHandler} name="domisili" className="w-full h-[30px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] pl-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="domisli"/>
                         <label className="mb-[8px]" htmlFor="ucapan">Kirim ucapan mu</label>
-                        <textarea onChange={onChangeHandler} name="message" className="w-[335px] h-[66px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] p-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="ucapan" >
+                        <textarea onChange={onChangeHandler} name="message" className="w-full h-[66px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] p-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="ucapan" >
                         </textarea>
-                        <button type="submit" className="w-[355px] h-[35px] bg-[#F2C777] rounded-[15px] mb-[36px]">
-                            <span className=" text-[#0D0D0D] text-[12px] font-bold">Kirim Sekarang</span>
+                        <button type="submit" className="w-full h-[35px] bg-[#F2C777] rounded-[15px] mb-[36px]">
+                            <span className=" text-[#0D0D0D] text-[16px] font-bold">Send</span>
                         </button>
                     </form>
             </div>

@@ -14,9 +14,15 @@ const useAudio = () => {
   );
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
+    audio.addEventListener('ended', function(){
+      audio.currentTime = 0;
+      audio.play() 
+    })
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
+      audio.addEventListener('ended', function(){
+        audio.currentTime = 0;
+        audio.play() 
+      })
     };
   }, []);
 
@@ -31,7 +37,7 @@ const Player = ({ url }) => {
       <button
         className="bg-[white] rounded-[25px] w-[50px] h-[50px] fixed top-[90vh] right-[1vh]"
         onClick={toggle}>
-          {playing ? <img className="w-[40%] my-0 mx-auto" src="/Icon/MusicPlay.png" alt="pause"/> : <img className="w-[40%] my-0 mx-auto" src="/Icon/MusicPause.png" alt="play"></img> }
+          {playing ? <img className="w-[38%] my-0 mx-auto" src="/Icon/MusicPlay.png" alt="pause"/> : <img className="w-[40%] my-0 mx-auto" src="/Icon/MusicPause.png" alt="play"></img> }
         </button>
     </div>
   );
