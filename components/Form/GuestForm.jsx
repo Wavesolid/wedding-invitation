@@ -58,7 +58,7 @@ export default function GuestForm({props})
         if(status === 201)
         {
             setLoad(false);
-            return router.replace(`/qrcode/${props.name}`);  
+            return router.replace(`/success/${props.name}`);  
         }
     }
 

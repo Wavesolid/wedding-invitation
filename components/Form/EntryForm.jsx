@@ -89,19 +89,16 @@ export default function EntryForm({name,isFilled}){
                 
                 <span ref={ref} className="text-[24px] font-bold mt-[-2rem]">RSVP</span>
                 <span className="text-[14px]">Kindly respond by</span>
-                <div className={`${isFilled !== true ? `mb-[8px]` : `mb-[-25px]` }`}>
+                <div className="mb-[8px]">
                     <span>-</span>
                     <span className="text-[14px]">11 mei 2022</span>
                     <span>-</span>
                 </div>
-                {isFilled !== true && 
                 <Link href={`/form/${name}`}>
                     <button className="border transition duration-700 ease-in-out rounded-[15px] border-current py-[2px] px-[21px] mb-[-1.5rem] hover:bg-[#F2C777] hover:text-[#0D0D0D]">
                         <span className="text-[14px]" >Klik Disini</span>
                     </button>
                 </Link>
-                }
-
             </div>
 
             <div>

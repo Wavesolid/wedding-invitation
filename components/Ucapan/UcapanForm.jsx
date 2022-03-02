@@ -83,7 +83,7 @@ export default function UcapanForm(props) {
             {load === true && <Loader/>}
             {success && <Modal title={success.title} content={success.content} onConfirm={successHandler} /> }
             {error && <Modal title={error.title} content={error.content} onConfirm={modalHandler} />}
-            {props.ucapan[index].message === "" && 
+             
             <div>
                 <span className="font-bold text-[18px] mb-[16px]">Form Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
@@ -99,14 +99,14 @@ export default function UcapanForm(props) {
                         </button>
                     </form>
             </div>
-            }
+            
 
-            {props.ucapan[index].message !== ""  && 
+            {/* {props.ucapan[index].message !== ""  && 
                 <div className="flex items-center justify-center h-[100px]">
                     <span className="text-[20px]">Terima kasih sudah menulis ucapan</span>
                 </div>
-            }
-            <Transition/>
+            } */}
+            {/* <Transition/> */}
         </div>
     )
 }
