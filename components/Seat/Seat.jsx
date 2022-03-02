@@ -1,6 +1,7 @@
 export default function Seat({props})
 {
     const { seatNumber } = props.data;
+    console.log(seatNumber);
 
     return (
         <div className="h-screen bg-[#0D0D0D] flex flex-col items-center justify-center">
