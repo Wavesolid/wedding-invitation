@@ -84,7 +84,7 @@ export default function UcapanForm(props) {
             {success && <Modal title={success.title} content={success.content} onConfirm={successHandler} /> }
             {error && <Modal title={error.title} content={error.content} onConfirm={modalHandler} />}
              
-            <div className="px-[12px] flex flex-col">
+            <div className="flex flex-col">
                 <span className="font-bold text-[24px] self-center mb-[16px] mt-[24px]">Doa dan Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
                         <label className="mb-[8px]" htmlFor="nama">Nama</label>
