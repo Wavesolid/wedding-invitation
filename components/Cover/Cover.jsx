@@ -5,7 +5,7 @@ export default function Cover({name})
 {  
 
     return (
-        <div className={styles.cover}>
+        <div className={styles.slideContainer}>
             <div className={styles.coverMain}>
                 <span className={styles.coverTitle}>The Wedding Invitation</span>
                 <div className='grid grid-rows-3 text-center mb-4 text-[48px]'>
@@ -30,14 +30,14 @@ export default function Cover({name})
                     </div>
                 </div>
                 <div className='grid grid-rows-3 text-center'>
-                    <span className={styles.openGuest}>
+                    <span  className={`${styles.openGuest} ${name === undefined ? `mb-[-1rem]` : ``}`}>
                         Kepada yth Bapak/Ibu/Saudara/i
                     </span>
                     <span className={styles.nameGuest}>
-                        {name === undefined ? 'default' : name.charAt(0).toUpperCase() + name.slice(1)} dan Partner
+                        {name === undefined ? ' ' : name.charAt(0).toUpperCase() + name.slice(1) + " dan Partner" } 
                     </span>
                     <span className={styles.alertGuest}>
-                        *mohon maaf apabila ada kesalahan kata dan gelar
+                        {name === undefined ? ' ' : "*mohon maaf apabila ada kesalahan kata dan gelar" } 
                     </span>
                 </div>
                 <div className='flex flex-col items-center'>
