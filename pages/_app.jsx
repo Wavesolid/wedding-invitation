@@ -20,10 +20,8 @@ function MyApp({ Component, pageProps, router }) {
     setLoad(false);
   });
 
-  let content;
-  load ? content = <Loader /> : content= <Component {...pageProps} />;
   const getLayout = Component.getLayout || ((page) => page)
-  return getLayout(
+  return load? <Loader /> : getLayout(
     <SessionProvider>
       <motion.div 
         key={router.route}
@@ -38,7 +36,7 @@ function MyApp({ Component, pageProps, router }) {
           },
         }}
       >
-        {content}
+        <Component {...pageProps} />
       </motion.div>
     </SessionProvider>
   )
