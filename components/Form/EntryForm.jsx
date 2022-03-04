@@ -79,7 +79,7 @@ export default function EntryForm({name,isFilled}){
     },[inView])
 
     return(
-        <div className="bg-[#0D0D0D]">
+        <div className="bg-[#621109]">
             <div>
                 <motion.img animate={animation} className="float-right" src="/Icon/asset-batik-3-upper-right.svg"></motion.img>
                 <motion.img animate={animation2} src="/Icon/asset-batik-3-upper-left.svg"></motion.img>
@@ -95,7 +95,7 @@ export default function EntryForm({name,isFilled}){
                     <span>-</span>
                 </div>
                 <Link href={`/form/${name}`}>
-                    <button className="border transition duration-700 ease-in-out rounded-[15px] border-current py-[2px] px-[21px] mb-[-1.5rem] hover:bg-[#F2C777] hover:text-[#0D0D0D]">
+                    <button className="border transition duration-700 ease-in-out rounded-[15px] border-current py-[2px] px-[21px] mb-[-1.5rem] hover:bg-[#F2C777] hover:text-[#621109]">
                         <span className="text-[14px]" >Klik Disini</span>
                     </button>
                 </Link>

@@ -12,6 +12,7 @@ import Banner from '../../components/Banner';
 import Ucapan from '../../components/Ucapan/Ucapan';
 import Gallery from '../../components/Gallery/Gallery';
 import AudioPlayer from '../../components/Audio/AudioPlayer';
+import PermohonanMaaf from '../../components/PermohonanMaaf/PermohonanMaaf';
 import { useState } from 'react';
 
 export default function Home(props)
@@ -33,12 +34,14 @@ export default function Home(props)
         <div className={styles.columnMain}>
             <Intro/>
             <Surat/>
+            <PermohonanMaaf/>
             <Profile/>
-            <Location/>
+            <Transition/>
             <Datetime/>
+            <Location/>
+            <Youtube/>
             <EntryForm name={guest} isFilled={isFilled}/>
             <Transition/>
-            <Youtube/>
             <Ucapan name={guest} ucapan={ucapan}/>
             <Gallery/>
         </div>

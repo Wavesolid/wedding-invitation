@@ -1,6 +1,6 @@
 export default function Success(props){
     return(
-        <div className="h-screen bg-[#0D0D0D] bg-[url('/Photo/bg-batik.png')]  flex flex-col items-center justify-center text-[#F2C777]">
+        <div className="h-screen bg-[#621109] bg-[url('/Photo/bg-batik.png')]  flex flex-col items-center justify-center text-[#F2C777]">
             <h1 className="text-[36px] font-bold text-center mb-[18px]">Terima Kasih!</h1>
             <h2 className="text-[18px] font-medium w-[340px] text-center ">Kami senantiasa senang menunggu kehadiran anda pada acara</h2>
             <div className="w-[335px] h-[218px] flex flex-col items-center bg-[#F2C777] rounded-[10px] my-[32px]">
@@ -16,10 +16,6 @@ export default function Success(props){
                 </div>
             </div>
             <h2 className="text-[18px] font-medium text-center w-[340px]">Nomor Bangku akan dikirim melalui email atau nomor whatsapp yang telah diberikan.</h2>
-            {/* <div>
-                <img className='float-right mt-[-13rem]' src='/Icon/asset-wayang-2.svg'></img>
-                <img className='float-left  mt-[-40rem]' src='/Icon/asset-wayang-1.svg'></img>
-            </div> */}
         </div>
     )
 }

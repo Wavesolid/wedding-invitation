@@ -48,7 +48,7 @@ export default function Datetime(){
     },[inView])
 
     return(
-        <div className="bg-[#0D0D0D]">
+        <div className="bg-[#621109]">
             <div className="flex flex-col items-center py-[30px]">
                 <div className="flex flex-col items-center mb-[20px]">
                     <span ref={ref} className="mb-[8px] text-[#F2C777] text-[24px] font-bold">Akad Nikah</span>
