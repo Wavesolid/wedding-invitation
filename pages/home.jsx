@@ -11,6 +11,7 @@ import Ucapan from '../components/Ucapan/Ucapan';
 import Gallery from '../components/Gallery/Gallery';
 import AudioPlayer from '../components/Audio/AudioPlayer';
 import { useState } from 'react';
+import PermohonanMaaf from '../components/PermohonanMaaf/PermohonanMaaf';
 
 export default function Home(props){
   const [ucapan,setUcapan] = useState(
@@ -21,9 +22,10 @@ export default function Home(props){
       <div className={styles.columnMain}>
           <Intro/>
           <Surat/>
+          <PermohonanMaaf/>
           <Profile/>
-          <Datetime/>
           <Transition/>
+          <Datetime/>
           <Youtube/>
           <Ucapan ucapan={ucapan}/>
           <Gallery/>

@@ -121,7 +121,7 @@ export default function Profile() {
 
 
     return(
-        <div className="bg-[#0D0D0D] text-[#F2C777] py-[38px]">
+        <div className="bg-[#621109] text-[#F2C777] py-[38px]">
             <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler}>
                 <div className="text-center">
                     <span className='text-[24px] font-bold'>Bride &#38; Groom</span>

@@ -1,4 +1,3 @@
-import styles from './Surat.module.css';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
@@ -51,7 +50,7 @@ export default function Surat()
     },[inView]);
 
     return (
-        <div className={styles.surat}>
+        <div className="w-full h-auto bg-[#F2C777]">
             <div className='text-center mb-[16px] pt-[36px]'>
                 <motion.img src="/Icon/asset-batik-6.svg" className='mx-auto my-0'
                     animate={animation}
@@ -59,14 +58,14 @@ export default function Surat()
             </div>
             <div ref={ref} className='flex justify-around items-center flex-col'>
                 <motion.div animate={animation2} className='flex justify-around items-center flex-col'>
-                    <span className='italic font-bold text-[14px] text-[#0D0D0D]'>Bismillahirahmanirahim</span>
-                    <span className='text-center my-[16px] mx-[20px] font-medium italic text-[14px] text-[#0D0D0D]'>
+                    <span className='italic font-bold text-[14px] text-[#621109]'>Bismillahirahmanirahim</span>
+                    <span className='text-center my-[16px] mx-[20px] font-medium italic text-[14px] text-[#621109]'>
                         “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, 
                         supaya kamu merasa tenang dan tentram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
                         Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir”
                     </span>
                 </motion.div>
-                <motion.span animate={animation3} className='italic font-bold text-[14px] text-[#0D0D0D] pb-[36px]'>
+                <motion.span animate={animation3} className='italic font-bold text-[14px] text-[#621109] pb-[36px]'>
                     (QS. Ar-Rum:21)
                 </motion.span>
             </div>

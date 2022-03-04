@@ -9,9 +9,10 @@ export default function Ucapan({name,ucapan}) {
     }
     
     return(
-        <div className="bg-[#0D0D0D] text-[#F2C777] px-[12px]">
+        <div className="bg-[#621109] text-[#F2C777] px-[12px]">
             {name !== undefined && <UcapanForm name={name} ucapan={ucapan}/> }
             <div className="flex flex-col items-center">
+                {name == undefined && <h1 className="font-bold text-[#F2C777] text-[24px] mb-[26px]">Doa dan Ucapan</h1>}
                 <div className={`flex flex-col items-center w-full h-[260px] bg-[#F2C777] py-[18px] text-[#0D0D0D] rounded-[10px] ${styles.ucapanCard}`} >
                     {
                         ucapan.filter(ucapans => ucapans.message !== "").map((ucapans)=>(
