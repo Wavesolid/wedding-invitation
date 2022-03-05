@@ -37,7 +37,7 @@ export default function Youtube(){
         <div className="bg-[#621109] flex flex-col items-center">
             <motion.span animate={animation} className="font-bold text-[#F2C777] text-[24px] my-[26px]">Live Streaming</motion.span>
             <div ref={ref} className="border-8 rounded-[8px] border-[#F2C777] mb-[18px]">
-                <iframe width="350" height="206" src="https://www.youtube.com/embed/citnw038UQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="350" height="206" src="https://www.youtube.com/embed/citnw038UQ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div> 
         </div>
     )
