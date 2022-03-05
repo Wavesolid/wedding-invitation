@@ -1,5 +1,6 @@
 import styles from './Cover.module.css';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Cover({name})
 {  
@@ -41,9 +42,13 @@ export default function Cover({name})
                     </span>
                 </div>
                 <div className='flex flex-col items-center'>
-                    <div className='mb-4'>
+                    <motion.div 
+                        animate={{ y: [0,10,20,10,0] }}
+                        transition={{ ease: "easeInOut", duration: 2, repeat: Infinity }}
+                        className='mb-8'
+                    >
                         <img src="/Icon/Arrow.svg"></img>
-                    </div>
+                    </motion.div>
                     <Link href= {`${name === undefined ? `/home` : `/home/${name}` }`}>
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>

@@ -1,6 +1,6 @@
 import styles from './Profile.module.css';
 import { motion, useAnimation } from 'framer-motion';
-import { InView} from 'react-intersection-observer';
+import { InView } from 'react-intersection-observer';
 
 export default function Profile() {
 
@@ -16,6 +16,10 @@ export default function Profile() {
     const Animation5 = useAnimation();
 
     const Animation6 = useAnimation();
+
+    const Animation7 = useAnimation();
+
+    const Animation8 = useAnimation();
 
     const viewHandler = (inView) => {
         if(inView){
@@ -55,6 +59,15 @@ export default function Profile() {
                     bounce: 0.2
                 }
             });
+
+            Animation7.start({
+                y:0,
+                opacity:1,
+                transition: {
+                    duration: 0.5,
+                    ease:"easeIn"
+                }
+            });
         }
 
         if(!inView){
@@ -65,6 +78,11 @@ export default function Profile() {
             Animation3.start({
                 x: -10,
                 opacity: 0.6
+            });
+
+            Animation7.start({
+                y:30,
+                opacity:0.3
             });
         }
     }
@@ -105,6 +123,15 @@ export default function Profile() {
                     duration: 1
                 }
             });
+
+            Animation8.start({
+                y:0,
+                opacity:1,
+                transition: {
+                    duration: 0.5,
+                    ease:"easeIn"
+                }
+            });
         }
 
         if(!inView){
@@ -115,6 +142,11 @@ export default function Profile() {
             Animation6.start({
                 x:-10,
                 opacity: 0.6
+            });
+
+            Animation8.start({
+                y:40,
+                opacity:0.2
             });
         }
     }
@@ -134,11 +166,11 @@ export default function Profile() {
                     </motion.div>
                 </InView>
                 <motion.div animate={Animation2} className='flex flex-col items-center mt-[14px]'>
-                    <span className='text-[20px] font-bold'>Jennifer Sitompul</span>
-                    <span className='mb-[8px]'>Putri pertama dari</span>
-                    <span>Ahmad</span>
-                    <span>&#38;</span>
-                    <span>Santi</span>
+                    <motion.span animate={Animation7} className='text-[20px] font-bold'>Jennifer Sitompul</motion.span>
+                    <motion.span animate={Animation7} className='mb-[8px]'>Putri pertama dari</motion.span>
+                    <motion.span animate={Animation7} >Ahmad</motion.span>
+                    <motion.span animate={Animation7} >&#38;</motion.span>
+                    <motion.span animate={Animation7} >Santi</motion.span>
                     <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler3}>
                         <a className='mt-[8px]' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
                             <img src="/Icon/icon-instagram.svg" alt="icon instagram" />
@@ -153,11 +185,11 @@ export default function Profile() {
                     </motion.div>
                 </InView>
                 <motion.div animate={Animation5} className='flex flex-col items-center mt-[14px]'>
-                    <span className='text-[20px] font-bold'>Amir Hamzah</span>
-                    <span className='mb-[8px]'>Putra pertama dari</span>
-                    <span>Miftah</span>
-                    <span>&#38;</span>
-                    <span>Silvi</span>
+                    <motion.span animate={Animation8} className='text-[20px] font-bold'>Amir Hamzah</motion.span>
+                    <motion.span animate={Animation8} className='mb-[8px]'>Putra pertama dari</motion.span>
+                    <motion.span animate={Animation8}>Miftah</motion.span>
+                    <motion.span animate={Animation8}>&#38;</motion.span>
+                    <motion.span animate={Animation8}>Silvi</motion.span>
                     <a className='mt-[8px]' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
                         <img src="/Icon/icon-instagram.svg" alt="icon instagram" />
                     </a>
