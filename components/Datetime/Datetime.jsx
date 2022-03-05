@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useInView,InView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import Countdown from '../Countdown/Countdown'
 
 export default function Datetime(){
 
@@ -100,6 +101,9 @@ export default function Datetime(){
                     </InView>
                     <motion.span animate={animation4}  className="text-[#F2E3B3] text-[14px]">Minggu, 29 Mei 2022</motion.span>
                     <motion.span animate={animation4}  className="text-[#F2E3B3] text-[14px]">Pukul 11.00 WIB</motion.span>
+                </div>
+                <div className="flex flex-col items-center text-[#F2C777] text-[20px]">
+                    <Countdown />
                 </div>
             </div>
 
