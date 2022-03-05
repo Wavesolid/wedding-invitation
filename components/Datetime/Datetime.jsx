@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useInView,InView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 
 export default function Datetime(){
@@ -12,6 +12,30 @@ export default function Datetime(){
     const animation = useAnimation();
 
     const animation2 = useAnimation();
+
+    const animation3 = useAnimation();
+
+    const animation4 = useAnimation();
+
+    const viewHandler = (inView) => {
+        if(inView){
+            animation4.start({
+                y: 0,
+                opacity:1,
+                transition:{
+                    duration: 1,
+                    ease: "easeIn"
+                }
+            })
+        }
+
+        if(!inView){
+            animation4.start({
+                y: 40,
+                opacity:0.4,
+            })
+        }
+    }
 
     useEffect(()=>{
         
@@ -31,6 +55,15 @@ export default function Datetime(){
                     duration: 2
                 }
             });
+
+            animation3.start({
+                y: 0,
+                opacity:1,
+                transition:{
+                    duration: 1,
+                    ease: "easeIn"
+                }
+            })
         }
 
         if(!inView){
@@ -43,6 +76,12 @@ export default function Datetime(){
                 x: -100,
                 opacity:0
             });
+
+            
+            animation3.start({
+                y: 40,
+                opacity:0.4,
+            })
         }
 
     },[inView])
@@ -52,13 +91,15 @@ export default function Datetime(){
             <div className="flex flex-col items-center py-[30px]">
                 <div className="flex flex-col items-center mb-[20px]">
                     <span ref={ref} className="mb-[8px] text-[#F2C777] text-[24px] font-bold">Akad Nikah</span>
-                    <span className="text-[#F2E3B3] text-[14px]">Minggu, 29 Mei 2022</span>
-                    <span className="text-[#F2E3B3] text-[14px]">Pukul 08.00 WIB - Selesai</span>
+                    <motion.span animate={animation3} className="text-[#F2E3B3] text-[14px]">Minggu, 29 Mei 2022</motion.span>
+                    <motion.span animate={animation3} className="text-[#F2E3B3] text-[14px]">Pukul 08.00 WIB - Selesai</motion.span>
                 </div>
                 <div className="flex flex-col items-center">
-                    <span className="mb-[8px] text-[#F2C777] text-[24px] font-bold">Resepsi</span>
-                    <span className="text-[#F2E3B3] text-[14px]">Minggu, 29 Mei 2022</span>
-                    <span className="text-[#F2E3B3] text-[14px]">Pukul 11.00 WIB</span>
+                    <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler}>
+                        <span className="mb-[8px] text-[#F2C777] text-[24px] font-bold">Resepsi</span>
+                    </InView>
+                    <motion.span animate={animation4}  className="text-[#F2E3B3] text-[14px]">Minggu, 29 Mei 2022</motion.span>
+                    <motion.span animate={animation4}  className="text-[#F2E3B3] text-[14px]">Pukul 11.00 WIB</motion.span>
                 </div>
             </div>
 

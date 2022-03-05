@@ -68,4 +68,11 @@
     border: 1px solid;
     border-radius: 25px;
     padding: 7.5px 21px;
+    transition: 1s ease-in-out;
+}
+
+.buttonCover:hover{
+    background-color: white;
+    color: black;
+    border-color: white;
 }
