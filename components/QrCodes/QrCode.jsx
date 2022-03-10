@@ -6,15 +6,15 @@ export default function QrCode(props) {
     const [qrCode, setQrCode] = useState(link);
 
     return (
-        <div className='flex-col items-center justify-center'>
+        <div className='flex-col bg-putih items-center justify-center h-screen px-[12px]'>
             <div className='text-center py-[16px]'>
-                <h1 className='text-[#621109] font-bold text-2xl'>Wedding</h1>
+                <h1 className='text-merah font-sambung text-[36px]'>Wedding</h1>
             </div>
             <div className='text-center pb-[37px]'>
-                <h2 className='text-[#621109] font-bold text-2xl'>Jeniffer & Hamzah</h2>
+                <h2 className='text-merah font-sambung text-[36px]'>Nesya <span className='font-tanda-huruf'>&</span> Gintano</h2>
             </div>
-            <div className='rounded-lg bg-[#621109] w-[335px] h-[349px] my-0 mx-auto flex items-center'>
-                <div className='bg-white py-[1.4rem] pl-[1.4rem] pr-[1rem]  mx-auto w-[225px] h-[225px]' >
+            <div className='rounded-lg bg-merah p-[24px] my-0 mx-auto flex items-center'>
+                <div className='bg-white p-[8px]' >
                     <Qr
                         size={180}
                         id='qr-code'
@@ -22,8 +22,8 @@ export default function QrCode(props) {
                     />
                 </div>
             </div>
-            <div className='text-center pt-[25px]'>
-                <p className='text-[#621109] break-words'>*Proin suscipit, purus ut cursus faucibus, eros ligula fermentum quam, sit amet faucibus est nisi interdum libero. Aenean mattis egestas eros ac aliquam.  </p>
+            <div className='text-center mt-4'>
+                <p className='text-[#621109] break-words'> Mohon tunjukan Qr code ini ke pagar ayu untuk mendapatkan nomor bangku yang telah diberikan </p>
             </div>
         </div>
     );

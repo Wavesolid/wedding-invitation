@@ -2,17 +2,15 @@ import styles from '../../styles/Index.module.css';
 import Intro from '../../components/Intro/Intro';
 import Surat from '../../components/Surat/Surat';
 import Profile from '../../components/Profile/Profile';
-import Location from '../../components/Location/Location';
 import Datetime from '../../components/Datetime/Datetime';
 import EntryForm from '../../components/Form/EntryForm';
-import Transition from '../../components/Transition/Transition';
-import Youtube from '../../components/Youtube/Youtube';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
 import Ucapan from '../../components/Ucapan/Ucapan';
 import Gallery from '../../components/Gallery/Gallery';
 import AudioPlayer from '../../components/Audio/AudioPlayer';
-import PermohonanMaaf from '../../components/PermohonanMaaf/PermohonanMaaf';
+import Protokol from '../../components/Protokol/Protokol';
+import Footer from '../../components/Footer/Footer';
 import { useState } from 'react';
 
 export default function Home(props)
@@ -34,16 +32,13 @@ export default function Home(props)
         <div className={styles.columnMain}>
             <Intro/>
             <Surat/>
-            <PermohonanMaaf/>
             <Profile/>
-            <Transition/>
-            <Datetime/>
-            <Location/>
-            <Youtube/>
+            <Datetime name={guest}/>
             <EntryForm name={guest} isFilled={isFilled}/>
-            <Transition/>
             <Ucapan name={guest} ucapan={ucapan}/>
             <Gallery/>
+            <Protokol name={guest} />
+            <Footer/>
         </div>
     )
 }

@@ -6,7 +6,7 @@ export default function Seat({props})
     console.log(seatNumber);
 
     return (
-        <div className="h-screen bg-[#621109] flex flex-col items-center justify-center">
+        <div className="h-screen bg-merah flex flex-col items-center justify-center">
             <div>
                 <img src="/Icon/asset-batik-8.svg"/>
             </div>

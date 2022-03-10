@@ -3,41 +3,26 @@ import { motion } from 'framer-motion';
 export default function Intro()
 {
     return (
-        <div className="bg-[#621109] h-[667px] bg-[url('/Photo/bg-batik.png')] flex flex-col items-center justify-center">
-            <motion.span 
-            animate={{ y: [-30,0], opacity: [0.2,1] }}
-            transition={{duration: 1.5}}
-            className="text-[#F2C777] text-[36px] font-bold mb-[8px]"
-            >
-                THE WEDDING OF
-            </motion.span>
-            <motion.img 
-                animate={{ x: [-40,0], opacity: [0.2,1] }}
+        <div className='bg-merah'>
+            <div className="h-[667px] bg-white bg-[url('/Photo/foto-intro.jpg')] bg-cover bg-center bg-blend-luminosity rounded-b-[150px] flex flex-col items-center justify-start">
+                <motion.span 
+                animate={{ y: [-30,0], opacity: [0.2,1] }}
                 transition={{duration: 1.5}}
-                className="mb-[8px]" 
-                src="/Icon/asset-batik-8-big.svg" 
-                alt="batik-8-big" 
-            />
-            <motion.div
-                animate={{opacity: [0,1] }}
-                transition={{duration: 2}}
-                className="bg-[url('/Icon/foto-frame.svg')] bg-no-repeat w-[215.15px] h-[404px] mb-[16px]"
-            >
-                <img className="mx-auto my-0 pt-[10px]" src="/Photo/foto-intro.png" alt="photo-intro" />
-            </motion.div>
-            <motion.img
-                animate={{ x: [40,0], opacity: [0.2,1] }}
-                transition={{duration: 1.5}}
-                src="/Icon/asset-batik-4-intro.svg" 
-                alt="" 
-            />
-            <motion.span 
-                animate={{ y: [40,0], opacity: [0.2,1] }}
-                transition={{duration: 1.5}}
-                className="text-[24px] font-bold mt-[16px] text-[#F2C777] "
+                className="text-white text-[36px] mt-[3rem] font-sambung mb-[8px]"
                 >
-                Jennifer &#38; Hamzah
-            </motion.span>
+                    The Wedding Of
+                </motion.span>
+
+                <motion.span 
+                    animate={{ y: [40,0], opacity: [0.2,1] }}
+                    transition={{duration: 1.5}}
+                    className="text-white w-full mt-[16px] font-sambung flex flex-col items-center text-[56px]"
+                    >
+                    <span className="self-start ml-[4rem]">Nesya</span>
+                    <span className='font-tanda-huruf'>&#38;</span> 
+                    <span className='self-end mr-[2rem]'>Gintano</span>
+                </motion.span>
+            </div>
         </div>
     );
 }
