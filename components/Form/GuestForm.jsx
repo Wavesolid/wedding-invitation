@@ -70,17 +70,17 @@ export default function GuestForm({props})
         <div>
             {load === true && <Loader/>}
             {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
-            <div className="h-screen bg-[#621109] bg-[url('/Photo/bg-batik.png')] flex flex-col items-center justify-center">
-                <h1 className="text-[#F2C777] text-[24px] mb-[40px] font-bold">Form Kehadiran</h1>
-                <div className="w-[247px] h-[400px] bg-[#F2C777] rounded-[12px]">
+            <div className="h-screen bg-merah flex flex-col items-center justify-center text-emas">
+                <h1 className=" text-[36px] mb-[40px] font-kapital-bold">Form Kehadiran</h1>
+                <div className="w-[280px] h-[400px] bg-putih border-[8px] border-emas rounded-[12px]">
                     <form className="pl-4 pt-2" onSubmit={submitHandler}>
                         <div className="pt-[7.5px] nama-input">
-                            <label className="text-[#735032] text-[12px]" htmlFor="nama">Nama</label>
-                            <input className="w-[222px] h-[28px] border border-[#735032] focus:outline-none rounded-full text-[12px] px-2 py-2 text-[#735032]" disabled value={props.name} type="text" id="nama"/>
+                            <label className="text-emas text-[12px]" htmlFor="nama">Nama</label>
+                            <input className="w-[222px] h-[28px] border border-emas focus:outline-none rounded-full text-[12px] px-2 py-2 text-emas" disabled value={props.name} type="text" id="nama"/>
                         </div>
                         <div className="pt-[16px] presence-selector">
-                            <label className="text-[#735032] pr-[9px] text-[12px]" htmlFor="presence">Jumlah Hadir</label>
-                            <select className="rounded-full w-[96px] h-[25px] border border-[#735032] focus:outline-none text-center text-[12px] text-[#735032]" name="totalPerson" id="presence" value={data.totalPerson} onChange={onChangeHandler}>
+                            <label className="text-emas pr-[9px] text-[12px]" htmlFor="presence">Jumlah Hadir</label>
+                            <select className="rounded-full w-[96px] h-[25px] border border-emas focus:outline-none text-center text-[12px] text-emas" name="totalPerson" id="presence" value={data.totalPerson} onChange={onChangeHandler}>
                                 {
                                     Array(props.totalPerson).fill().map((_, i) => (
                                         <option key={i+1} value={i+1}>{i+1} Orang</option>
@@ -89,19 +89,19 @@ export default function GuestForm({props})
                             </select>
                         </div>
                         <div className="pt-[16px] email-input">
-                            <label className="text-[#735032] text-[12px]" htmlFor="email">Email</label>
-                            <input className="w-[222px] h-7 border border-[#735032] focus:outline-none rounded-full px-2 py-2 text-[12px] text-[#735032]" value={data.email} onChange={onChangeHandler} type="text" id="email" name="email"/>
+                            <label className="text-emas text-[12px]" htmlFor="email">Email</label>
+                            <input className="w-[222px] h-7 border border-emas focus:outline-none rounded-full px-2 py-2 text-[12px] text-emas" value={data.email} onChange={onChangeHandler} type="text" id="email" name="email"/>
                         </div>
                         <div className="pt-[16px] wa-input">
-                            <label className="text-[#735032] text-[12px]" htmlFor="wa">No.WA</label>
-                            <input className="w-[222px] h-7 border border-[#735032] focus:outline-none rounded-full px-2 py-2 text-[12px] text-[#735032]" value={data.waNumber}
+                            <label className="text-emas text-[12px]" htmlFor="wa">No.WA</label>
+                            <input className="w-[222px] h-7 border border-emas focus:outline-none rounded-full px-2 py-2 text-[12px] text-emas" value={data.waNumber}
                             onChange={onChangeHandler} type="tel" id="wa" name="waNumber"/>
                         </div>
                         <div className="pt-[16px] notes">
-                            <p className="text-[8px] text-[#735032]">*Email/Nomor Whatsapp wajib diisi karena kami akan mengirimkan barcode berisi nomor tempat duduk.</p>
+                            <p className="text-[8px] text-emas">*Email/Nomor Whatsapp wajib diisi karena kami akan mengirimkan barcode berisi nomor tempat duduk.</p>
                         </div>
                         <div className="pt-[16px] content-center button-submit">
-                            <button className="w-[222px] h-7 border rounded-[15px] border-[#735032] text-[#735032] m-auto transition duration-700 ease-in-out hover:bg-[#735032] hover:text-[#F2C777] submit-regist" type='submit'>
+                            <button className="w-[222px] h-7 border rounded-[15px] border-emas text-emas m-auto transition duration-700 ease-in-out hover:bg-emas hover:text-putih submit-regist" type='submit'>
                                 <span className="text-sm ">Klik Disini</span>
                             </button>
                         </div>

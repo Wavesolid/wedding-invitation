@@ -3,15 +3,14 @@ import Intro from '../components/Intro/Intro';
 import Surat from '../components/Surat/Surat';
 import Profile from '../components/Profile/Profile';
 import Datetime from '../components/Datetime/Datetime';
-import Transition from '../components/Transition/Transition';
-import Youtube from '../components/Youtube/Youtube';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import Ucapan from '../components/Ucapan/Ucapan';
 import Gallery from '../components/Gallery/Gallery';
 import AudioPlayer from '../components/Audio/AudioPlayer';
+import Footer from '../components/Footer/Footer';
 import { useState } from 'react';
-import PermohonanMaaf from '../components/PermohonanMaaf/PermohonanMaaf';
+import Protokol from '../components/Protokol/Protokol';
 
 export default function Home(props){
   const [ucapan,setUcapan] = useState(
@@ -22,13 +21,12 @@ export default function Home(props){
       <div className={styles.columnMain}>
           <Intro/>
           <Surat/>
-          <PermohonanMaaf/>
           <Profile/>
-          <Transition/>
           <Datetime/>
-          <Youtube/>
           <Ucapan ucapan={ucapan}/>
           <Gallery/>
+          <Protokol/>
+          <Footer/>
       </div>
   )
 }

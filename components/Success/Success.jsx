@@ -1,21 +1,32 @@
 export default function Success(props){
     return(
-        <div className="h-screen bg-[#621109] bg-[url('/Photo/bg-batik.png')]  flex flex-col items-center justify-center text-[#F2C777]">
+        <div className="h-screen bg-putih flex flex-col items-center justify-center text-merah">
             <h1 className="text-[36px] font-bold text-center mb-[18px]">Terima Kasih!</h1>
             <h2 className="text-[18px] font-medium w-[340px] text-center ">Kami senantiasa senang menunggu kehadiran anda pada acara</h2>
-            <div className="w-[335px] h-[218px] flex flex-col items-center bg-[#F2C777] rounded-[10px] my-[32px]">
-                <div className="flex flex-col items-center mb-[20px] text-[#735032] pt-[8px]">
-                    <span className="mb-[8px]  text-[24px] font-bold">Akad Nikah</span>
-                    <span className="text-[14px]">Minggu, 29 Mei 2022</span>
-                    <span className="text-[14px]">Pukul 08.00 WIB - Selesai</span>
-                </div>
-                <div className="flex flex-col items-center text-[#735032] ">
-                    <span className="mb-[8px] text-[24px] font-bold">Resepsi</span>
-                    <span className="text-[14px]">Minggu, 29 Mei 2022</span>
-                    <span className="text-[14px]">Pukul 11.00 WIB</span>
+            
+            <span className="font-sambung text-[36px] text-center mt-4">Wedding <br/> Nesya <span className="font-tanda-huruf">&</span> Gintano</span>
+
+            <div className='bg-merah border-[5px] w-[88%] rounded-[5px] p-[12px] border-emas flex flex-col items-center font-kapital-bold'>
+                <div className='flex flex-col items-center w-[100%] text-emas'>
+                    <hr className='w-full border-emas'/>
+                    <div className='flex flex-row font-kapital-bold justify-evenly w-full'>
+                        <div className='flex flex-col items-center border-r-[2px] border-emas pr-[32px]'>
+                            <span>Minggu</span>
+                            <span className='text-[48px] font-kapital-bold my-[-12px]'>29</span>
+                            <span>Mei 2022</span>
+                        </div>
+                        <div className='flex flex-col items-start'>
+                            <span>Akad Nikah</span>
+                            <span>08 00 WIB</span>
+                            <span>Resepsi</span>
+                            <span>11 00 WIB</span>
+                        </div>
+                    </div>
+                    <hr className='w-full border-emas'/>
                 </div>
             </div>
-            <h2 className="text-[18px] font-medium text-center w-[340px]">Nomor Bangku akan dikirim melalui email atau nomor whatsapp yang telah diberikan.</h2>
+
+            <h2 className="text-[18px] font-medium text-center w-[340px] mt-4">Nomor Bangku akan berupa Qr Code dan dikirim melalui email atau nomor whatsapp yang telah diberikan.</h2>
         </div>
     )
 }

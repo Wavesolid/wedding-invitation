@@ -57,16 +57,15 @@ export default function Location(){
     },[inView]);
 
     return(
-        <div className="h-auto bg-[#F2C777] text-[#621109] flex flex-col items-center">
+        <div className="h-auto flex flex-col items-center">
             <div ref={ref} className="flex flex-col items-center">
-                <span className="font-bold text-[24px] pt-[21px]">SHERATON GRAND</span>
-                <motion.span animate={animation} className="font-normal text-[16px] my-[12px]">Jakarta Gandaria City Hotel</motion.span>
-                <button type='button' className="border-[1px] border-[#621109] rounded-[25px] text-[14px] py-[4px] px-[21px] hover:bg-[#621109] hover:text-[#F2C777] transition duration-300" onClick={handlerClick}>
+                <span className="font-kapital-bold text-emas text-[24px] pt-[21px]">Sheraton Grand Jakarta</span>
+                <motion.span animate={animation} className="font-kapital-bold text-emas text-[16px] mb-[24px]">Jakarta Gandaria City Hotel</motion.span>
+                <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-putih hover:text-emas transition duration-300" onClick={handlerClick}>
                     <span>Lihat Lokasi</span>
                 </button>
-                <motion.img animate={animation2} className='my-[12px]' src="/Icon/asset-batik-9.svg" alt="batik-9" />
             </div>
-            <motion.div animate={animation3} className='pb-[21px]'>
+            <motion.div animate={animation3} className='border-emas border-[8px]'>
                 <Map/>
             </motion.div>
             

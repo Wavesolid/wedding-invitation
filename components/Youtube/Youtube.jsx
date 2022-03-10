@@ -33,11 +33,19 @@ export default function Youtube(){
 
     },[inView])
 
+    const handlerClick = () => {
+        window.open('www.google.com')
+    }
+
     return(
-        <div className="bg-[#621109] flex flex-col items-center">
-            <motion.span animate={animation} className="font-bold text-[#F2C777] text-[24px] my-[26px]">Live Streaming</motion.span>
-            <div ref={ref} className="border-8 rounded-[8px] border-[#F2C777] mb-[18px]">
-                <iframe width="350" height="206" src="https://www.youtube.com/embed/citnw038UQ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <div className="flex flex-col items-center font-kapital-bold text-emas">
+            <motion.span animate={animation} className="text-[24px] mt-[26px] mb-[8px]">Live Streaming</motion.span>
+            <motion.span animate={animation} className="text-[16px]">Akad <span className='font-tanda-huruf'>&#38;</span> Upacara Panggih </motion.span>
+            <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] my-[24px] hover:bg-putih hover:text-emas transition duration-300" onClick={handlerClick}>
+                    <span>Klik Disini</span>
+                </button>
+            <div ref={ref} className="border-8 rounded-[8px] border-emas mb-[18px]">
+                <iframe width="300" height="206" src="https://www.youtube.com/embed/citnw038UQ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div> 
         </div>
     )

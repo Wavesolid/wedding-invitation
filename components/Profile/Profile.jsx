@@ -1,4 +1,3 @@
-import styles from './Profile.module.css';
 import { motion, useAnimation } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
 
@@ -153,51 +152,49 @@ export default function Profile() {
 
 
     return(
-        <div className="bg-[#621109] text-[#F2C777] py-[38px]">
-            <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler}>
-                <div className="text-center">
-                    <span className='text-[24px] font-bold'>Bride &#38; Groom</span>
-                </div>
-            </InView>
-            <div>
-                <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler2}>
-                    <motion.div animate={Animation} className={styles.circleStroke}>
-                        <img className="mx-auto my-0 pt-[10px]" src="/Photo/fotoWanita.png" alt="foto wanita"></img>
-                    </motion.div>
+        <div className='bg-merah'>
+            <div className="bg-putih rounded-[130px] border-[10px] border-emas text-emas py-[38px]">
+                <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler}>
+                    <div className="text-center">
+                        <span className='text-[36px] font-sambung'>The Bride and Groom</span>
+                    </div>
                 </InView>
-                <motion.div animate={Animation2} className='flex flex-col items-center mt-[14px]'>
-                    <motion.span animate={Animation7} className='text-[20px] font-bold'>Jennifer Sitompul</motion.span>
-                    <motion.span animate={Animation7} className='mb-[8px]'>Putri pertama dari</motion.span>
-                    <motion.span animate={Animation7} >Ahmad</motion.span>
-                    <motion.span animate={Animation7} >&#38;</motion.span>
-                    <motion.span animate={Animation7} >Santi</motion.span>
-                    <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler3}>
-                        <a className='mt-[8px]' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
-                            <img src="/Icon/icon-instagram.svg" alt="icon instagram" />
-                        </a>
+                <div>
+                    <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler2}>
+                        <motion.div animate={Animation} className="w-[64%] h-[380px] mx-auto my-0 bg-emas rounded-[125px] border-[6px] border-emas bg-cover bg-center bg-[url('/Photo/fotoWanita.jpg')]">
+                            
+                        </motion.div>
                     </InView>
-                </motion.div>
-            </div>
-            <div>
-                <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler4}>
-                    <motion.div animate={Animation4} className={styles.circleStroke}>
-                        <img className="mx-auto my-0 pt-[10px]" src="/Photo/fotoPria.png" alt="foto pria"></img>
+                    <motion.div animate={Animation2} className='flex flex-col items-center mt-[14px]'>
+                        <motion.span animate={Animation7} className='text-[32px] font-sambung'>drg <span className='font-tanda-huruf'>.</span> Nesya Almira</motion.span>
+                        <motion.span animate={Animation7} className='mb-[8px] font-kapital-bold text-[14px]'>
+                            Putri dari Bp. Joko Purnama &#38; Ibu Atiek Jaswati
+                        </motion.span>
+                        <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler3}>
+                            <a className='' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
+                                <img src="/Icon/logo-ig.png" className='w-[20%] mx-auto my-[2rem]' alt="icon instagram" />
+                            </a>
+                        </InView>
                     </motion.div>
-                </InView>
-                <motion.div animate={Animation5} className='flex flex-col items-center mt-[14px]'>
-                    <motion.span animate={Animation8} className='text-[20px] font-bold'>Amir Hamzah</motion.span>
-                    <motion.span animate={Animation8} className='mb-[8px]'>Putra pertama dari</motion.span>
-                    <motion.span animate={Animation8}>Miftah</motion.span>
-                    <motion.span animate={Animation8}>&#38;</motion.span>
-                    <motion.span animate={Animation8}>Silvi</motion.span>
-                    <a className='mt-[8px]' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
-                        <img src="/Icon/icon-instagram.svg" alt="icon instagram" />
-                    </a>
-                </motion.div>
-            </div>
-            <div>
-                <motion.img animate={Animation6} className='float-right mt-[-13rem]' src='/Icon/asset-wayang-2.svg'></motion.img>
-                <motion.img animate={Animation3} className='float-left  mt-[-40rem]' src='/Icon/asset-wayang-1.svg'></motion.img>
+                </div>
+                <div>
+                    <InView triggerOnce="true" threshold="0.8" as="div" onChange={viewHandler4}>
+                        <motion.div animate={Animation4} className=" w-[64%] h-[380px] mx-auto my-0 bg-emas rounded-[125px] border-[6px] border-emas bg-cover bg-center bg-[url('/Photo/fotoPria.jpg')]">
+                            
+                        </motion.div>
+                    </InView>
+                    <motion.div animate={Animation5} className='flex flex-col items-center mt-[14px]'>
+                        <motion.span animate={Animation8} className='text-[26px] font-sambung'>
+                            Gintano Scorpy Sugihartono<span className='font-tanda-huruf'>,</span> S <span className='font-tanda-huruf'>.</span> T <span className='font-tanda-huruf'>.</span>
+                        </motion.span>
+                        <motion.span animate={Animation8} className='mb-[8px] font-kapital-bold text-[14px] text-center'>
+                            Putra dari Bp. Sri Sugihartono &#38; Ibu Rita Suryatami
+                        </motion.span>
+                        <a className='mt-[2rem]' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
+                            <img src="/Icon/logo-ig.png" className='w-[20%] mx-auto' alt="icon instagram" />
+                        </a>
+                    </motion.div>
+                </div>
             </div>
         </div>
     )
