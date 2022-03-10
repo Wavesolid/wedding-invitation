@@ -21,9 +21,9 @@ export default function Ucapan({name,ucapan}) {
                         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeclZOlcJVkhOZ08C1iRNa9FW-YrQ2nbjVOXe03IfzXx-PLVg/viewform?embedded=true" 
                                 width="314" 
                                 height="709" 
-                                frameborder="0" 
-                                marginheight="0" 
-                                marginwidth="0">Memuat…
+                                frameBorder="0" 
+                                marginHeight="0" 
+                                marginWidth="0">Memuat…
                         </iframe>
                     </div>
                 }

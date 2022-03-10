@@ -95,7 +95,7 @@ export default function UcapanForm(props) {
                         <button type="submit" className="w-[40%] h-[35px] self-end border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[1px] w-[120px] mb-[24px] hover:bg-putih hover:text-emas transition duration-300">
                             <span className="">Kirim</span>
                         </button>
-                        <img src="/Icon/bunga-4.png" className="w-[50%] relative top-[-93px] right-[12px]" alt="" srcset="" />
+                        <img src="/Icon/bunga-4.png" className="w-[50%] relative top-[-93px] right-[12px]" />
                     </form>
             </div>
             
