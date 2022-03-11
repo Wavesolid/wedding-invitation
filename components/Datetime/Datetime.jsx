@@ -106,11 +106,11 @@ export default function Datetime({name}){
         }
 
         if(!inView){
-            animation4.start({y:10,opacity:0})
+            animation4.start({y:100,opacity:0})
 
-            animation5.start({x:-10,opacity:0})
+            animation5.start({x:-100,opacity:0})
 
-            animation6.start({x:10,opacity:0})
+            animation6.start({x:100,opacity:0})
         }
     }
 
