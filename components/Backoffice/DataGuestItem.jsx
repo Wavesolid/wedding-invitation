@@ -7,7 +7,8 @@ export default function DataGuestItem(props){
         email: props.email,
         waNumber: props.waNumber,
         totalPerson: props.totalPerson,
-        seatNumber: props.seatNumber
+        seatNumber: props.seatNumber,
+        emailCount : props.emailCount
     })
 
     const clickHandler = () => {
@@ -31,6 +32,7 @@ export default function DataGuestItem(props){
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalPerson}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.seatNumber}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.emailCount}</td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <button onClick={clickHandler} className="text-indigo-600 hover:text-indigo-900">Edit</button>
             </td>

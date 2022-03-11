@@ -19,7 +19,7 @@ export default function DataGuest(props){
         {label: "SeatNumber", key: "seatNumber"},
         {label: "FilledOn", key: "filledOn"},
     ]
-    
+    console.log(guestData);
     const setEditHandler = (dataGuestEdit) => {
         const guestData = {
             ...dataGuestEdit,
@@ -59,22 +59,20 @@ export default function DataGuest(props){
     {      
         setLoad(true);
         const {dataGuest} = props;
-        const emails = dataGuest.map((guest) => {
-            guest.email !== undefined;
-            return guest.email;
-        });
+        const guests = dataGuest.filter((guest) => guest.email !== "")
         const response = await fetch('/api/email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                emails
+                guests
             })
         }); 
         setLoad(false);
         const responseJson = await response.json();
-        if(responseJson.message) 
+        console.log(responseJson);
+        if(responseJson.messages) 
         {
             setModal({
                 title: "Berhasil",
@@ -84,7 +82,7 @@ export default function DataGuest(props){
         } else {
             setModal({
                 title: "Gagal",
-                content: `${responseJson.err.previous.smtp}`
+                content: `${responseJson.err.previous}`
             });
         }
     }
@@ -128,6 +126,7 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">No. Wa</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Person</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Nomor Bangku</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Email Send</th>
                             <th scope="col" className="relative px-6 py-3">
                                 <span className="sr-only">Edit</span>
                             </th>
@@ -150,6 +149,11 @@ export default function DataGuest(props){
                                 <td>
                                     <input placeholder='Search by No. Bangku'  className='border-2'  type='text' name='seatNumber' value={filterGuest.seatNumber} onChange={onFilterHandler}/>
                                 </td>
+                                <td>
+                                </td>
+                                <td className='flex justify-center'>
+                                    <button className='text-indigo-600 hover:text-indigo-900' onClick={onResetHandler}>Reset</button>
+                                </td>
                             </tr>
                             {
                                 guestData.map((dataGuests)=>(
@@ -161,7 +165,7 @@ export default function DataGuest(props){
                                     waNumber={dataGuests.waNumber}
                                     totalPerson={dataGuests.totalPerson}
                                     seatNumber={dataGuests.seatNumber}
-                                    
+                                    emailCount = {dataGuests.emailCount}
                                 />
                                 ))
                             }
