@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
-import Transition from '../Transition/Transition';
 import SchemaValidation from '../../validation/UcapanValidation';
 
 export default function UcapanForm(props) {
