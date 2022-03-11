@@ -23,6 +23,9 @@ const Guest = new Schema({
     },
     seatNumber: {
         type: String
+    },
+    emailCount: {
+        type: Number
     }
 }, {
     timestamps: true

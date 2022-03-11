@@ -1,5 +1,6 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
+import guestModel from '../../Model/GuestModel';
 
 const client = new SMTPClient({
 	user: process.env.USER,
@@ -9,21 +10,33 @@ const client = new SMTPClient({
 });
 
 export default async function sendEmail(req, res) {
-	const {emails} = req.body;
+	const {guests} = req.body;
+	let messages = [];
 	try {
 		validateAdminLogin(req);
-		const message = await client.sendAsync({
-			text: 'i hope this works',
-			from: 'Gintano & Nesya',
-			to: `${emails}`,
-			subject: 'Wedding Invitation!',
-			attachments: [
-				{ data: '<html>i <i>hope</i> this works!</html>', alternative: true }
-			]
+		await asyncForEach(guests, async(guest) => {
+			const message = await client.sendAsync({
+				text: `Halo ${guest.name}`,
+				from: 'Gintano & Nesya',
+				to: `${guest.email}`,
+				subject: 'Wedding Invitation!',
+				attachments: [
+					{ data: '<html>i <i>hope</i> this works!</html>', alternative: true },
+					{ path: 'public/Photo/bg-batik.png', type: 'image/png', headers: { 'Content-ID': '<my-image>' }
+				]
+			});
+			await guestModel.findOneAndUpdate({
+				name : guest.name
+			}, {
+				emailCount: guest.emailCount + 1
+			});
+			messages.push(message)
 		});
+		
+		console.log(messages);
 		return res.status(201).json({
-			message
-		})
+			messages
+		});
 	} catch (err) {
 		return res.status(400).json({
 			err
@@ -38,4 +51,10 @@ async function validateAdminLogin(req)
 	if(!session)  throw new Error('Pastikan anda telah login sebagai Admin');
 
 	return session;
+}
+
+async function asyncForEach(array, callback) {
+	for (let index = 0; index < array.length; index++) {
+		await callback(array[index], index, array);
+	}
 }
