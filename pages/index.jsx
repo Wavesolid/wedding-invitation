@@ -17,7 +17,6 @@ index.getLayout = function getLayout(page) {
     return (
       <Layout>
         <Banner />
-        <AudioPlayer/>
         {page}
       </Layout>
     )

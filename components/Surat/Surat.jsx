@@ -16,35 +16,52 @@ export default function Surat()
 
     const animation3 = useAnimation();
 
+    const animation4 = useAnimation()
+
     useEffect(()=>{
         if(inView){
             animation.start({
                 x: 0,
                 opacity:1,
                 transition:{
-                    duration: 1
+                    duration: 1,
+                    ease:"easeIn"
                 }
             });
 
             animation2.start({
+                y:0,
                 opacity:1,
                 transition:{
-                    duration: 1
+                    duration: 1,
+                    ease:"easeIn"
                 }
             });
 
             animation3.start({
                 y: 0,
                 transition:{
-                    duration: 1
+                    duration: 1,
+                    ease:"easeIn"
+                }
+            });
+
+            animation4.start({
+                y: 0,
+                opacity:1,
+                transition:{
+                    duration: 1,
+                    ease:"easeIn"
                 }
             });
         }
 
         if(!inView){
-            animation.start ({x: -100,opacity:0.5})
-            animation2.start({opacity:0})
+            animation.start ({x: -100,opacity:0.})
+            animation2.start({y:-100,opacity:0})
             animation3.start({y: 100})
+            animation4.start({y: -100,opacity:0})
+
         }
         
     },[inView]);
@@ -69,8 +86,8 @@ export default function Surat()
                     (QS. Ar-Rum:21)
                 </motion.span>
                 <div>
-                    <img className='float-left mt-[-4rem] w-[32%]' src='/Icon/bunga-2.png'></img>
-                    <img className='float-right mt-[-23rem] w-[37%]' src='/Icon/bunga-1.png'></img>
+                    <motion.img animate={animation} className='float-left mt-[-4rem] w-[32%]' src='/Icon/bunga-2.png'/>
+                    <motion.img animate={animation}  className='float-right mt-[-23rem] w-[37%]' src='/Icon/bunga-1.png'/>
                 </div>
             </div>
         </div>

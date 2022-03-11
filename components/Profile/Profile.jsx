@@ -26,15 +26,16 @@ export default function Profile() {
                 y: 0,
                 opacity: 1,
                 transition:{
-                    duration: 1.5
+                    duration: 1,
+                    ease:"easeInOut"
                 }
             });
         }
 
         if(!inView){
             Animation.start({
-                y: -30,
-                opacity: 0.2,
+                y: 300,
+                opacity: 0,
             });
         }
     }
@@ -63,8 +64,9 @@ export default function Profile() {
                 y:0,
                 opacity:1,
                 transition: {
-                    duration: 0.5,
-                    ease:"easeIn"
+                    duration: 1,
+                    ease:"easeInOut",
+                    delay:1
                 }
             });
         }
@@ -92,15 +94,16 @@ export default function Profile() {
                 y: 0,
                 opacity: 1,
                 transition:{
-                    duration: 1.5
+                    duration: 1.5,
+                    ease:"easeInOut"
                 }
             });
         }
 
         if(!inView){
             Animation4.start({
-                y: -30,
-                opacity: 0.2,
+                y: 300,
+                opacity: 0,
             });
         }
     }
@@ -127,8 +130,9 @@ export default function Profile() {
                 y:0,
                 opacity:1,
                 transition: {
-                    duration: 0.5,
-                    ease:"easeIn"
+                    duration: 1,
+                    ease:"easeInOut",
+                    delay: 1
                 }
             });
         }

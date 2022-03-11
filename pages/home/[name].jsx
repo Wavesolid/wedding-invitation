@@ -39,6 +39,7 @@ export default function Home(props)
             <Gallery/>
             <Protokol name={guest} />
             <Footer/>
+            <AudioPlayer/>
         </div>
     )
 }
@@ -47,7 +48,6 @@ Home.getLayout = function getLayout(page) {
     return (
       <Layout>
         <Banner />
-        <AudioPlayer/>
         {page}
       </Layout>
     )
