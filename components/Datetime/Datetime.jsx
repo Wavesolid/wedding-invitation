@@ -110,7 +110,7 @@ export default function Datetime({name}){
 
             animation5.start({x:-100,opacity:0})
 
-            animation6.start({x:100,opacity:0})
+            animation6.start({x:-100,opacity:0})
         }
     }
 

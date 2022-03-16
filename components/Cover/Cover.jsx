@@ -49,7 +49,9 @@ export default function Cover({name})
                     >
                         <img src="/Icon/Arrow.svg"></img>
                     </motion.div>
-                    <Link href= {`${name === undefined ? `/home` : `/home/${name}` }`}>
+                    <Link href= {{pathname:`${name === undefined ? `/home` : `/home/${name}` }`,query:{data:true}}}
+                        as={`${name === undefined ? `/home` : `/home/${name}` }`}
+                    >
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>
                         </button>
