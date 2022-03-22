@@ -1,6 +1,7 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
 import guestModel from '../../Model/GuestModel';
+import parse from "html-react-parser";
 
 const client = new SMTPClient({
 	user: process.env.USER,
@@ -10,20 +11,34 @@ const client = new SMTPClient({
 });
 
 export default async function sendEmail(req, res) {
-	const {guests} = req.body;
+	const {guests, filteredQr} = req.body;
 	let messages = [];
 	try {
 		validateAdminLogin(req);
 		await asyncForEach(guests, async(guest) => {
 			const message = await client.sendAsync({
-				text: `Halo ${guest.name}`,
+				text: '',
 				from: 'Gintano & Nesya',
 				to: `${guest.email}`,
 				subject: 'Wedding Invitation!',
-				attachments: [
-					{ data: '<html>i <i>hope</i> this works!</html>', alternative: true },
-					{ path: 'public/Photo/bg-batik.png', type: 'image/png', headers: { 'Content-ID': '<my-image>' }
-				]
+				attachment: [
+					{
+						data:
+							`<html> 
+								<div> 
+									<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
+								</div>
+								<div>
+									<img src="cid:my-image">
+								</div>
+							</html>`, alternative: true
+					},
+					{
+                        path: `public/Photo/${guest.name}.png`,
+                        type: 'image/png',
+                        headers: { 'Content-ID': '<my-image>' },
+                    },
+				],
 			});
 			await guestModel.findOneAndUpdate({
 				name : guest.name
@@ -38,6 +53,7 @@ export default async function sendEmail(req, res) {
 			messages
 		});
 	} catch (err) {
+		console.log(err)
 		return res.status(400).json({
 			err
 		})
