@@ -3,7 +3,6 @@ import { CSVLink } from 'react-csv';
 import { useState, useContext, useEffect, useRef } from 'react';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
-import QrCodeContext from '../../contexts/QrContext';
 import QrCodeGenerator from '../QrCodes/GenerateQrCode';
 
 export default function DataGuest(props){
