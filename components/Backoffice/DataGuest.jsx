@@ -1,8 +1,10 @@
 import DataGuestItem from './DataGuestItem';
 import { CSVLink } from 'react-csv';
-import { useState } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
+import QrCodeContext from '../../contexts/QrContext';
+import QrCodeGenerator from '../QrCodes/GenerateQrCode';
 
 export default function DataGuest(props){
     const [guestData, setGuestData] = useState(props.dataGuest)
@@ -10,6 +12,11 @@ export default function DataGuest(props){
     const [dataCsv, setDataCsv] = useState([]);
     const [load,setLoad] = useState(false);
     const [modal,setModal] = useState();
+    // const [canvasQr, setCanvasQr] = useState([]);
+    const canvasObj = {};
+    const canvasQr = [];
+    const qrs = useRef();  
+
     const dataCollection = [];
     const headers = [
         {label: "Nama", key: "name"},
@@ -19,14 +26,13 @@ export default function DataGuest(props){
         {label: "SeatNumber", key: "seatNumber"},
         {label: "FilledOn", key: "filledOn"},
     ]
-    console.log(guestData);
+
     const setEditHandler = (dataGuestEdit) => {
         const guestData = {
             ...dataGuestEdit,
         };
         props.onEditDataGuest(guestData);
     }
-
     const onFilterHandler = (e) =>
     {
         const {name, value} = e.target
@@ -57,16 +63,24 @@ export default function DataGuest(props){
 
     const sendEmail = async() =>
     {      
+        // console.log(canvasObj)
+        
         setLoad(true);
         const {dataGuest} = props;
         const guests = dataGuest.filter((guest) => guest.email !== "")
+        var filteredQr = canvasQr.filter((qr) => {
+            return guests.some((guest) => {
+                return guest.name === qr.id
+            })
+        }).map((qr) => {return qr.canvas})
         const response = await fetch('/api/email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                guests
+                guests,
+                filteredQr
             })
         }); 
         setLoad(false);
@@ -86,6 +100,17 @@ export default function DataGuest(props){
             });
         }
     }
+
+    function generateQrCode(name) 
+    {
+        return <QrCodeGenerator name={name} size={70}/>
+    }
+
+    function refQr(canvas, {id})
+    {
+        canvasQr.push({id, canvas})
+    }
+
     const onResetHandler = () => 
     {
         setGuestData(props.dataGuest);
@@ -127,6 +152,7 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Person</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Nomor Bangku</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Email Send</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">QR Code</th>
                             <th scope="col" className="relative px-6 py-3">
                                 <span className="sr-only">Edit</span>
                             </th>
@@ -150,25 +176,28 @@ export default function DataGuest(props){
                                     <input placeholder='Search by No. Bangku'  className='border-2'  type='text' name='seatNumber' value={filterGuest.seatNumber} onChange={onFilterHandler}/>
                                 </td>
                                 <td>
+                                    
                                 </td>
                                 <td className='flex justify-center'>
                                     <button className='text-indigo-600 hover:text-indigo-900' onClick={onResetHandler}>Reset</button>
                                 </td>
                             </tr>
-                            {
-                                guestData.map((dataGuests)=>(
-                                <DataGuestItem
-                                    onEdit={setEditHandler}
-                                    key={dataGuests._id}
-                                    name={dataGuests.name}
-                                    email={dataGuests.email}
-                                    waNumber={dataGuests.waNumber}
-                                    totalPerson={dataGuests.totalPerson}
-                                    seatNumber={dataGuests.seatNumber}
-                                    emailCount = {dataGuests.emailCount}
-                                />
-                                ))
-                            }
+                                {
+                                    guestData.map((dataGuests)=>(
+                                            <DataGuestItem
+                                                onEdit={setEditHandler}
+                                                key={dataGuests._id}
+                                                name={dataGuests.name}
+                                                email={dataGuests.email}
+                                                waNumber={dataGuests.waNumber}
+                                                totalPerson={dataGuests.totalPerson}
+                                                seatNumber={dataGuests.seatNumber}
+                                                emailCount = {dataGuests.emailCount}
+                                                qr = {generateQrCode(dataGuests.name)}
+                                                refQr = {refQr}
+                                            />
+                                    ))
+                                }
                         </tbody>
                         </table>
                     </div>
