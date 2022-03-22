@@ -4,8 +4,6 @@ import { SessionProvider } from "next-auth/react";
 import { useState } from 'react';
 import Router from 'next/router';
 import Loader from '../components/Loader/Loader';
-import {PlayMusicContextProvider} from '../contexts/playMusic-context';
-import {QrContextProvider} from '../contexts/QrContext';
 
 function MyApp({ Component, pageProps, router }) {
   const [load, setLoad] = useState(false);
@@ -25,8 +23,6 @@ function MyApp({ Component, pageProps, router }) {
   const getLayout = Component.getLayout || ((page) => page)
   return load? <Loader /> : getLayout(
     <SessionProvider>
-      <QrContextProvider>
-        <PlayMusicContextProvider>
           <motion.div 
             key={router.route}
             initial="pageInitial"
@@ -42,8 +38,6 @@ function MyApp({ Component, pageProps, router }) {
           >
             <Component {...pageProps} />
           </motion.div>
-        </PlayMusicContextProvider>
-      </QrContextProvider>
     </SessionProvider>
   )
 
