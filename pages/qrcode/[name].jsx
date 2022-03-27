@@ -8,7 +8,7 @@ export default function QrCodes(props) {
     return (
         <div className={styles.columnMain}>
             <YellowPage >
-                <QrComponent link={props.link} />
+                <QrComponent name={props.name} />
             </YellowPage>
         </div>
     );
@@ -29,8 +29,7 @@ export async function getServerSideProps(context) {
     const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`);
     const responseJson = await response.json();
     const { data } = responseJson;
-    const link = `${process.env.BASE_URL}/seat/${data.name}`;
-
+    console.log(data)
     if (data === null) {
         return {
             notFound: true
@@ -44,7 +43,7 @@ export async function getServerSideProps(context) {
     } else {
         return {
             props: {
-                link
+                name: data.name
             }
         }
     }
