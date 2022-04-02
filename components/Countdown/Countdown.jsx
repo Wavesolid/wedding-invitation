@@ -1,5 +1,5 @@
 import Countdown from "react-countdown";
-const date = new Date('2022-05-29 11:00:00').getTime();
+const date = new Date('2022-05-29 08:00:00').getTime();
 
 const Complete = () => <span>Happy Wedding!</span>;
 
