@@ -1,6 +1,6 @@
 import DataGuestItem from './DataGuestItem';
 import { CSVLink } from 'react-csv';
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
 import QrCodeGenerator from '../QrCodes/GenerateQrCode';
@@ -11,10 +11,7 @@ export default function DataGuest(props){
     const [dataCsv, setDataCsv] = useState([]);
     const [load,setLoad] = useState(false);
     const [modal,setModal] = useState();
-    // const [canvasQr, setCanvasQr] = useState([]);
-    const canvasObj = {};
     const canvasQr = [];
-    const qrs = useRef();  
 
     const dataCollection = [];
     const headers = [
@@ -35,12 +32,19 @@ export default function DataGuest(props){
     const onFilterHandler = (e) =>
     {
         const {name, value} = e.target
-        setFilterGuest({
-            ...filterGuest,
-            [name]: value,
-        });
-
-        value !== '' ? setGuestData(props.dataGuest.filter((x) => x[name].toString().includes(value.toLowerCase()))) : setGuestData(props.dataGuest);
+        setFilterGuest((prevData) => {
+            const updateData = {
+                ...prevData,
+                [name] : value
+            }
+            setGuestData(props.dataGuest.filter((data) => (
+                data.name.toLowerCase().includes(updateData.name) && 
+                data.email.toLowerCase().includes(updateData.email) && 
+                data.waNumber.includes(updateData.waNumber) && 
+                data.totalPerson.toString().includes(updateData.totalPerson) &&
+                data.seatNumber.toString().includes(updateData.seatNumber))))
+            return updateData;
+        })  
         
     }
 
@@ -62,8 +66,6 @@ export default function DataGuest(props){
 
     const sendEmail = async() =>
     {      
-        // console.log(canvasObj)
-        
         setLoad(true);
         const {dataGuest} = props;
         const guests = dataGuest.filter((guest) => guest.email !== "")

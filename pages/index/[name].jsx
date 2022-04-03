@@ -42,7 +42,5 @@ export async function getServerSideProps(context)
     const responseJson = await response.json();
     const {data} = responseJson;
 
-    return (data === null ? {redirect: {
-        destination: '/'
-    }} : {props:{responseJson}})
+    return (data === null ? {notFound: true} : {props:{responseJson}})
 }
