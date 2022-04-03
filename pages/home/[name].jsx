@@ -28,6 +28,10 @@ export default function Home(props)
       props.responseJson.data.isFilled
     );
 
+    const [play, setPlay] = useState(
+      props.playAudio
+    )
+
     return(
         <div className={styles.columnMain}>
             <Intro/>
@@ -39,7 +43,7 @@ export default function Home(props)
             <Gallery/>
             <Protokol name={guest} />
             <Footer/>
-            <AudioPlayer/>
+            <AudioPlayer play={play}/>
         </div>
     )
 }
@@ -56,7 +60,6 @@ Home.getLayout = function getLayout(page) {
 export async function getServerSideProps(context)
 {
   const {name} = context.query;
-  console.log("sadma");
   const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`, {
     headers: {
         'Content-Type': 'application/json'
@@ -73,6 +76,9 @@ export async function getServerSideProps(context)
 
   const {data} = responseJson;
 
-  return(data === null ?  {notFound: true} : {props:{responseJson,ucapanResponseJson}})
+
+  return(data === null ? {redirect: {
+    destination: '/home'
+  }} : {props:{responseJson,ucapanResponseJson,playAudio}})
 
 }

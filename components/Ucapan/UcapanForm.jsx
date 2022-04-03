@@ -80,8 +80,8 @@ export default function UcapanForm(props) {
     return(
         <div>
             {load === true && <Loader/>}
-            {success && <Modal title={success.title} content={success.content} onConfirm={successHandler} /> }
-            {error && <Modal title={error.title} content={error.content} onConfirm={modalHandler} />}
+            {success && <Modal title={success.title} content={success.content} positionBox={'md:!left-[38%]'} onConfirm={successHandler} /> }
+            {error && <Modal title={error.title} content={error.content} positionBox={'md:!left-[38%]'} onConfirm={modalHandler} />}
              
             <div className="flex flex-col h-[366px]">
                 <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
