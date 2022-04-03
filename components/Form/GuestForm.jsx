@@ -69,7 +69,7 @@ export default function GuestForm({props})
     return(
         <div>
             {load === true && <Loader/>}
-            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
+            {invalid && <Modal title={invalid.title} content={invalid.content} positionBox={'md:!left-[38%]'} onConfirm={invalidHandler} />}
             <div className="h-screen bg-merah flex flex-col items-center justify-center text-emas">
                 <h1 className=" text-[36px] mb-[40px] font-kapital-bold">Form Kehadiran</h1>
                 <div className="w-[280px] h-[400px] bg-putih border-[8px] border-emas rounded-[12px]">
