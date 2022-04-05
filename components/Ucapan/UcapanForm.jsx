@@ -83,7 +83,7 @@ export default function UcapanForm(props) {
             {success && <Modal title={success.title} content={success.content} positionBox={'md:!left-[38%]'} onConfirm={successHandler} /> }
             {error && <Modal title={error.title} content={error.content} positionBox={'md:!left-[38%]'} onConfirm={modalHandler} />}
              
-            <div className="flex flex-col h-[366px]">
+            <div className="flex flex-col">
                 <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
                         <input placeholder="Nama" name="displayName" onChange={onChangeHandler} className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]" type="text" />
@@ -94,7 +94,7 @@ export default function UcapanForm(props) {
                         <button type="submit" className="w-[40%] h-[35px] self-end border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[1px] w-[120px] mb-[24px] hover:bg-putih hover:text-emas transition duration-300">
                             <span className="">Kirim</span>
                         </button>
-                        <img src="/Icon/bunga-4.png" className="w-[50%] relative top-[-93px] right-[12px]" />
+                        <img src="/Icon/bunga-4.png" className="w-[50%] mt-[-109px] mb-[-24px] ml-[-12px]" />
                     </form>
             </div>
             

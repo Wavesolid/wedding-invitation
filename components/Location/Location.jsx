@@ -60,7 +60,7 @@ export default function Location(){
         <div className="h-auto flex flex-col items-center">
             <div ref={ref} className="flex flex-col items-center">
                 <span className="font-kapital-bold text-emas text-[24px] pt-[21px]">Sheraton Grand Jakarta</span>
-                <motion.span animate={animation} className="font-kapital-bold text-emas text-[16px] mb-[24px]">Jakarta Gandaria City Hotel</motion.span>
+                <motion.span animate={animation} className="font-kapital-bold text-emas text-[16px] mb-[24px]">Gandaria City Hotel, 3rd Floor</motion.span>
                 <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-putih hover:text-emas transition duration-300" onClick={handlerClick}>
                     <span>Lihat Lokasi</span>
                 </button>
