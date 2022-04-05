@@ -170,9 +170,9 @@ export default function Profile() {
                         </motion.div>
                     </InView>
                     <motion.div animate={Animation2} className='flex flex-col items-center mt-[14px]'>
-                        <motion.span animate={Animation7} className='text-[32px] font-sambung'>drg <span className='font-tanda-huruf'>.</span> Nesya Almira</motion.span>
+                        <motion.span animate={Animation7} className='text-[32px] font-sambung'>drg <span className='font-tanda-huruf'>.</span> Neysa Almira</motion.span>
                         <motion.span animate={Animation7} className='mb-[8px] font-kapital-bold text-[14px]'>
-                            Putri dari Bp. Joko Purnama &#38; Ibu Atiek Jaswati
+                            Putri dari Bp. Joko Purnomo &#38; Ibu Atiek Jaswati
                         </motion.span>
                         <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler3}>
                             <a className='' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">

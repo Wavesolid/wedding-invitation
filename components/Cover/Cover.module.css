@@ -17,19 +17,19 @@
 
 @keyframes slideBg {
     0% {
-        background-image: url('/Photo/image-slide1.png');
+        background-image: url('/Photo/image-slide1.jpg');
     }
 
     33% {
-        background-image: url('/Photo/image-slide2.png');
+        background-image: url('/Photo/image-slide2.jpg');
     }
 
     67%{
-        background-image: url('/Photo/image-slide3.png');
+        background-image: url('/Photo/image-slide3.jpg');
     }
 
     100% {
-        background-image: url('/Photo/image-slide1.png');
+        background-image: url('/Photo/image-slide1.jpg');
     }
 }
 

@@ -14,7 +14,7 @@ const renderer = ({days, hours, minutes, seconds, completed}) => {
     } else {
         return (
         <span>
-            {prefixZero(days)}:{prefixZero(hours)}:{prefixZero(minutes)}:{prefixZero(seconds)}
+            {prefixZero(days)} D : {prefixZero(hours)} H : {prefixZero(minutes)} M : {prefixZero(seconds)} S
         </span>
         );
     }

@@ -2,7 +2,7 @@
     display: inline-block;
     position: fixed;
     float: left;
-    width: 75%;
+    width: 76%;
     position: fixed;
     z-index: -1;
 }
@@ -16,6 +16,23 @@
 
 .bannerWrapper{
     height: 100vh;
+    background: url('/Photo/bg-desktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (max-width:769px){
+
+    .pageWrapper{
+        width: 52%;
+    }
+
+    .bannerWrapper{
+        background: url('/Photo/bg-tablet.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 }
 
 /* MOBILE */

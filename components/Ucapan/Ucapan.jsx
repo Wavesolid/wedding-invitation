@@ -1,6 +1,5 @@
 import UcapanForm from "./UcapanForm";
 import UcapanList from "./UcapanList";
-import styles from "./UcapanCard.module.css";
 import Youtube from "../Youtube/Youtube";
 
 export default function Ucapan({name,ucapan}) {
@@ -30,7 +29,7 @@ export default function Ucapan({name,ucapan}) {
             </div>
             
             <div className="flex flex-col items-center mt-[6rem]">
-                <div className={`flex flex-col items-center w-full h-[380px] bg-putih border-y-[3px] border-emas py-[18px] text-emas  ${styles.ucapanCard}`} >
+                <div className="flex flex-col items-center w-full h-[380px] bg-putih border-y-[3px] border-emas py-[18px] text-emas overflow-scroll overflow-x-hidden" >
                     {
                         ucapan.filter(ucapans => ucapans.message !== "").map((ucapans)=>(
                             <UcapanList key={ucapans.name} name={ucapans.displayName} domisili={ucapans.domisili} message={ucapans.message} />
