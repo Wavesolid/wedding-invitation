@@ -24,6 +24,12 @@ const Guest = new Schema({
     seatNumber: {
         type: String
     },
+    isCheckIn: {
+        type: Boolean
+    },
+    totalSouvenir: {
+        type: String
+    },
     emailCount: {
         type: Number
     }
