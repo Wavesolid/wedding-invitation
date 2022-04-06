@@ -7,12 +7,20 @@ import QrCodeGenerator from '../QrCodes/GenerateQrCode';
 
 export default function DataGuest(props){
     const [guestData, setGuestData] = useState(props.dataGuest)
-    const [filterGuest, setFilterGuest] = useState({});
+    const [filterGuest, setFilterGuest] = useState({
+        name: '',
+        email:'',
+        waNumber:'',
+        totalPerson:'',
+        seatNumber:'',
+        totalSouvenir:'',
+        isCheckIn:'',
+        checkInTime:''
+    });
     const [dataCsv, setDataCsv] = useState([]);
     const [load,setLoad] = useState(false);
     const [modal,setModal] = useState();
     const canvasQr = [];
-
     const dataCollection = [];
     const headers = [
         {label: "Nama", key: "name"},
@@ -20,9 +28,11 @@ export default function DataGuest(props){
         {label: "WaNumber", key: "waNumber"},
         {label: "TotalPerson", key: "totalPerson"},
         {label: "SeatNumber", key: "seatNumber"},
-        {label: "FilledOn", key: "filledOn"},
+        {label: "totalSouvenir", key: "totalSouvenir"},
+        {label: "isCheckIn", key: "isCheckIn"},
+        {label: "checkInTime", key: "checkInTime"},
+        
     ]
-
     const setEditHandler = (dataGuestEdit) => {
         const guestData = {
             ...dataGuestEdit,
@@ -37,12 +47,16 @@ export default function DataGuest(props){
                 ...prevData,
                 [name] : value
             }
+            // console.log(updateData.name.toLowerCase())
             setGuestData(props.dataGuest.filter((data) => (
-                data.name.toLowerCase().includes(updateData.name) && 
-                data.email.toLowerCase().includes(updateData.email) && 
-                data.waNumber.includes(updateData.waNumber) && 
-                data.totalPerson.toString().includes(updateData.totalPerson) &&
-                data.seatNumber.toString().includes(updateData.seatNumber))))
+                data.name.toLowerCase().includes(updateData.name.toLowerCase()) && 
+                data.email.toLowerCase().includes(updateData.email.toLowerCase()) && 
+                data.waNumber.includes(updateData.waNumber.toLowerCase()) && 
+                data.totalPerson.toString().includes(updateData.totalPerson.toLowerCase()) &&
+                data.seatNumber.toString().includes(updateData.seatNumber.toLowerCase()) &&
+                data.totalSouvenir.toString().includes(updateData.totalSouvenir.toLowerCase()) &&
+                data.isCheckIn.toLowerCase().includes(updateData.isCheckIn.toLowerCase()) &&
+                data.checkInTime.toString().includes(updateData.checkInTime.toLowerCase()))))
             return updateData;
         })  
         
@@ -58,7 +72,10 @@ export default function DataGuest(props){
                 waNumber: data.waNumber,
                 totalPerson: data.totalPerson,
                 seatNumber: data.seatNumber,
-                filledOn: data.updatedAt
+                filledOn: data.updatedAt,
+                totalSouvenir: data.totalSouvenir,
+                isCheckIn: data.isCheckIn,
+                checkInTime: data.checkInTime
             })
         });
         setDataCsv(dataCollection);
@@ -121,6 +138,9 @@ export default function DataGuest(props){
             waNumber: '',
             totalPerson: '',
             seatNumber: '',
+            totalSouvenir: '',
+            isCheckIn: '',
+            checkInTime: ''
         });
     }
 
@@ -152,6 +172,9 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">No. Wa</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Person</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Nomor Bangku</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Souvenir</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Status Checkin</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Checkin Date</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Email Send</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">QR Code</th>
                             <th scope="col" className="relative px-6 py-3">
@@ -177,7 +200,19 @@ export default function DataGuest(props){
                                     <input placeholder='Search by No. Bangku'  className='border-2'  type='text' name='seatNumber' value={filterGuest.seatNumber} onChange={onFilterHandler}/>
                                 </td>
                                 <td>
-                                    
+                                    <input placeholder='Search by Total Souvenir'  className='border-2'  type='text' name='totalSouvenir' value={filterGuest.totalSouvenir} onChange={onFilterHandler}/>
+                                </td>
+                                <td>
+                                    <input placeholder='Search by CheckIn Status'  className='border-2'  type='text' name='isCheckIn' value={filterGuest.isCheckIn} onChange={onFilterHandler}/>
+                                </td>
+                                <td>
+                                    <input placeholder='Search by checkIn Time'  className='border-2'  type='text' name='checkInTime' value={filterGuest.checkInTime} onChange={onFilterHandler}/>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
                                 </td>
                                 <td className='flex justify-center'>
                                     <button className='text-indigo-600 hover:text-indigo-900' onClick={onResetHandler}>Reset</button>
@@ -193,6 +228,9 @@ export default function DataGuest(props){
                                                 waNumber={dataGuests.waNumber}
                                                 totalPerson={dataGuests.totalPerson}
                                                 seatNumber={dataGuests.seatNumber}
+                                                totalSouvenir = {dataGuests.totalSouvenir}
+                                                isCheckIn = {dataGuests.isCheckIn}
+                                                checkInTime = {dataGuests.checkInTime}
                                                 emailCount = {dataGuests.emailCount}
                                                 qr = {generateQrCode(dataGuests.name)}
                                                 refQr = {refQr}

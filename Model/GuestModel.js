@@ -25,7 +25,7 @@ const Guest = new Schema({
         type: String
     },
     isCheckIn: {
-        type: Boolean
+        type: String
     },
     checkInTime: {
         type: Date

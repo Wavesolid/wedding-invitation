@@ -9,7 +9,10 @@ export default function DataGuestItem(props){
         totalPerson: props.totalPerson,
         seatNumber: props.seatNumber,
         emailCount : props.emailCount,
-        qrCode : props.qr
+        qrCode : props.qr,
+        totalSouvenir: props.totalSouvenir,
+        isCheckIn: props.isCheckIn,
+        checkInTime: props.checkInTime
     })
 
     const qrs = useRef();   
@@ -38,6 +41,9 @@ export default function DataGuestItem(props){
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalPerson}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.seatNumber}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalSouvenir}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isCheckIn}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.checkInTime}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.emailCount}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500" ref={qrs}>{guestEdit.qrCode}</td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
