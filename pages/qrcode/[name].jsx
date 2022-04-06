@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
     const { name } = context.query;
 
     const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`);
+    console.log(process.env.BASE_URL);
     const responseJson = await response.json();
     const { data } = responseJson;
     console.log(data)
