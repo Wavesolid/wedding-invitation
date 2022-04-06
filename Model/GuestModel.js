@@ -27,6 +27,9 @@ const Guest = new Schema({
     isCheckIn: {
         type: Boolean
     },
+    checkInTime: {
+        type: Date
+    },
     totalSouvenir: {
         type: String
     },

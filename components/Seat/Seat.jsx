@@ -3,10 +3,15 @@ import ConfirmModal from '../Modal/ConfirmModal'
 
 export default function Seat({props})
 {
-    const { totalSouvenir } = props.data
+    const { totalSouvenir } = props.data;
     const { seatNumber } = props.data;
+    const { isCheckIn } = props.data;
 
     const [showModal,setShowModal] = useState()
+    const [dataCheck, setDataCheck] = useState({
+        isCheckIn: true,
+        checkInTime: Date.now()
+    })
 
     const clickHandler = () => {
         setShowModal({
@@ -15,12 +20,37 @@ export default function Seat({props})
         })
     }
 
-    const confirmHandler = () => {
+    const confirmHandler = async (e) => {
         console.log("masuk")
+
+        const { name } = props.data
+        console.log(name);
+
+        setDataCheck({
+            isCheckIn: true,
+            checkInTime: Date.now()
+        })
+
+        console.log(dataCheck);
+
+        const response = await fetch('/api/checkInHandler', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                ...dataCheck
+            })
+        });
+
+        const responseJson = await response.json();
+
+        location.reload()
     }
 
     const cancelHandler = () => {
-        console.log("keluar")
+        setShowModal();
     }
 
     return (
@@ -41,9 +71,11 @@ export default function Seat({props})
                 <span className="text-white text-[32px]">Total Souvenir : {totalSouvenir}</span>
             </div>
             <div>
-                <button type="button" onClick={clickHandler} className="border-[5px] text-emas border-emas bg-putih rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-transparent hover:text-emas transition duration-300">
-                    <span>Check In</span>
-                </button>
+                { !isCheckIn && 
+                    <button type="button" onClick={clickHandler} className="border-[5px] text-emas border-emas bg-putih rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-transparent hover:text-emas transition duration-300">
+                        <span>Check In</span>
+                    </button>
+                }
             </div>
         </div>
     )
