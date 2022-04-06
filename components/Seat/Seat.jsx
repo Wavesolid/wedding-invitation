@@ -9,7 +9,7 @@ export default function Seat({props})
 
     const [showModal,setShowModal] = useState()
     const [dataCheck, setDataCheck] = useState({
-        isCheckIn: true,
+        isCheckIn: "Checked In",
         checkInTime: Date.now()
     })
 
@@ -21,13 +21,10 @@ export default function Seat({props})
     }
 
     const confirmHandler = async (e) => {
-        console.log("masuk")
-
         const { name } = props.data
-        console.log(name);
 
         setDataCheck({
-            isCheckIn: true,
+            isCheckIn: "Checked In",
             checkInTime: Date.now()
         })
 
@@ -71,7 +68,7 @@ export default function Seat({props})
                 <span className="text-white text-[32px]">Total Souvenir : {totalSouvenir}</span>
             </div>
             <div>
-                { !isCheckIn && 
+                { isCheckIn === "Pending" && 
                     <button type="button" onClick={clickHandler} className="border-[5px] text-emas border-emas bg-putih rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-transparent hover:text-emas transition duration-300">
                         <span>Check In</span>
                     </button>
