@@ -23,6 +23,18 @@ const Guest = new Schema({
     },
     seatNumber: {
         type: String
+    },
+    isCheckIn: {
+        type: String
+    },
+    checkInTime: {
+        type: Date
+    },
+    totalSouvenir: {
+        type: String
+    },
+    emailCount: {
+        type: Number
     }
 }, {
     timestamps: true

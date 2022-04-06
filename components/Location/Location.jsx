@@ -1,6 +1,5 @@
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import styles from './Location.module.css'
 import Map from './Map';
 import { useEffect } from 'react';
 
@@ -58,16 +57,15 @@ export default function Location(){
     },[inView]);
 
     return(
-        <div className="h-auto bg-[#F2C777] text-[#0D0D0D] flex flex-col items-center">
+        <div className="h-auto flex flex-col items-center">
             <div ref={ref} className="flex flex-col items-center">
-                <span className="font-bold text-[24px] pt-[21px]">SHERATON GRAND</span>
-                <motion.span animate={animation} className="font-normal text-[16px] my-[12px]">Jakarta Gandaria City Hotel</motion.span>
-                <button type='button' className={styles.buttonCover} onClick={handlerClick}>
+                <span className="font-kapital-bold text-emas text-[24px] pt-[21px]">Sheraton Grand Jakarta</span>
+                <motion.span animate={animation} className="font-kapital-bold text-emas text-[16px] mb-[24px]">Gandaria City Hotel, 3rd Floor</motion.span>
+                <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-putih hover:text-emas transition duration-300" onClick={handlerClick}>
                     <span>Lihat Lokasi</span>
                 </button>
-                <motion.img animate={animation2} className='my-[12px]' src="/Icon/asset-batik-9.svg" alt="batik-9" />
             </div>
-            <motion.div animate={animation3} className='pb-[21px]'>
+            <motion.div animate={animation3} className='border-emas border-[8px]'>
                 <Map/>
             </motion.div>
             

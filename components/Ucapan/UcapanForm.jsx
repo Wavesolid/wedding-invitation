@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
-import Transition from '../Transition/Transition';
 import SchemaValidation from '../../validation/UcapanValidation';
 
 export default function UcapanForm(props) {
@@ -79,34 +78,33 @@ export default function UcapanForm(props) {
 
 
     return(
-        <div className="ml-[10px]">
+        <div>
             {load === true && <Loader/>}
-            {success && <Modal title={success.title} content={success.content} onConfirm={successHandler} /> }
-            {error && <Modal title={error.title} content={error.content} onConfirm={modalHandler} />}
-            {props.ucapan[index].message === "" && 
-            <div>
-                <span className="font-bold text-[18px] mb-[16px]">Form Ucapan</span>
+            {success && <Modal title={success.title} content={success.content} positionBox={'md:!left-[38%]'} onConfirm={successHandler} /> }
+            {error && <Modal title={error.title} content={error.content} positionBox={'md:!left-[38%]'} onConfirm={modalHandler} />}
+             
+            <div className="flex flex-col">
+                <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
-                        <label className="mb-[8px]" htmlFor="nama">Nama</label>
-                        <input name="displayName" onChange={onChangeHandler} className="w-[335px] h-[30px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] pl-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="nama"/>
-                        <label className="mb-[8px]" htmlFor="domisili">Domisili</label>
-                        <input onChange={onChangeHandler} name="domisili" className="w-[335px] h-[30px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] pl-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="domisli"/>
-                        <label className="mb-[8px]" htmlFor="ucapan">Kirim ucapan mu</label>
-                        <textarea onChange={onChangeHandler} name="message" className="w-[335px] h-[66px] mb-[16px] bg-[transparent] border-[1px] border-[#F2C777] p-[12px] text-[12px] rounded-[15px] focus:outline-[0]" type="text" id="ucapan" >
+                        <input placeholder="Nama" name="displayName" onChange={onChangeHandler} className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]" type="text" />
+                        <input placeholder="Domisili" onChange={onChangeHandler} name="domisili" className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]"  type="text" />
+                        <textarea placeholder="Doa & Ucapan" onChange={onChangeHandler} name="message" className="w-full z-[1] h-[100px] mb-[8px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas" type="text" id="ucapan" >
                         </textarea>
-                        <button type="submit" className="w-[355px] h-[35px] bg-[#F2C777] rounded-[15px] mb-[36px]">
-                            <span className=" text-[#0D0D0D] text-[12px] font-bold">Kirim Sekarang</span>
+                        
+                        <button type="submit" className="w-[40%] h-[35px] self-end border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[1px] w-[120px] mb-[24px] hover:bg-putih hover:text-emas transition duration-300">
+                            <span className="">Kirim</span>
                         </button>
+                        <img src="/Icon/bunga-4.png" className="w-[50%] mt-[-109px] mb-[-24px] ml-[-12px]" />
                     </form>
             </div>
-            }
+            
 
-            {props.ucapan[index].message !== ""  && 
-                <div className="flex items-center justify-center h-[100px]">
+            {/* {props.ucapan[index].message !== ""  && 
+                <div className="flex items-center justify-center font-kapital-bold h-[100px]">
                     <span className="text-[20px]">Terima kasih sudah menulis ucapan</span>
                 </div>
-            }
-            <Transition/>
+            } */}
+            
         </div>
     )
 }

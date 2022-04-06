@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect} from 'react';
 
 export default function DataGuestItem(props){
 
@@ -7,9 +7,19 @@ export default function DataGuestItem(props){
         email: props.email,
         waNumber: props.waNumber,
         totalPerson: props.totalPerson,
-        seatNumber: props.seatNumber
+        seatNumber: props.seatNumber,
+        emailCount : props.emailCount,
+        qrCode : props.qr,
+        totalSouvenir: props.totalSouvenir,
+        isCheckIn: props.isCheckIn,
+        checkInTime: props.checkInTime
     })
 
+    const qrs = useRef();   
+    useEffect(() => {
+        // console.log(qrs.current.children[0]) 
+        props.refQr(qrs.current.innerHTML, qrs.current.children[0])
+    })
     const clickHandler = () => {
         props.onEdit(guestEdit);
     }
@@ -31,6 +41,11 @@ export default function DataGuestItem(props){
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalPerson}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.seatNumber}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalSouvenir}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isCheckIn}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.checkInTime}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.emailCount}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500" ref={qrs}>{guestEdit.qrCode}</td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <button onClick={clickHandler} className="text-indigo-600 hover:text-indigo-900">Edit</button>
             </td>

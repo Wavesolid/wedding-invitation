@@ -13,9 +13,7 @@ export default function DataGuests(props) {
     );
     const setEditDataGuestHandler = (newDataGuest) => {
         setEditDataGuest(newDataGuest);
-    }
-    
-    console.log(editDataGuest)
+    }    
     return(
         <div>
             <HeadDataGuest/>

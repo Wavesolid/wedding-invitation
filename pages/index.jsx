@@ -2,7 +2,6 @@ import styles from '../styles/Index.module.css';
 import Cover from '../components/Cover/Cover';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
-import AudioPlayer from '../components/Audio/AudioPlayer';
 
 export default function index()
 {
@@ -17,7 +16,6 @@ index.getLayout = function getLayout(page) {
     return (
       <Layout>
         <Banner />
-        <AudioPlayer/>
         {page}
       </Layout>
     )

@@ -1,6 +1,6 @@
 import UcapanForm from "./UcapanForm";
 import UcapanList from "./UcapanList";
-import styles from "./UcapanCard.module.css";
+import Youtube from "../Youtube/Youtube";
 
 export default function Ucapan({name,ucapan}) {
 
@@ -9,10 +9,27 @@ export default function Ucapan({name,ucapan}) {
     }
     
     return(
-        <div className="bg-[#0D0D0D] text-[#F2C777]">
-            <div className="flex flex-col items-center">
-                <span className="font-bold text-[24px] my-[18px]">Kartu Ucapan</span>
-                <div className={`flex flex-col items-center w-[340px] h-[223px] bg-[#F2C777] py-[18px] text-[#0D0D0D] rounded-[10px] ${styles.ucapanCard}`} >
+        <div className="bg-putih text-emas pt-[6rem] px-[12px]">
+            <div className="bg-merah px-[12px] border-[8px] border-emas rounded-[5px] pb-[24px]">
+                <Youtube/>
+                {name !== undefined && <UcapanForm name={name} ucapan={ucapan}/> }
+                {name === undefined && 
+                    <div>
+                        <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
+
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeclZOlcJVkhOZ08C1iRNa9FW-YrQ2nbjVOXe03IfzXx-PLVg/viewform?embedded=true" 
+                                width="314" 
+                                height="709" 
+                                frameBorder="0" 
+                                marginHeight="0" 
+                                marginWidth="0">Memuat…
+                        </iframe>
+                    </div>
+                }
+            </div>
+            
+            <div className="flex flex-col items-center mt-[6rem]">
+                <div className="flex flex-col items-center w-full h-[380px] bg-putih border-y-[3px] border-emas py-[18px] text-emas overflow-scroll overflow-x-hidden" >
                     {
                         ucapan.filter(ucapans => ucapans.message !== "").map((ucapans)=>(
                             <UcapanList key={ucapans.name} name={ucapans.displayName} domisili={ucapans.domisili} message={ucapans.message} />
@@ -20,14 +37,8 @@ export default function Ucapan({name,ucapan}) {
                     }
                     
                 </div>
-                <img className="my-[16px]" src="/Icon/asset-batik-8.svg" alt="" />
-                {name === undefined && 
-                    <button className="w-[332px] h-[35px] bg-[#F2C777] rounded-[15px] mb-[36px] self-center hover:bg-gradient-[(rgba(0, 0, 0, 0.4) 0 0)]" onClick={handlerClick}>
-                        <span className=" text-[#0D0D0D] text-[12px] font-bold">Kirim Ucapanmu</span>
-                    </button>
-                }
+
             </div>
-            {name !== undefined && <UcapanForm name={name} ucapan={ucapan}/> }
         </div>
     )
 }

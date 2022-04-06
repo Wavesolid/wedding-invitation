@@ -4,7 +4,7 @@ export default function Banner(){
     return(
         <div className={styles.pageWrapper}>
             <div className={styles.bannerWrapper}>
-                Foto Banner
+                
             </div>
         </div>
 

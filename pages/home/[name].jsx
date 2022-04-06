@@ -2,16 +2,15 @@ import styles from '../../styles/Index.module.css';
 import Intro from '../../components/Intro/Intro';
 import Surat from '../../components/Surat/Surat';
 import Profile from '../../components/Profile/Profile';
-import Location from '../../components/Location/Location';
 import Datetime from '../../components/Datetime/Datetime';
 import EntryForm from '../../components/Form/EntryForm';
-import Transition from '../../components/Transition/Transition';
-import Youtube from '../../components/Youtube/Youtube';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
 import Ucapan from '../../components/Ucapan/Ucapan';
 import Gallery from '../../components/Gallery/Gallery';
 import AudioPlayer from '../../components/Audio/AudioPlayer';
+import Protokol from '../../components/Protokol/Protokol';
+import Footer from '../../components/Footer/Footer';
 import { useState } from 'react';
 
 export default function Home(props)
@@ -29,18 +28,22 @@ export default function Home(props)
       props.responseJson.data.isFilled
     );
 
+    const [play, setPlay] = useState(
+      props.playAudio
+    )
+
     return(
         <div className={styles.columnMain}>
             <Intro/>
             <Surat/>
             <Profile/>
-            <Location/>
-            <Datetime/>
+            <Datetime name={guest}/>
             <EntryForm name={guest} isFilled={isFilled}/>
-            <Transition/>
-            <Youtube/>
             <Ucapan name={guest} ucapan={ucapan}/>
             <Gallery/>
+            <Protokol name={guest} />
+            <Footer/>
+            <AudioPlayer play={play}/>
         </div>
     )
 }
@@ -49,7 +52,6 @@ Home.getLayout = function getLayout(page) {
     return (
       <Layout>
         <Banner />
-        <AudioPlayer/>
         {page}
       </Layout>
     )
@@ -58,7 +60,8 @@ Home.getLayout = function getLayout(page) {
 export async function getServerSideProps(context)
 {
   const {name} = context.query;
-
+  const playAudio = context.query.data !== undefined ? context.query.data : false ;
+  
   const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`, {
     headers: {
         'Content-Type': 'application/json'
@@ -75,8 +78,7 @@ export async function getServerSideProps(context)
 
   const {data} = responseJson;
 
-  return(data === null ? {redirect: {
-    destination: '/home'
-  }} : {props:{responseJson,ucapanResponseJson}})
+
+  return(data === null ? {notFound: true} : {props:{responseJson,ucapanResponseJson,playAudio}})
 
 }

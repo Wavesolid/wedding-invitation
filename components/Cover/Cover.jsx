@@ -1,11 +1,12 @@
 import styles from './Cover.module.css';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Cover({name})
 {  
 
     return (
-        <div className={styles.cover}>
+        <div className={styles.slideContainer}>
             <div className={styles.coverMain}>
                 <span className={styles.coverTitle}>The Wedding Invitation</span>
                 <div className='grid grid-rows-3 text-center mb-4 text-[48px]'>
@@ -30,21 +31,27 @@ export default function Cover({name})
                     </div>
                 </div>
                 <div className='grid grid-rows-3 text-center'>
-                    <span className={styles.openGuest}>
+                    <span  className={`${styles.openGuest} ${name === undefined ? `mb-[-1rem]` : ``}`}>
                         Kepada yth Bapak/Ibu/Saudara/i
                     </span>
                     <span className={styles.nameGuest}>
-                        {name === undefined ? 'default' : name.charAt(0).toUpperCase() + name.slice(1)} dan Partner
+                        {name === undefined ? ' ' : name.charAt(0).toUpperCase() + name.slice(1) + " dan Partner" } 
                     </span>
                     <span className={styles.alertGuest}>
-                        *mohon maaf apabila ada kesalahan kata dan gelar
+                        {name === undefined ? ' ' : "*mohon maaf apabila ada kesalahan kata dan gelar" } 
                     </span>
                 </div>
                 <div className='flex flex-col items-center'>
-                    <div className='mb-4'>
+                    <motion.div 
+                        animate={{ y: [0,10,20,10,0] }}
+                        transition={{ ease: "easeInOut", duration: 2, repeat: Infinity }}
+                        className='mb-8'
+                    >
                         <img src="/Icon/Arrow.svg"></img>
-                    </div>
-                    <Link href= {`${name === undefined ? `/home` : `/home/${name}` }`}>
+                    </motion.div>
+                    <Link href= {{pathname:`${name === undefined ? `/home` : `/home/${name}` }`,query:{data:true}}}
+                        as={`${name === undefined ? `/home` : `/home/${name}` }`}
+                    >
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>
                         </button>

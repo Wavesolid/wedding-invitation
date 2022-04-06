@@ -1,40 +1,38 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const useAudio = () => {
-  const [audio] = useState(typeof Audio !== "undefined" ? new Audio("/WeddingSong.mp3") : undefined);
-  const [playing, setPlaying] = useState(true);
+export default function AudioPlayer(props) {
 
-  const toggle = () => setPlaying(!playing);
+  const audioPlayer = useRef();
 
-  useEffect(() => {
-      audio.volume = 0.2;
-      playing ? audio.play() : audio.pause();
-    },
-    [playing]
-  );
+  const [playing, setPlaying] = useState(props.play);
 
-  useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
-    return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
-    };
-  }, []);
+  const toggleHandler = () => {
+    setPlaying(!playing);
+  }
 
-  return [playing, toggle];
-};
+  useEffect(()=>{
 
-const Player = ({ url }) => {
-  const [playing, toggle] = useAudio(url);
+    playing? audioPlayer.current.play() : audioPlayer.current.pause();
 
-  return (
+  },[playing])
+
+  useEffect(()=>{
+      audioPlayer.current.addEventListener('ended', function(){
+      audioPlayer.current.currentTime = 0;
+      audioPlayer.current.play() 
+    })
+  },[])
+
+  return(
     <div>
-      <button
-        className="bg-[white] rounded-[25px] w-[50px] h-[50px] fixed top-[90vh] right-[1vh]"
-        onClick={toggle}>
-          {playing ? <img className="w-[40%] my-0 mx-auto" src="/Icon/MusicPlay.png" alt="pause"/> : <img className="w-[40%] my-0 mx-auto" src="/Icon/MusicPause.png" alt="play"></img> }
+      <audio ref={audioPlayer}  src="/WeddingSong.mp3" autoPlay/>
+        <button className="bg-[white] rounded-[25px] w-[50px] h-[50px] fixed top-[90vh] right-[1vh] z-[2]" onClick={toggleHandler}>
+          {playing ? 
+            <img className="w-[38%] my-0 mx-auto" src="/Icon/MusicPlay.png" alt="play"/> 
+            : 
+            <img className="w-[40%] my-0 mx-auto" src="/Icon/MusicPause.png" alt="pause"/>
+          }
         </button>
     </div>
-  );
-};
-
-export default Player;
+  )
+}
