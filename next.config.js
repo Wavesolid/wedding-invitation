@@ -1,3 +1,4 @@
+console.log(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG);
 const getDomain = () => {
   if(process.env.NEXT_PUBLIC_VERCEL_ENV) {
     switch(process.env.NEXT_PUBLIC_VERCEL_ENV) {
