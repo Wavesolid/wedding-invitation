@@ -18,7 +18,7 @@ export default function Intro()
                     transition={{duration: 1.5}}
                     className="text-white w-full mt-[16px] font-sambung flex flex-col items-center text-[56px] w-[214px]"
                     >
-                    <span className="">Nesya</span>
+                    <span className="">Neysa</span>
                     <span className='font-tanda-huruf mt-[-24px]'>&#38;</span> 
                     <span className='mt-[-24px]'>Gintano</span>
                 </motion.div>
