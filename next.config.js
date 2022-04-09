@@ -5,7 +5,7 @@ const getDomain = () => {
       case 'production':
         return ''
       default:
-        if(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG === 'develop') {
+        if(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG === 'wedding-invitation') {
           return 'https://weddingneysagintano.vercel.app'
         }
         return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
