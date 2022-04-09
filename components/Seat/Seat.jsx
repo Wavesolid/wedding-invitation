@@ -28,8 +28,6 @@ export default function Seat({props})
             checkInTime: Date.now()
         })
 
-        console.log(dataCheck);
-
         const response = await fetch('/api/checkInHandler', {
             method: 'PUT',
             headers: {

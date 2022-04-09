@@ -20,6 +20,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-position-x: 70%;
 }
 
 @media (max-width:769px){
@@ -32,6 +33,7 @@
         background: url('/Photo/bg-tablet.png');
         background-size: cover;
         background-repeat: no-repeat;
+        background-position-x: 115%;
     }
 }
 

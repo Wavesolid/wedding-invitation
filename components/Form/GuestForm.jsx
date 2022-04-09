@@ -29,7 +29,7 @@ export default function GuestForm({props})
         e.preventDefault();
         const name = props.name;
         const isFilled = !props.isFilled;
-        
+        const isCheckIn = 'Pending';
         const Validation = SchemaValidation(data.email, data.waNumber);
 
         if(Validation.error !== undefined)
@@ -50,7 +50,8 @@ export default function GuestForm({props})
             body: JSON.stringify({
                 name,
                 ...data,
-                isFilled
+                isFilled,
+                isCheckIn
             })
         });
         const {status} = response;
