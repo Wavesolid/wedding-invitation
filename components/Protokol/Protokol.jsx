@@ -96,7 +96,7 @@ export default function Protokol({name}) {
 
     return(
         <div className="bg-putih">
-            <div className="h-[970px] bg-merah border-[8px] border-emas rounded-[150px] font-kapital-bold text-emas flex flex-col items-center px-[12px] py-[32px] relative top-[170px]">
+            <div className="bg-merah border-[8px] border-emas rounded-[150px] font-kapital-bold text-emas flex flex-col items-center px-[12px] py-[32px] relative top-[170px]">
                 <InView triggerOnce="true" threshold="0.6" as="div" onChange={viewHandler}>
                     <span className="text-[24px] mb-[2rem]">Protokol Kesehatan</span>
                 </InView>
@@ -134,12 +134,13 @@ export default function Protokol({name}) {
                     </div>
                 </motion.div>
 
-                <div>
-                    <motion.img animate={animation3} className="w-[44%] relative right-[14px] float-left z-[10] top-[26px]" src="/Icon/bunga-protokol.png" alt="" />
-                    <motion.img animate={animation4} className="w-[44%] relative left-[54px] float-left z-[10] scale-x-[-1] top-[26px] " src="/Icon/bunga-protokol.png" alt="" />
+                <div className='flex mb-[-19px]'>
+                    <motion.img animate={animation3} className="w-[44%] ml-[-11px]" src="/Icon/bunga-protokol.png" alt="" />
+                    <motion.img animate={animation5} className="w-[30%] self-end ml-[-12px]" src="/Icon/logo.png"/>
+                    <motion.img animate={animation4} className="w-[44%] scale-x-[-1] ml-[-27px]" src="/Icon/bunga-protokol.png" alt="" /> 
                 </div>
 
-                <motion.img animate={animation5} className="relative w-[30%] top-[-120px]" src="/Icon/logo.png"/>
+                
             </div>
         </div>
     )

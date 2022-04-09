@@ -10,9 +10,9 @@ export default function Cover({name})
             <div className={styles.coverMain}>
                 <span className={styles.coverTitle}>The Wedding Invitation</span>
                 <div className='grid grid-rows-3 text-center mb-4 text-[48px]'>
-                    <span className={styles.brideGroom}>Jennifer</span>
+                    <span className={styles.brideGroom}>Neysa</span>
                     <span className={styles.brideGroom}>&#38;</span>
-                    <span className={styles.brideGroom}>Hamzah</span>
+                    <span className={styles.brideGroom}>Gintano</span>
                 </div>
                 <div className='flex justify-around items-center mb-4'>
                     <div className='w-[100px] text-center'>

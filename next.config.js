@@ -1,4 +1,5 @@
 const getDomain = () => {
+  console.log(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG);
   if(process.env.NEXT_PUBLIC_VERCEL_ENV) {
     switch(process.env.NEXT_PUBLIC_VERCEL_ENV) {
       case 'production':
