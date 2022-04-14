@@ -34,7 +34,7 @@ export default async function sendEmail(req, res) {
 							</html>`, alternative: true
 					},
 					{
-                        path: `public/Photo/${guest.name}.png`,
+                        path: `public/qrcodes/${guest.name}.png`,
                         type: 'image/png',
                         headers: { 'Content-ID': '<my-image>' },
                     },
