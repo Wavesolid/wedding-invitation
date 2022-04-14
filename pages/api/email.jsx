@@ -15,18 +15,51 @@ export default async function sendEmail(req, res) {
 	let messages = [];
 	try {
 		validateAdminLogin(req);
-		await asyncForEach(guests, async(guest) => {
+		if(Array.isArray(guests)) {
+			await asyncForEach(guests, async(guest) => {		
+				const message = await client.sendAsync({
+					text: '',
+					from: 'Gintano & Nesya',
+					to: `${guest.email}`,
+					subject: 'Wedding Invitation!',
+					attachment: [
+						{
+							data:
+								`<html> 
+									<div> 
+										<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
+									</div>
+									<div>
+										<img src="cid:my-image">
+									</div>
+								</html>`, alternative: true
+						},
+						{
+							path: `public/Photo/${guest.name}.png`,
+							type: 'image/png',
+							headers: { 'Content-ID': '<my-image>' },
+						},
+					],
+				});
+				await guestModel.findOneAndUpdate({
+					name : guest.name
+				}, {
+					emailCount: guest.emailCount + 1
+				});
+				messages.push(message)
+			});
+		} else {
 			const message = await client.sendAsync({
 				text: '',
 				from: 'Gintano & Nesya',
-				to: `${guest.email}`,
+				to: `${guests.email}`,
 				subject: 'Wedding Invitation!',
 				attachment: [
 					{
 						data:
 							`<html> 
 								<div> 
-									<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
+									<h1 style="color:Tomato;">Hai, ${guests.name}</h1>
 								</div>
 								<div>
 									<img src="cid:my-image">
@@ -34,21 +67,20 @@ export default async function sendEmail(req, res) {
 							</html>`, alternative: true
 					},
 					{
-                        path: `public/Photo/${guest.name}.png`,
-                        type: 'image/png',
-                        headers: { 'Content-ID': '<my-image>' },
-                    },
+						path: `public/Photo/${guests.name}.png`,
+						type: 'image/png',
+						headers: { 'Content-ID': '<my-image>' },
+					},
 				],
 			});
 			await guestModel.findOneAndUpdate({
-				name : guest.name
+				name : guests.name
 			}, {
-				emailCount: guest.emailCount + 1
+				emailCount: guests.emailCount + 1
 			});
 			messages.push(message)
-		});
-		
-		console.log(messages);
+		}
+
 		return res.status(201).json({
 			messages
 		});
