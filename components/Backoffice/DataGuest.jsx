@@ -81,6 +81,38 @@ export default function DataGuest(props){
         setDataCsv(dataCollection);
     }
 
+    const sendPerEmail = async(dataGuest) => {
+        setLoad(true);
+        const guests = {
+            ...dataGuest,
+        };
+        const response = await fetch('/api/email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                guests
+            })
+        });
+        setLoad(false);
+        const responseJson = await response.json();
+        console.log(responseJson);
+        if(responseJson.messages) 
+        {
+            setModal({
+                title: "Berhasil",
+                content: "Email berhasil dikirimkan"
+            });
+            return ;
+        } else {
+            setModal({
+                title: "Gagal",
+                content: `${responseJson.err.previous}`
+            });
+        }
+        props.onSendEmailGuest(guestData);
+    }
     const sendEmail = async() =>
     {      
         setLoad(true);
@@ -222,6 +254,7 @@ export default function DataGuest(props){
                                     guestData.map((dataGuests)=>(
                                             <DataGuestItem
                                                 onEdit={setEditHandler}
+                                                onSend={sendPerEmail}
                                                 key={dataGuests._id}
                                                 name={dataGuests.name}
                                                 email={dataGuests.email}

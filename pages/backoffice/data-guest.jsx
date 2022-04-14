@@ -7,18 +7,21 @@ import { getSession } from "next-auth/react";
 export default function DataGuests(props) {
     
     const [editDataGuest,setEditDataGuest] = useState([]);
-
+    const [emailGuest, setEmailGuest] = useState([]);
     const [dataGuest, setDataGuest] = useState(
         props.dataGuest
     );
     const setEditDataGuestHandler = (newDataGuest) => {
         setEditDataGuest(newDataGuest);
     }    
+    const sendEmailPerGuest = (newDataGuest) => {
+        setEditDataGuest(newDataGuest)
+    }
     return(
         <div>
             <HeadDataGuest/>
             <DataGuestForm editDataGuest={editDataGuest}/>
-            <DataGuest dataGuest={dataGuest} onEditDataGuest={setEditDataGuestHandler}/>
+            <DataGuest dataGuest={dataGuest} onEditDataGuest={setEditDataGuestHandler} onSendEmailGuest={setEmailGuest}/>
         </div>
     )
 }
