@@ -66,7 +66,7 @@ export default async function sendEmail(req, res) {
 							</html>`, alternative: true
 					},
 					{
-						path: `../../public/qrcodes/${guests.name}.png`,
+						path: `../../public/qrcodes/sadam.png`,
 						type: 'image/png',
 						headers: { 'Content-ID': '<my-image>' },
 					},
