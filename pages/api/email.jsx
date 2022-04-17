@@ -1,5 +1,6 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
+import { cwd } from 'process';
 import guestModel from '../../Model/GuestModel';
 
 const client = new SMTPClient({
@@ -18,7 +19,7 @@ export default async function sendEmail(req, res) {
 			await asyncForEach(guests, async(guest) => {		
 				const message = await client.sendAsync({
 					text: '',
-					from: 'Gintano & Nesya',
+					from: 'xxxx',
 					to: `${guest.email}`,
 					subject: 'Wedding Invitation!',
 					attachment: [
@@ -34,7 +35,9 @@ export default async function sendEmail(req, res) {
 								</html>`, alternative: true
 						},
 						{
-							path: `/qrcodes/sadam.png`,
+							// error occured in `path`
+							// /public/qrcodes/sadam.png does not exist
+							path: `/public/qrcodes/sadam.png`,
 							type: 'image/png',
 							headers: { 'Content-ID': '<my-image>' },
 						},
@@ -50,7 +53,7 @@ export default async function sendEmail(req, res) {
 		} else {
 			const message = await client.sendAsync({
 				text: '',
-				from: 'Gintano & Nesya',
+				from: 'xxxx',
 				to: `${guests.email}`,
 				subject: 'Wedding Invitation!',
 				attachment: [
@@ -66,7 +69,9 @@ export default async function sendEmail(req, res) {
 							</html>`, alternative: true
 					},
 					{
-						path: `/qrcodes/sadam.png`,
+						// Error occured in Path
+						// Error: /public/qrcodes/sadam.png does not exist
+						path: `${cwd()}/public/qrcodes/sadam.png`,
 						type: 'image/png',
 						headers: { 'Content-ID': '<my-image>' },
 					},
