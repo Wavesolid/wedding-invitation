@@ -71,7 +71,7 @@ export default async function sendEmail(req, res) {
 					{
 						// Error occured in Path
 						// Error: /public/qrcodes/sadam.png does not exist
-						path: `${cwd()}/public/qrcodes/sadam.png`,
+						path: `${cwd()}/qrcodes/sadam.png`,
 						type: 'image/png',
 						headers: { 'Content-ID': '<my-image>' },
 					},
