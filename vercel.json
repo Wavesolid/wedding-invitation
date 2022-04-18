@@ -1,6 +1,6 @@
 {
     "functions": {
-        "api/email.js": {
+        "/pages/api/email.js": {
             "includeFiles": "public/**"
         }
     }
