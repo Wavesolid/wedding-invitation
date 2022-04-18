@@ -1,6 +1,6 @@
 {
     "functions": {
-        "api/email.jsx": {
+        "api/email.js": {
             "includeFiles": "public/**"
         }
     }
