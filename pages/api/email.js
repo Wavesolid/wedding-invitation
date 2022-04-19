@@ -10,13 +10,10 @@ const client = new SMTPClient({
 	host: process.env.HOST,
 	ssl: true,
 });
-const dirRelativeToPublicFolder = 'sadam.png'
-const dir = path.resolve('./public', dirRelativeToPublicFolder);
-const filenames = fs.readdirSync(dir);		
-const images = filenames.map(name => path.join('/', dirRelativeToPublicFolder, name))
-console.log(images);
+
 export default async function sendEmail(req, res) {
 	const {guests, filteredQr} = req.body;
+	console.log(guests);
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -24,7 +21,7 @@ export default async function sendEmail(req, res) {
 			await asyncForEach(guests, async(guest) => {
 				const message = await client.sendAsync({
 					text: '',
-					from: 'xxxx',
+					from: 'Gintano & Nesya',
 					to: `${guest.email}`,
 					subject: 'Wedding Invitation!',
 					attachment: [
@@ -35,17 +32,10 @@ export default async function sendEmail(req, res) {
 										<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
 									</div>
 									<div>
-										<img src="cid:my-image">
+										<img src=${guest.imgurQrCode}>
 									</div>
 								</html>`, alternative: true
-						},
-						{
-							// error occured in `path`
-							// /public/qrcodes/sadam.png does not exist
-							path: `${images}`,
-							type: 'image/png',
-							headers: { 'Content-ID': '<my-image>' },
-						},
+						}
 					],
 				});
 				await guestModel.findOneAndUpdate({
@@ -58,7 +48,7 @@ export default async function sendEmail(req, res) {
 		} else {
 			const message = await client.sendAsync({
 				text: '',
-				from: 'xxxx',
+				from: 'Gintano & Nesya',
 				to: `${guests.email}`,
 				subject: 'Wedding Invitation!',
 				attachment: [
@@ -69,17 +59,10 @@ export default async function sendEmail(req, res) {
 									<h1 style="color:Tomato;">Hai, ${guests.name}</h1>
 								</div>
 								<div>
-									<img src="https://i.imgur.com/xdZxoTr.png">
+									<img src=${guests.imgurQrCode}>
 								</div>
-							</html>`, alternative: true
-					},
-					// {
-					// 	// Error occured in Path
-					// 	// Error: /public/qrcodes/sadam.png does not exist
-					// 	path: new URL('/qrcodes/sadam.png', process.env.BASE_URL),
-					// 	type: 'image/jpg',
-					// 	headers: { 'Content-ID': '<my-image>' },
-					// },
+							</html>`, alternative: true	
+					}
 				],
 			});
 			await guestModel.findOneAndUpdate({

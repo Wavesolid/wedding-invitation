@@ -32,7 +32,8 @@ export default function DataGuestItem(props){
             emailCount : props.emailCount,
             totalSouvenir: props.totalSouvenir,
             isCheckIn: props.isCheckIn,
-            checkInTime: props.checkInTime
+            checkInTime: props.checkInTime,
+            imgurQrCode: props.imgurQrCode
         });
     }
 

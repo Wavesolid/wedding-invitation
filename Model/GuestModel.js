@@ -35,6 +35,9 @@ const Guest = new Schema({
     },
     emailCount: {
         type: Number
+    },
+    imgurQrCode: {
+        type: String
     }
 }, {
     timestamps: true

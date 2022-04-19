@@ -47,7 +47,6 @@ export default function DataGuest(props){
                 ...prevData,
                 [name] : value
             }
-            // console.log(updateData.name.toLowerCase())
             setGuestData(props.dataGuest.filter((data) => (
                 data.name.toLowerCase().includes(updateData.name.toLowerCase()) && 
                 data.email.toLowerCase().includes(updateData.email.toLowerCase()) && 
@@ -266,6 +265,7 @@ export default function DataGuest(props){
                                                 checkInTime = {dataGuests.checkInTime}
                                                 emailCount = {dataGuests.emailCount}
                                                 qr = {generateQrCode(dataGuests.name)}
+                                                imgurQrCode = {dataGuests.imgurQrCode}
                                                 refQr = {refQr}
                                             />
                                     ))
