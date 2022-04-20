@@ -206,7 +206,7 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Souvenir</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Status Checkin</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Checkin Date</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Email Send</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email Sent Status</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">QR Code</th>
                             <th scope="col" className="relative px-6 py-3">
                                 <span className="sr-only">Edit</span>
@@ -264,6 +264,7 @@ export default function DataGuest(props){
                                                 isCheckIn = {dataGuests.isCheckIn}
                                                 checkInTime = {dataGuests.checkInTime}
                                                 emailCount = {dataGuests.emailCount}
+                                                isEmailSent = {dataGuests.isEmailSent}
                                                 qr = {generateQrCode(dataGuests.name)}
                                                 imgurQrCode = {dataGuests.imgurQrCode}
                                                 refQr = {refQr}

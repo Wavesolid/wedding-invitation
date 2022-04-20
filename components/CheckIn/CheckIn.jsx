@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import ConfirmModal from '../Modal/ConfirmModal'
 
 export default function CheckInSeat({props}){
 
     const { isCheckIn } = props.data;
     const { name } = props.data;
 
-    const [showModal,setShowModal] = useState()
     const [dataCheck, setDataCheck] = useState({
         isCheckIn: "Checked In",
         checkInTime: Date.now()
@@ -14,7 +12,6 @@ export default function CheckInSeat({props}){
 
     useEffect(() => {
         if(isCheckIn.toLowerCase() === 'pending') {
-            console.log("masih pending")
 
             const updateData = async () => {
                 setDataCheck({

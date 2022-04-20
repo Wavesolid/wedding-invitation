@@ -18,7 +18,8 @@ async function Handler(req, res)
             }
         case 'PUT':
             {
-                let {name, isFilled, totalPerson, email, waNumber, seatNumber, totalSouvenir, isCheckIn} = req.body;
+                let {name, isFilled, totalPerson, email, waNumber, seatNumber, totalSouvenir, isCheckIn, imgurQrCode} = req.body;
+                console.log(imgurQrCode)
                 console.log(req.body);
                 seatNumber? seatNumber : seatNumber = "";
                 const guest = await guestModel.findOneAndUpdate({
@@ -30,7 +31,8 @@ async function Handler(req, res)
                     isFilled,
                     seatNumber,
                     isCheckIn, 
-                    totalSouvenir
+                    totalSouvenir,
+                    imgurQrCode
                 },{
                     new: true
                 }); 

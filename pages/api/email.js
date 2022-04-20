@@ -1,6 +1,5 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
-import fs from 'fs';
 import path from 'path';
 import guestModel from '../../Model/GuestModel';
 
@@ -68,7 +67,8 @@ export default async function sendEmail(req, res) {
 			await guestModel.findOneAndUpdate({
 				name : guests.name
 			}, {
-				emailCount: guests.emailCount + 1
+				emailCount: guests.emailCount + 1,
+				isEmailSent: "Sent"
 			});
 			messages.push(message)
 		}
