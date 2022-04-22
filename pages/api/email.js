@@ -12,7 +12,6 @@ const client = new SMTPClient({
 
 export default async function sendEmail(req, res) {
 	const {guests, filteredQr} = req.body;
-	console.log(guests);
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -40,7 +39,8 @@ export default async function sendEmail(req, res) {
 				await guestModel.findOneAndUpdate({
 					name : guest.name
 				}, {
-					emailCount: guest.emailCount + 1
+					emailCount: guest.emailCount + 1,
+					isEmailSent: "Sent"
 				});
 				messages.push(message)
 			});
@@ -71,6 +71,7 @@ export default async function sendEmail(req, res) {
 				isEmailSent: "Sent"
 			});
 			messages.push(message)
+
 		}
 
 		return res.status(201).json({
