@@ -43,7 +43,7 @@ export default function CheckInSeat({props}){
     return(
         <div className='h-screen bg-merah text-putih flex flex-col items-center justify-center'>
             <img src="/Icon/check-mark.png" alt="check-mark" className='w-[20%]' />
-            <span className='text-[24px]'>Selamat kamu sudah check in</span>
+            <span className='text-[24px]'>check in berhasil</span>
         </div>
     )
 }
