@@ -1,6 +1,5 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
-import fs from 'fs';
 import path from 'path';
 import guestModel from '../../Model/GuestModel';
 
@@ -13,7 +12,6 @@ const client = new SMTPClient({
 
 export default async function sendEmail(req, res) {
 	const {guests, filteredQr} = req.body;
-	console.log(guests);
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -41,7 +39,8 @@ export default async function sendEmail(req, res) {
 				await guestModel.findOneAndUpdate({
 					name : guest.name
 				}, {
-					emailCount: guest.emailCount + 1
+					emailCount: guest.emailCount + 1,
+					isEmailSent: "Sent"
 				});
 				messages.push(message)
 			});
@@ -68,9 +67,11 @@ export default async function sendEmail(req, res) {
 			await guestModel.findOneAndUpdate({
 				name : guests.name
 			}, {
-				emailCount: guests.emailCount + 1
+				emailCount: guests.emailCount + 1,
+				isEmailSent: "Sent"
 			});
 			messages.push(message)
+
 		}
 
 		return res.status(201).json({

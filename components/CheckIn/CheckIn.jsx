@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import ConfirmModal from '../Modal/ConfirmModal'
 
 export default function CheckInSeat({props}){
 
     const { isCheckIn } = props.data;
     const { name } = props.data;
 
-    const [showModal,setShowModal] = useState()
     const [dataCheck, setDataCheck] = useState({
         isCheckIn: "Checked In",
         checkInTime: Date.now()
@@ -14,7 +12,6 @@ export default function CheckInSeat({props}){
 
     useEffect(() => {
         if(isCheckIn.toLowerCase() === 'pending') {
-            console.log("masih pending")
 
             const updateData = async () => {
                 setDataCheck({
@@ -46,7 +43,7 @@ export default function CheckInSeat({props}){
     return(
         <div className='h-screen bg-merah text-putih flex flex-col items-center justify-center'>
             <img src="/Icon/check-mark.png" alt="check-mark" className='w-[20%]' />
-            <span className='text-[24px]'>Selamat kamu sudah check in</span>
+            <span className='text-[24px]'>check in berhasil</span>
         </div>
     )
 }

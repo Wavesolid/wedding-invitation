@@ -12,6 +12,7 @@ export default function DataGuestForm(props) {
         totalPerson: '',
         seatNumber: '',
         totalSouvenir:'',
+        imgurQrCode: '',
         isFilled: true
     })
 
@@ -23,7 +24,8 @@ export default function DataGuestForm(props) {
                 waNumber: props.editDataGuest.waNumber,
                 totalPerson: props.editDataGuest.totalPerson,
                 seatNumber: props.editDataGuest.seatNumber,
-                totalSouvenir: props.editDataGuest.totalSouvenir
+                totalSouvenir: props.editDataGuest.totalSouvenir,
+                imgurQrCode: props.editDataGuest.imgurQrCode
             })
             
         }
@@ -47,13 +49,15 @@ export default function DataGuestForm(props) {
             waNumber: '',
             totalPerson: '',
             seatNumber: '',
-            totalSouvenir:''
+            totalSouvenir:'',
+            imgurQrCode: ''
         })
     }
 
     const clickUpdateHandler = async (e) => {
         e.preventDefault();
         const formatSeatNumber = dataGuest.seatNumber.split(",").filter((x) => x.trim() !== '').length;
+        const formatImgurQrCode = dataGuest.imgurQrCode.concat(".png")
         if(dataGuest.totalPerson === formatSeatNumber)
         {
             setLoad(true);
@@ -63,7 +67,8 @@ export default function DataGuestForm(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    ...dataGuest
+                    ...dataGuest,
+                    imgurQrCode: formatImgurQrCode
                 })
             });
             setLoad(false);
@@ -110,6 +115,10 @@ export default function DataGuestForm(props) {
                     <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
                         <label className="bold mb-2 block">Total Souvenir</label>
                         <input value={dataGuest.totalSouvenir}  onChange={onChangeHandler} className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='totalSouvenir'></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">Imgur qrcode</label>
+                        <input value={dataGuest.imgurQrCode}  onChange={onChangeHandler} className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='imgurQrCode'></input>
                     </div>
                     <div className="flex flex-wrap gap-4 mb-4 text-left">
                         <button className='text-red-500 hover:text-red-300 font-bold' onClick={clickCancelHandler}>Cancel</button>

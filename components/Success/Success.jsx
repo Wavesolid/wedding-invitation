@@ -17,7 +17,7 @@ export default function Success(props){
                         </div>
                         <div className='flex flex-col items-start'>
                             <span>Akad Nikah</span>
-                            <span>08 00 WIB</span>
+                            <span>07 30 WIB</span>
                             <span>Resepsi</span>
                             <span>11 00 WIB</span>
                         </div>
