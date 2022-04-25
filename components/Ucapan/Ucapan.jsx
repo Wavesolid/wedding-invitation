@@ -1,9 +1,10 @@
 import UcapanForm from "./UcapanForm";
 import UcapanList from "./UcapanList";
 import Youtube from "../Youtube/Youtube";
+import getConfig from "next/config";
 
 export default function Ucapan({name,ucapan}) {
-
+    const  { publicRuntimeConfig } = getConfig();
     const handlerClick = () => {
         window.open('https://www.google.com');
     }
@@ -17,7 +18,7 @@ export default function Ucapan({name,ucapan}) {
                     <div>
                         <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
 
-                        <iframe src={process.env.NEXT_PUBLIC_GFORM} 
+                        <iframe src={publicRuntimeConfig.NEXT_PUBLIC_GFORM} 
                                 width="314" 
                                 height="709" 
                                 frameBorder="0" 
