@@ -5,6 +5,7 @@ import getConfig from "next/config";
 
 export default function Ucapan({name,ucapan}) {
     const  { publicRuntimeConfig } = getConfig();
+    console.log(publicRuntimeConfig.NEXT_PUBLIC_GFORM);
     const handlerClick = () => {
         window.open('https://www.google.com');
     }
