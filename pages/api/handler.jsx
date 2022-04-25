@@ -18,7 +18,7 @@ async function Handler(req, res)
             }
         case 'PUT':
             {
-                let {name, isFilled, totalPerson, email, waNumber, seatNumber, totalSouvenir, isCheckIn, imgurQrCode} = req.body;
+                let {name, isFilled, totalPerson, email, waNumber, seatNumber, totalSouvenir, imgurQrCode} = req.body;
                 console.log(imgurQrCode)
                 console.log(req.body);
                 seatNumber? seatNumber : seatNumber = "";
@@ -30,7 +30,6 @@ async function Handler(req, res)
                     waNumber,
                     isFilled,
                     seatNumber,
-                    isCheckIn, 
                     totalSouvenir,
                     imgurQrCode
                 },{
