@@ -17,7 +17,7 @@ export default function Ucapan({name,ucapan}) {
                     <div>
                         <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
 
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeclZOlcJVkhOZ08C1iRNa9FW-YrQ2nbjVOXe03IfzXx-PLVg/viewform?embedded=true" 
+                        <iframe src={process.env.NEXT_PUBLIC_GFORM} 
                                 width="314" 
                                 height="709" 
                                 frameBorder="0" 
