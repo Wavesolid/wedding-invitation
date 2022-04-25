@@ -21,9 +21,11 @@ export default function DataGuestItem(props){
     useEffect(() => {
         props.refQr(qrs.current.innerHTML, qrs.current.children[0])
     })
+
     const clickHandler = () => {
         props.onEdit(guestEdit);
     }
+
     const sendEmailHandler = () => {
         props.onSend({
             name: props.name,
@@ -38,6 +40,8 @@ export default function DataGuestItem(props){
             emailCount: props.emailCount
         });
     }
+
+    const dateFormat = new Date(guestEdit.checkInTime).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
 
     return(
         <tr>
@@ -58,7 +62,7 @@ export default function DataGuestItem(props){
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.seatNumber}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalSouvenir}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isCheckIn}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.checkInTime}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{dateFormat}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isEmailSent}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500" ref={qrs}>
                 <img src={guestEdit.imgurQrCode} alt="qrcode"/>

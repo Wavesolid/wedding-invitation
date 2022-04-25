@@ -13,9 +13,7 @@ export default function DataGuest(props){
         waNumber:'',
         totalPerson:'',
         seatNumber:'',
-        totalSouvenir:'',
-        isCheckIn:'',
-        checkInTime:''
+        totalSouvenir:''
     });
     const [dataCsv, setDataCsv] = useState([]);
     const [load,setLoad] = useState(false);
@@ -250,7 +248,7 @@ export default function DataGuest(props){
                                 </td>
                             </tr>
                                 {
-                                    guestData.map((dataGuests)=>(
+                                    guestData.sort((a,b) => b.checkInTime > a.checkInTime ? 1 : -1 ).map((dataGuests)=>(
                                             <DataGuestItem
                                                 onEdit={setEditHandler}
                                                 onSend={sendPerEmail}
