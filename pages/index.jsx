@@ -21,7 +21,7 @@ export default function Index()
   );
 }
 
-index.getLayout = function getLayout(page) {
+Index.getLayout = function getLayout(page) {
     return (
       <Layout>
         <Banner />
