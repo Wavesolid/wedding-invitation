@@ -3,6 +3,7 @@ import DataGuestForm from "../../components/Backoffice/DataGuestForm";
 import HeadDataGuest from "../../components/Backoffice/HeadDataGuest";
 import {useState} from 'react';
 import { getSession } from "next-auth/react";
+import NewDataGuestForm from "../../components/Backoffice/NewDataGuestForm";
 
 export default function DataGuests(props) {
     
@@ -11,6 +12,18 @@ export default function DataGuests(props) {
     const [dataGuest, setDataGuest] = useState(
         props.dataGuest
     );
+
+    const [newDataGuestForm, isNewDataGuestForm] = useState(false)
+    const [updateDataGuestForm, isUpdateDataGuestForm] = useState(true)
+
+    const newGuestFormHandler = (form) => {
+        isNewDataGuestForm(form);
+    }
+    
+    const updateGuestFormHandler = (form) => {
+        isUpdateDataGuestForm(form)
+    }
+
     const setEditDataGuestHandler = (newDataGuest) => {
         setEditDataGuest(newDataGuest);
     }    
@@ -19,8 +32,9 @@ export default function DataGuests(props) {
     }
     return(
         <div>
-            <HeadDataGuest/>
-            <DataGuestForm editDataGuest={editDataGuest}/>
+            <HeadDataGuest onNewGuestForm={newGuestFormHandler} onUpdateGuestForm={updateGuestFormHandler}/>
+            {updateDataGuestForm && <DataGuestForm editDataGuest={editDataGuest}/>}
+            {newDataGuestForm && <NewDataGuestForm/>}
             <DataGuest dataGuest={dataGuest} onEditDataGuest={setEditDataGuestHandler} onSendEmailGuest={setEmailGuest}/>
         </div>
     )
