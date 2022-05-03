@@ -200,6 +200,7 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">No. Wa</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Person</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Konfirmasi Kehadiran</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Nomor Bangku</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Souvenir</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Status Checkin</th>
@@ -248,7 +249,7 @@ export default function DataGuest(props){
                                 </td>
                             </tr>
                                 {
-                                    guestData.sort((a,b) => b.checkInTime > a.checkInTime ? 1 : -1 ).map((dataGuests)=>(
+                                    guestData.sort((a,b) => a.checkInTime > b.checkInTime ? -1 : 1 ).map((dataGuests)=>(
                                             <DataGuestItem
                                                 onEdit={setEditHandler}
                                                 onSend={sendPerEmail}
@@ -257,6 +258,7 @@ export default function DataGuest(props){
                                                 email={dataGuests.email}
                                                 waNumber={dataGuests.waNumber}
                                                 totalPerson={dataGuests.totalPerson}
+                                                isFilled={dataGuests.isFilled}
                                                 seatNumber={dataGuests.seatNumber}
                                                 totalSouvenir = {dataGuests.totalSouvenir}
                                                 isCheckIn = {dataGuests.isCheckIn}
