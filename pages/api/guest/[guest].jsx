@@ -1,4 +1,5 @@
 import connectDB from '../../../helper/connectDB';
+import GuestModel from '../../../Model/GuestModel';
 import guestModel from '../../../Model/GuestModel';
 
 async function guest(req, res)
@@ -14,8 +15,22 @@ async function guest(req, res)
             }
         case 'POST':
             {
-                console.log('post');
-                break;
+                const guest = await guestModel.findOne({name: req.query.guest}).exec();
+                try{
+                    if(guest) {
+                        return res.status(200).json({
+                            message: 'Nama tersebut sudah terdaftar.'
+                        })
+                    } 
+                    await new GuestModel(req.body).save();
+                    return res.status(201).json({
+                        message: `Tamu atas nama ${req.query.guest} berhasil dibuat.`
+                    })
+                } catch(err) {
+                    return res.status(400).json({
+                        message: err.message
+                    })
+                }
             }
         case 'PUT':
             {
