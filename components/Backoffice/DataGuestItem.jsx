@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect} from 'react';
 
 export default function DataGuestItem(props){
-
     const [guestEdit, setguestEdit] = useState({
         name: props.name,
         email: props.email,
         waNumber: props.waNumber,
         totalPerson: props.totalPerson,
+        isFilled: props.isFilled,
         seatNumber: props.seatNumber,
         emailCount : props.emailCount,
         isEmailSent: props.isEmailSent,
@@ -16,7 +16,6 @@ export default function DataGuestItem(props){
         checkInTime: props.checkInTime,
         imgurQrCode: props.imgurQrCode
     })
-
     const qrs = useRef();   
     useEffect(() => {
         props.refQr(qrs.current.innerHTML, qrs.current.children[0])
@@ -59,6 +58,10 @@ export default function DataGuestItem(props){
                 <span className="text-sm text-gray-900"> {guestEdit.waNumber} </span>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalPerson}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                {guestEdit.isFilled === true && "Hadir"}
+                {guestEdit.isFilled !== true && "Pending"}
+            </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.seatNumber}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalSouvenir}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isCheckIn}</td>
