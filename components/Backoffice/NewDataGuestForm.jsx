@@ -73,6 +73,14 @@ export default function NewDataGuestForm() {
                         <label className="bold mb-2 block">Total Person</label>
                         <input className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='totalPerson' value={data.totalPerson} onChange={onChangeHandler}></input>
                     </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">Email</label>
+                        <input className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='email' value={data.email} onChange={onChangeHandler}></input>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mb-4 text-left items-center">
+                        <label className="bold mb-2 block">No. Wa</label>
+                        <input className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='waNumber' value={data.waNumber} onChange={onChangeHandler}></input>
+                    </div>
                     <div className="flex flex-wrap gap-4 mb-4 text-left">
                         <button className='text-red-500 hover:text-red-300 font-bold' >Cancel</button>
                         <button className='text-green-500 hover:text-green-300 font-bold' type='submit'>Add Guest</button>
