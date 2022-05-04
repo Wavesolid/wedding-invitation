@@ -1,18 +1,23 @@
 import { useRouter } from "next/router";
 import { useContext, useState } from 'react';
 import Modal from '../Modal/Modal';
+import ConfirmModal from '../Modal/ConfirmModal'
 import Loader from '../Loader/Loader';
 import SchemaValidation from '../../validation/GuestValidation';
 
 export default function GuestForm({props})
 {
     const [invalid,setInvalid] = useState();
+    const [confirm,setConfirm] = useState();
     const [load,setLoad] = useState(false);
 
     const [data, setData] = useState({
         totalPerson: props.totalPerson,
         email: props.email,
-        waNumber : props.waNumber
+        waNumber : props.waNumber,
+        imgurQrCode: props.imgurQrCode,
+        totalSouvenir: props.totalSouvenir,
+        seatNumber: props.seatNumber
     });
 
     const router = useRouter();
@@ -27,6 +32,17 @@ export default function GuestForm({props})
 
     const submitHandler = async (e) => {
         e.preventDefault();
+
+
+        setConfirm({
+            title: "Confirmation",
+            content: "Apakah anda yakin telah mengisi form tersebut dengan benar?"
+        })
+
+
+    }
+
+    const confirmHandler = async (e) => {
         const name = props.name;
         const isFilled = !props.isFilled;
         const isCheckIn = 'Pending';
@@ -61,16 +77,22 @@ export default function GuestForm({props})
             setLoad(false);
             return router.replace(`/success/${props.name}`);  
         }
+
     }
 
     const invalidHandler = () => {
         setInvalid(null);
+    }
+    
+    const confirmCancelHandler = () => {
+        setConfirm(null);
     }
 
     return(
         <div>
             {load === true && <Loader/>}
             {invalid && <Modal title={invalid.title} content={invalid.content} positionBox={'md:!left-[38%]'} onConfirm={invalidHandler} />}
+            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} positionBox={'md:!left-[38%]'} onConfirm={confirmHandler} onCancel={confirmCancelHandler} />}
             <div className="h-screen bg-merah flex flex-col items-center justify-center text-emas">
                 <h1 className=" text-[36px] mb-[8px] font-kapital-bold">Form Kehadiran</h1>
                 <p className="w-[200px] mb-[20px] text-[16px] text-emas text-center">Mohon konfirmasi sebelum tanggal <strong>22 Mei 2022</strong></p>
