@@ -12,6 +12,7 @@ const client = new SMTPClient({
 
 export default async function sendEmail(req, res) {
 	const {guests, filteredQr} = req.body;
+	const name = guests.name.charAt(0).toUpperCase() + guests.name.slice(1)
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -27,10 +28,25 @@ export default async function sendEmail(req, res) {
 							data:
 								`<html> 
 									<div> 
-										<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
+										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
+										<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
+										<p>
+										<br>
+										<p>Acara akan dilaksanakan pada</p>
+										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
+										<p>Pukul: <strong>07.30 WIB</strong></p>
+										<br>
+										<p>Mohon klik link <a href="https://www.weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
+										agar mengetahui presensi anda pada pernikahan nanti.</p>
+										<p>
+											Dimohon undangan dapat hadir tepat waktu demi kelancaran berlangsungnya acara.
+											<br>
+											Terimakasih
+										</p>
 									</div>
 									<div>
-										<img src=${guest.imgurQrCode}>
+										<img src=${guests.imgurQrCode}>
 									</div>
 								</html>`, alternative: true
 						}
@@ -55,7 +71,22 @@ export default async function sendEmail(req, res) {
 						data:
 							`<html> 
 								<div> 
-									<h1 style="color:Tomato;">Hai, ${guests.name}</h1>
+									<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
+									<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
+									<p>
+									<br>
+									<p>Acara akan dilaksanakan pada</p>
+									<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
+									<p>Pukul: <strong>07.30 WIB</strong></p>
+									<br>
+									<p>Mohon klik link <a href="https://www.weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+									disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
+									agar mengetahui presensi anda pada pernikahan nanti.</p>
+									<p>
+										Dimohon undangan dapat hadir tepat waktu demi kelancaran berlangsungnya acara.
+										<br>
+										Terimakasih
+									</p>
 								</div>
 								<div>
 									<img src=${guests.imgurQrCode}>
