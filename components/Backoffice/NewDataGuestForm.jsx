@@ -24,7 +24,7 @@ export default function NewDataGuestForm() {
         const {name, value} = e.target;
         setData({
             ...data,
-            [name]: value
+            [name]: value.toLowerCase()
         })
     }
     const onSubmitHandler = async(e) => {
