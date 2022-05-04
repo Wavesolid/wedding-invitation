@@ -175,7 +175,7 @@ export default function Profile() {
                             Putri dari Bp. Joko Purnomo &#38; Ibu Atiek Jaswati
                         </motion.span>
                         <InView triggerOnce="true" threshold="1" as="div" onChange={viewHandler3}>
-                            <a className='' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
+                            <a className='' href="https://www.instagram.com/neysaalmira/" target="_blank" rel="noreferrer noopener">
                                 <img src="/Icon/logo-ig.png" className='w-[20%] mx-auto my-[2rem]' alt="icon instagram" />
                             </a>
                         </InView>
@@ -194,7 +194,7 @@ export default function Profile() {
                         <motion.span animate={Animation8} className='mb-[8px] font-kapital-bold text-[14px] text-center'>
                             Putra dari Bp. Sri Sugihartono &#38; Ibu Rita Suryatami
                         </motion.span>
-                        <a className='mt-[2rem]' href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
+                        <a className='mt-[2rem]' href="https://www.instagram.com/gintano/" target="_blank" rel="noreferrer noopener">
                             <img src="/Icon/logo-ig.png" className='w-[20%] mx-auto' alt="icon instagram" />
                         </a>
                     </motion.div>

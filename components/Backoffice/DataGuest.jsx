@@ -13,9 +13,7 @@ export default function DataGuest(props){
         waNumber:'',
         totalPerson:'',
         seatNumber:'',
-        totalSouvenir:'',
-        isCheckIn:'',
-        checkInTime:''
+        totalSouvenir:''
     });
     const [dataCsv, setDataCsv] = useState([]);
     const [load,setLoad] = useState(false);
@@ -47,7 +45,6 @@ export default function DataGuest(props){
                 ...prevData,
                 [name] : value
             }
-            // console.log(updateData.name.toLowerCase())
             setGuestData(props.dataGuest.filter((data) => (
                 data.name.toLowerCase().includes(updateData.name.toLowerCase()) && 
                 data.email.toLowerCase().includes(updateData.email.toLowerCase()) && 
@@ -203,11 +200,12 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">No. Wa</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Person</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Konfirmasi Kehadiran</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Nomor Bangku</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Souvenir</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Status Checkin</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Checkin Date</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Email Send</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email Sent Status</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">QR Code</th>
                             <th scope="col" className="relative px-6 py-3">
                                 <span className="sr-only">Edit</span>
@@ -251,7 +249,7 @@ export default function DataGuest(props){
                                 </td>
                             </tr>
                                 {
-                                    guestData.map((dataGuests)=>(
+                                    guestData.sort((a,b) => a.checkInTime > b.checkInTime ? -1 : 1 ).map((dataGuests)=>(
                                             <DataGuestItem
                                                 onEdit={setEditHandler}
                                                 onSend={sendPerEmail}
@@ -260,12 +258,15 @@ export default function DataGuest(props){
                                                 email={dataGuests.email}
                                                 waNumber={dataGuests.waNumber}
                                                 totalPerson={dataGuests.totalPerson}
+                                                isFilled={dataGuests.isFilled}
                                                 seatNumber={dataGuests.seatNumber}
                                                 totalSouvenir = {dataGuests.totalSouvenir}
                                                 isCheckIn = {dataGuests.isCheckIn}
                                                 checkInTime = {dataGuests.checkInTime}
                                                 emailCount = {dataGuests.emailCount}
+                                                isEmailSent = {dataGuests.isEmailSent}
                                                 qr = {generateQrCode(dataGuests.name)}
+                                                imgurQrCode = {dataGuests.imgurQrCode}
                                                 refQr = {refQr}
                                             />
                                     ))

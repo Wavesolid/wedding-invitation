@@ -16,5 +16,7 @@ module.exports = {
   reactStrictMode: true,
   env: {
     BASE_URL: process.env.VERCEL_URL ? getDomain() : 'http://localhost:3000'
-  },
+  }, publicRuntimeConfig: {
+    NEXT_PUBLIC_GFORM: process.env.NEXT_PUBLIC_GFORM,
+  }
 }

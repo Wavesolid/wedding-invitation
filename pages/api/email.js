@@ -1,7 +1,7 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
+import path from 'path';
 import guestModel from '../../Model/GuestModel';
-import parse from "html-react-parser";
 
 const client = new SMTPClient({
 	user: process.env.USER,
@@ -16,7 +16,7 @@ export default async function sendEmail(req, res) {
 	try {
 		validateAdminLogin(req);
 		if(Array.isArray(guests)) {
-			await asyncForEach(guests, async(guest) => {		
+			await asyncForEach(guests, async(guest) => {
 				const message = await client.sendAsync({
 					text: '',
 					from: 'Gintano & Nesya',
@@ -30,21 +30,17 @@ export default async function sendEmail(req, res) {
 										<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
 									</div>
 									<div>
-										<img src="cid:my-image">
+										<img src=${guest.imgurQrCode}>
 									</div>
 								</html>`, alternative: true
-						},
-						{
-							path: `public/Photo/${guest.name}.png`,
-							type: 'image/png',
-							headers: { 'Content-ID': '<my-image>' },
-						},
+						}
 					],
 				});
 				await guestModel.findOneAndUpdate({
 					name : guest.name
 				}, {
-					emailCount: guest.emailCount + 1
+					emailCount: guest.emailCount + 1,
+					isEmailSent: "Sent"
 				});
 				messages.push(message)
 			});
@@ -62,23 +58,20 @@ export default async function sendEmail(req, res) {
 									<h1 style="color:Tomato;">Hai, ${guests.name}</h1>
 								</div>
 								<div>
-									<img src="cid:my-image">
+									<img src=${guests.imgurQrCode}>
 								</div>
-							</html>`, alternative: true
-					},
-					{
-						path: `public/Photo/${guests.name}.png`,
-						type: 'image/png',
-						headers: { 'Content-ID': '<my-image>' },
-					},
+							</html>`, alternative: true	
+					}
 				],
 			});
 			await guestModel.findOneAndUpdate({
 				name : guests.name
 			}, {
-				emailCount: guests.emailCount + 1
+				emailCount: guests.emailCount + 1,
+				isEmailSent: "Sent"
 			});
 			messages.push(message)
+
 		}
 
 		return res.status(201).json({

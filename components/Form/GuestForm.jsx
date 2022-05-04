@@ -11,8 +11,8 @@ export default function GuestForm({props})
 
     const [data, setData] = useState({
         totalPerson: props.totalPerson,
-        email: '',
-        waNumber : ''
+        email: props.email,
+        waNumber : props.waNumber
     });
 
     const router = useRouter();
@@ -72,7 +72,8 @@ export default function GuestForm({props})
             {load === true && <Loader/>}
             {invalid && <Modal title={invalid.title} content={invalid.content} positionBox={'md:!left-[38%]'} onConfirm={invalidHandler} />}
             <div className="h-screen bg-merah flex flex-col items-center justify-center text-emas">
-                <h1 className=" text-[36px] mb-[40px] font-kapital-bold">Form Kehadiran</h1>
+                <h1 className=" text-[36px] mb-[8px] font-kapital-bold">Form Kehadiran</h1>
+                <p className="w-[200px] mb-[20px] text-[16px] text-emas text-center">Mohon konfirmasi sebelum tanggal <strong>22 Mei 2022</strong></p>
                 <div className="w-[280px] h-[400px] bg-putih border-[8px] border-emas rounded-[12px]">
                     <form className="pl-4 pt-2" onSubmit={submitHandler}>
                         <div className="pt-[7.5px] nama-input">
@@ -98,13 +99,13 @@ export default function GuestForm({props})
                             <input className="w-[222px] h-7 border border-emas focus:outline-none rounded-full px-2 py-2 text-[12px] text-emas" value={data.waNumber}
                             onChange={onChangeHandler} type="tel" id="wa" name="waNumber"/>
                         </div>
-                        <div className="pt-[16px] notes">
-                            <p className="text-[8px] text-emas">*Email/Nomor Whatsapp wajib diisi karena kami akan mengirimkan barcode berisi nomor tempat duduk.</p>
-                        </div>
                         <div className="pt-[16px] content-center button-submit">
                             <button className="w-[222px] h-7 border rounded-[15px] border-emas text-emas m-auto transition duration-700 ease-in-out hover:bg-emas hover:text-putih submit-regist" type='submit'>
                                 <span className="text-sm ">Klik Disini</span>
                             </button>
+                        </div>
+                        <div className="pt-[16px]">
+                            <p className="text-[12px] text-emas">*Email/Nomor Whatsapp wajib diisi agar kami bisa mengirimkan barcode berisi nomor tempat duduk.</p>
                         </div>
                     </form>
                 </div>
