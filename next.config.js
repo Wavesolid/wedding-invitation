@@ -2,7 +2,7 @@ const getDomain = () => {
   if(process.env.NEXT_PUBLIC_VERCEL_ENV) {
     switch(process.env.NEXT_PUBLIC_VERCEL_ENV) {
       case 'production':
-        return ''
+        return 'https://weddingneysagintano.me'
       default:
         if(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG === 'wedding-invitation') {
           return 'https://wedding-bintaro.vercel.app'
