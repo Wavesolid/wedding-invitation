@@ -41,7 +41,7 @@ export async function getServerSideProps(context)
 
     if(data === null) {
         return {
-          notFound: true
+            notFound: true
         }
     
     } else if(data.isFilled === true || data.isFilled === false ) { 
