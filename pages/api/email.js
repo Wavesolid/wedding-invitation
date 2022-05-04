@@ -36,7 +36,7 @@ export default async function sendEmail(req, res) {
 										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 										<p>Pukul: <strong>07.30 WIB</strong></p>
 										<br>
-										<p>Mohon klik link <a href="https://www.weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+										<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
 										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 										agar mengetahui presensi anda pada pernikahan nanti.</p>
 										<p>
@@ -79,7 +79,7 @@ export default async function sendEmail(req, res) {
 									<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 									<p>Pukul: <strong>07.30 WIB</strong></p>
 									<br>
-									<p>Mohon klik link <a href="https://www.weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+									<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
 									disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 									agar mengetahui presensi anda pada pernikahan nanti.</p>
 									<p>
