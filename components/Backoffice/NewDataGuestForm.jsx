@@ -36,12 +36,12 @@ export default function NewDataGuestForm() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                ...data,
                 name: data.name.toLowerCase().trim(),
                 email: data.email.toLowerCase().trim(),
                 waNumber: data.waNumber.toLowerCase().trim(),
                 totalPerson: data.totalPerson.toLowerCase().trim(),
                 totalSouvenir: data.totalSouvenir.toLowerCase().trim(),
-                ...data
             })
         });
         const { status } = response;
