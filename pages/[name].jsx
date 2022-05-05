@@ -31,7 +31,7 @@ export async function getServerSideProps(context)
 {    
     const {name} = context.query;
     const regex = /-/g
-    console.log(name.replace(regex, '-'));
+    console.log(name.replace(regex, ' '));
     const response = await fetch(`${process.env.BASE_URL}/api/guest/${name.replace(regex, ' ')}`, {
         headers: {
             'Content-Type': 'application/json'
