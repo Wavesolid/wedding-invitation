@@ -12,7 +12,7 @@ const client = new SMTPClient({
 
 export default async function sendEmail(req, res) {
 	const {guests, filteredQr} = req.body;
-	const name = guests.name.charAt(0).toUpperCase() + guests.name.slice(1)
+	const name = guests.name.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
 	let messages = [];
 	try {
 		validateAdminLogin(req);
