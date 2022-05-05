@@ -61,8 +61,8 @@ export async function getServerSideProps(context)
 {
   const {name} = context.query;
   const playAudio = context.query.data !== undefined ? context.query.data : false ;
-  
-  const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`, {
+  const regex = /-/g
+  const response = await fetch(`${process.env.BASE_URL}/api/guest/${name.replace(regex, ' ')}`, {
     headers: {
         'Content-Type': 'application/json'
     }

@@ -25,8 +25,8 @@ QrCodes.getLayout = function getLayout(page) {
 
 export async function getServerSideProps(context) {
     const { name } = context.query;
-
-    const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`);
+    const regex = /-/g
+    const response = await fetch(`${process.env.BASE_URL}/api/guest/${name.replace(regex, ' ')}`);
     const responseJson = await response.json();
     const { data } = responseJson;
     if (data === null) {
