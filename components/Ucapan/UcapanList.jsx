@@ -1,5 +1,5 @@
 export default function UcapanList(props){
-
+    
     return(
         <div className="w-[100%] mb-[18px] bg-merah border-emas border-[5px] rounded-[5px] p-[8px] text-[14px] font-kapital-bold flex">
             <div className="flex flex-col ml-[18px] text-[14px]">
