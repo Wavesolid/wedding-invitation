@@ -1,6 +1,5 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
-import path from 'path';
 import guestModel from '../../Model/GuestModel';
 
 const client = new SMTPClient({
@@ -12,7 +11,7 @@ const client = new SMTPClient({
 
 export default async function sendEmail(req, res) {
 	const {guests} = req.body;
-	const name = guests.name.charAt(0).toUpperCase() + guests.name.slice(1)
+	const name = guests.name.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
 	const regex = /\s/g
 	let messages = [];
 	try {
@@ -27,27 +26,29 @@ export default async function sendEmail(req, res) {
 					attachment: [
 						{
 							data:
-								`<html> 
-									<div> 
-										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
-										<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
-										<p>
-										<br>
-										<p>Acara akan dilaksanakan pada</p>
-										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
-										<p>Pukul: <strong>07.30 WIB</strong></p>
-										<br>
-										<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name.replace(regex, '-')}"> disini </a> untuk melihat nomor meja yang 
-										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
-										agar mengetahui presensi anda pada pernikahan nanti.</p>
-										<p>
-											Dimohon undangan dapat hadir tepat waktu demi kelancaran berlangsungnya acara.
+								`<html>
+									<div style="border: 4px solid gray;padding: 16px;">
+										<div> 
+											<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
+											<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
+											<p>
 											<br>
-											Terimakasih
-										</p>
-									</div>
-									<div>
-										<img src=${guests.imgurQrCode}>
+											<p>Acara akan dilaksanakan pada</p>
+											<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
+											<p>Pukul: <strong>07.30 WIB</strong></p>
+											<br>
+											<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name.replace(regex, '-')}"> disini </a> untuk melihat nomor meja yang 
+											disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
+											agar mengetahui presensi anda pada pernikahan nanti.</p>
+											<p>
+												Dimohon undangan dapat hadir tepat waktu demi kelancaran berlangsungnya acara.
+												<br>
+												Terimakasih
+											</p>
+										</div>
+										<div style="text-align:center">
+											<img style="border: 3px solid grey;padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
+										</div>
 									</div>
 								</html>`, alternative: true
 						}
@@ -71,26 +72,28 @@ export default async function sendEmail(req, res) {
 					{
 						data:
 							`<html> 
-								<div> 
-									<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
-									<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
-									<p>
-									<br>
-									<p>Acara akan dilaksanakan pada</p>
-									<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
-									<p>Pukul: <strong>07.30 WIB</strong></p>
-									<br>
-									<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name.replace(regex, '-')}"> disini </a> untuk melihat nomor meja yang 
-									disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
-									agar mengetahui presensi anda pada pernikahan nanti.</p>
-									<p>
-										Dimohon undangan dapat hadir tepat waktu demi kelancaran berlangsungnya acara.
+								<div style="border: 4px solid gray;padding: 16px;">
+									<div> 
+										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
+										<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
+										<p>
 										<br>
-										Terimakasih
-									</p>
-								</div>
-								<div>
-									<img src=${guests.imgurQrCode}>
+										<p>Acara akan dilaksanakan pada</p>
+										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
+										<p>Pukul: <strong>07.30 WIB</strong></p>
+										<br>
+										<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name.replace(regex, '-')}"> disini </a> untuk melihat nomor meja yang 
+										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
+										agar mengetahui presensi anda pada pernikahan nanti.</p>
+										<p>
+											Dimohon undangan dapat hadir tepat waktu demi kelancaran berlangsungnya acara.
+											<br>
+											Terimakasih
+										</p>
+									</div>
+									<div style="text-align:center">
+										<img style="border: 3px solid grey;padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
+									</div>
 								</div>
 							</html>`, alternative: true	
 					}
