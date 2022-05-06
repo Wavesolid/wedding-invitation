@@ -53,7 +53,7 @@ export async function getServerSideProps(context)
 
   const playAudio = context.query.data !== undefined ? context.query.data : false ;
 
-  const ucapanResponse = await fetch(`${process.env.BASE_URL}/api/UcapanHandler`,{
+  const ucapanResponse = await fetch(`${process.env.BASE_URL}/api/ucapan/${name}`,{
     method: 'GET'
   });
 

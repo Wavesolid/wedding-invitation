@@ -5,10 +5,7 @@ import getConfig from "next/config";
 
 export default function Ucapan({name,ucapan}) {
     const  { publicRuntimeConfig } = getConfig();
-    const handlerClick = () => {
-        window.open('https://www.google.com');
-    }
-    
+
     return(
         <div className="bg-putih text-emas pt-[6rem] px-[12px]">
             <div className="bg-merah px-[12px] border-[8px] border-emas rounded-[5px] pb-[24px]">
@@ -33,7 +30,7 @@ export default function Ucapan({name,ucapan}) {
                 <div className="flex flex-col items-center w-full h-[380px] bg-putih border-y-[3px] border-emas py-[18px] text-emas overflow-scroll overflow-x-hidden" >
                     {
                         ucapan.filter(ucapans => ucapans.message !== "").map((ucapans)=>(
-                            <UcapanList key={ucapans.name} name={ucapans.displayName} domisili={ucapans.domisili} message={ucapans.message} />
+                            <UcapanList key={ucapans.guestName} name={ucapans.guestName} domisili={ucapans.domisili} message={ucapans.message} />
                         ))
                     }
                     
