@@ -77,7 +77,7 @@ export default function Surat()
                 <motion.div animate={animation2} className='flex justify-around items-center flex-col font-kapital-bold'>
                     <span className='text-[14px] text-emas'>Bismillahirahmanirahim</span>
                     <span className='text-center my-[16px] mx-[20px] text-[14px] text-emas'>
-                        “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, 
+                        “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, 
                         supaya kamu merasa tenang dan tentram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
                         Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir”
                     </span>
