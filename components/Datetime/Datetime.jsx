@@ -170,7 +170,7 @@ export default function Datetime({name}){
                                 <h1 className='text-[24px]'>Permohonan Maaf</h1>
                             </InView>
                             <motion.p animate={animation4} className='text-[14px] my-4'>Dalam Keterbatasan di kondisi pandemi saat ini, kami memohon maaf
-                                tidak dapat mengundang secara langsung Bapak/Ibu/Saudara/i sekalian
+                                belum bisa mengundang secara langsung Bapak/Ibu/Saudara/i sekalian
                                 ke acara pernikahan putra putri kami. Tanpa mengurangi rasa hormat,
                                 izinkan kami mengundang Bapak/Ibu/Saudara/i secara virtual melalui
                                 link yang sudah disiapkan.

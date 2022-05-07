@@ -10,7 +10,7 @@ export default function UcapanForm(props) {
     }).indexOf(props.name)
 
     const [data, setData] = useState({
-        displayName: '',
+        guestName: props.name,
         domisili: '',
         message: ''
     });
@@ -30,9 +30,7 @@ export default function UcapanForm(props) {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const name = props.name;
-
-        const Validation = SchemaValidation(data.displayName, data.domisili, data.message)
+        const Validation = SchemaValidation(data.domisili, data.message)
 
         if(Validation.error !== undefined) {
             setError({
@@ -45,13 +43,12 @@ export default function UcapanForm(props) {
 
         setLoad(true);
 
-        const response = await fetch('/api/UcapanHandler', {
-            method: 'PUT',
+        const response = await fetch(`/api/ucapan/${props.name}`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name,
                 ...data
             })
         });
@@ -60,9 +57,18 @@ export default function UcapanForm(props) {
 
         setLoad(false);
         
+        if(responseJson.messages === "Anda sudah menulis ucapan"){
+            setError({
+                title: "Messages",
+                content: responseJson.messages
+            });
+
+            return;
+        }
+
         setSuccess({
-            title: "Berhasil terkirim",
-            content: "Ucapan anda sudah terkirim, terima kasih !"
+            title: "Message",
+            content: responseJson.messages
         });
         
     }
@@ -73,7 +79,7 @@ export default function UcapanForm(props) {
 
     const successHandler = () => {
         setSuccess(null);
-        location.reload()
+        location.reload();
     }
 
 
@@ -86,7 +92,7 @@ export default function UcapanForm(props) {
             <div className="flex flex-col">
                 <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
-                        <input placeholder="Nama" name="displayName" onChange={onChangeHandler} className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]" type="text" />
+                        <input placeholder="Nama" name="guestName" disabled value={data.guestName} className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]" type="text" />
                         <input placeholder="Domisili" onChange={onChangeHandler} name="domisili" className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]"  type="text" />
                         <textarea placeholder="Doa & Ucapan" onChange={onChangeHandler} name="message" className="w-full z-[1] h-[100px] mb-[8px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas" type="text" id="ucapan" >
                         </textarea>
@@ -97,13 +103,6 @@ export default function UcapanForm(props) {
                         <img src="/Icon/bunga-4.png" className="w-[50%] mt-[-109px] mb-[-24px] ml-[-12px]" />
                     </form>
             </div>
-            
-
-            {/* {props.ucapan[index].message !== ""  && 
-                <div className="flex items-center justify-center font-kapital-bold h-[100px]">
-                    <span className="text-[20px]">Terima kasih sudah menulis ucapan</span>
-                </div>
-            } */}
             
         </div>
     )

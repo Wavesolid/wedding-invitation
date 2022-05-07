@@ -3,11 +3,7 @@ import mongose from 'mongoose';
 const Schema = mongose.Schema;
 
 const Ucapan = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    displayName: {
+    guestName: {
         type: String,
         required: true
     },

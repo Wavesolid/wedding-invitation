@@ -68,7 +68,7 @@ export async function getServerSideProps(context)
     }
   });
 
-  const ucapanResponse = await fetch(`${process.env.BASE_URL}/api/UcapanHandler`,{
+  const ucapanResponse = await fetch(`${process.env.BASE_URL}/api/ucapan/${name}`,{
     method: 'GET'
   });
 
