@@ -19,8 +19,8 @@ export default function GuestForm({props})
         totalSouvenir: props.totalSouvenir,
         seatNumber: props.seatNumber
     });
-    const arrayName = props.name.split(" ");
-    const formatedName = arrayName.map((x) => x[0].toUpperCase()+x.slice(1)).join(" ");
+    const name = props.name.split(" ");
+    const formatedName = name.map((x) => x[0].toUpperCase()+x.slice(1)).join(" ");
     const router = useRouter();
 
     const onChangeHandler = (e) => {
