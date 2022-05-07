@@ -5,7 +5,6 @@ import getConfig from "next/config";
 
 export default function Ucapan({name,ucapan}) {
     const  { publicRuntimeConfig } = getConfig();
-
     return(
         <div className="bg-putih text-emas pt-[6rem] px-[12px]">
             <div className="bg-merah px-[12px] border-[8px] border-emas rounded-[5px] pb-[24px]">
