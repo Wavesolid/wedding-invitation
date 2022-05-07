@@ -5,7 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import Location from '../Location/Location.jsx';
 
 
-export default function EntryForm({name,isFilled}){
+export default function EntryForm({name,isFilled, slug}){
 
     const {ref,inView} = useInView({
         threshold:1,
@@ -73,7 +73,7 @@ export default function EntryForm({name,isFilled}){
                                 <span className="text-[14px] ">22 Mei 2022</span>
                             </div>
                         </div>
-                        <Link href={`/form/${name}`}>
+                        <Link href={`/form/${slug}`}>
                         <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-putih hover:text-emas transition duration-300" >
                             <span>Klik Disini</span>
                         </button>
