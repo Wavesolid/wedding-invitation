@@ -1,9 +1,5 @@
 import { SMTPClient } from 'emailjs';
 import { getSession } from 'next-auth/react';
-<<<<<<< HEAD
-=======
-import path from 'path';
->>>>>>> eaa8fbfdcd7570e5d37dd87ee19259a1dc909441
 import guestModel from '../../Model/GuestModel';
 
 const client = new SMTPClient({
@@ -14,13 +10,9 @@ const client = new SMTPClient({
 });
 
 export default async function sendEmail(req, res) {
-<<<<<<< HEAD
 	const {guests} = req.body;
 	const name = guests.name.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
 	const regex = /\s/g
-=======
-	const {guests, filteredQr} = req.body;
->>>>>>> eaa8fbfdcd7570e5d37dd87ee19259a1dc909441
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -34,7 +26,6 @@ export default async function sendEmail(req, res) {
 					attachment: [
 						{
 							data:
-<<<<<<< HEAD
 								`<html>
 									<div style="border: 4px solid gray;padding: 16px;">
 										<div> 
@@ -58,14 +49,6 @@ export default async function sendEmail(req, res) {
 										<div style="text-align:center">
 											<img style="border: 3px solid grey;padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
 										</div>
-=======
-								`<html> 
-									<div> 
-										<h1 style="color:Tomato;">Hai, ${guest.name}</h1>
-									</div>
-									<div>
-										<img src=${guest.imgurQrCode}>
->>>>>>> eaa8fbfdcd7570e5d37dd87ee19259a1dc909441
 									</div>
 								</html>`, alternative: true
 						}
@@ -89,7 +72,6 @@ export default async function sendEmail(req, res) {
 					{
 						data:
 							`<html> 
-<<<<<<< HEAD
 								<div style="border: 4px solid gray;padding: 16px;">
 									<div> 
 										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
@@ -112,13 +94,6 @@ export default async function sendEmail(req, res) {
 									<div style="text-align:center">
 										<img style="border: 3px solid grey;padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
 									</div>
-=======
-								<div> 
-									<h1 style="color:Tomato;">Hai, ${guests.name}</h1>
-								</div>
-								<div>
-									<img src=${guests.imgurQrCode}>
->>>>>>> eaa8fbfdcd7570e5d37dd87ee19259a1dc909441
 								</div>
 							</html>`, alternative: true	
 					}
@@ -158,8 +133,4 @@ async function asyncForEach(array, callback) {
 	for (let index = 0; index < array.length; index++) {
 		await callback(array[index], index, array);
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> eaa8fbfdcd7570e5d37dd87ee19259a1dc909441
