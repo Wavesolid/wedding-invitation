@@ -8,12 +8,11 @@ import { useState } from 'react';
 export default function Mulai(props)
 {
     const [guest, setGuest] = useState(
-        props.responseJson.data.name
+        props.responseJson.data
     );
-
     return (
         <div className={styles.columnMain}>
-            <Cover name={guest}></Cover>
+            <Cover name={guest.name} slug={guest.slug}></Cover>
         </div>
     );
 }
@@ -30,9 +29,7 @@ Mulai.getLayout = function getLayout(page) {
 export async function getServerSideProps(context)
 {    
     const {name} = context.query;
-    const regex = /-/g
-    console.log(name.replace(regex, ' '));
-    const response = await fetch(`${process.env.BASE_URL}/api/guest/${name.replace(regex, ' ')}`, {
+    const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`, {
         headers: {
             'Content-Type': 'application/json'
         }

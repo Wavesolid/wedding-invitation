@@ -28,6 +28,10 @@ export default function Home(props)
       props.responseJson.data.isFilled
     );
 
+    const [slug, setSlug] = useState(
+      props.responseJson.data.slug
+    );
+
     const [play, setPlay] = useState(
       props.playAudio
     )
@@ -38,7 +42,7 @@ export default function Home(props)
             <Surat/>
             <Profile/>
             <Datetime name={guest}/>
-            <EntryForm name={guest} isFilled={isFilled}/>
+            <EntryForm name={guest} isFilled={isFilled} slug={slug}/>
             <Ucapan name={guest} ucapan={ucapan}/>
             <Gallery/>
             <Protokol name={guest} />
@@ -61,8 +65,7 @@ export async function getServerSideProps(context)
 {
   const {name} = context.query;
   const playAudio = context.query.data !== undefined ? context.query.data : false ;
-  const regex = /-/g
-  const response = await fetch(`${process.env.BASE_URL}/api/guest/${name.replace(regex, ' ')}`, {
+  const response = await fetch(`${process.env.BASE_URL}/api/guest/${name}`, {
     headers: {
         'Content-Type': 'application/json'
     }
