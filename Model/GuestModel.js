@@ -7,6 +7,9 @@ const Guest = new Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String
+    },
     totalPerson: {
         type: Number,
         required: true
