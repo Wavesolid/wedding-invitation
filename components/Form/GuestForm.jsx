@@ -19,7 +19,8 @@ export default function GuestForm({props})
         totalSouvenir: props.totalSouvenir,
         seatNumber: props.seatNumber
     });
-
+    const arrayName = props.name.split(" ");
+    const formatedName = arrayName.map((x) => x[0].toUpperCase()+x.slice(1)).join(" ");
     const router = useRouter();
 
     const onChangeHandler = (e) => {
@@ -100,7 +101,7 @@ export default function GuestForm({props})
                     <form className="pl-4 pt-2" onSubmit={submitHandler}>
                         <div className="pt-[7.5px] nama-input">
                             <label className="text-emas text-[12px]" htmlFor="nama">Nama</label>
-                            <input className="w-[222px] h-[28px] border border-emas focus:outline-none rounded-full text-[12px] px-2 py-2 text-emas" disabled value={props.name} type="text" id="nama"/>
+                            <input className="w-[222px] h-[28px] border border-emas focus:outline-none rounded-full text-[12px] px-2 py-2 text-emas" disabled value={formatedName} type="text" id="nama"/>
                         </div>
                         <div className="pt-[16px] presence-selector">
                             <label className="text-emas pr-[9px] text-[12px]" htmlFor="presence">Jumlah Hadir</label>
