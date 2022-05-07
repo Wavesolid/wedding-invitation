@@ -2,6 +2,10 @@ import connectDB from '../../../helper/connectDB';
 import GuestModel from '../../../Model/GuestModel';
 import guestModel from '../../../Model/GuestModel';
 
+const slug = (string) => {
+    const regex = /\s/g;
+    return string.replace(regex, '-').toLowerCase();
+}
 async function guest(req, res)
 {
     switch(req.method) 
@@ -22,7 +26,11 @@ async function guest(req, res)
                             message: 'Nama tersebut sudah terdaftar.'
                         })
                     } 
-                    await new GuestModel(req.body).save();
+                    await new GuestModel({
+                        ...req.body,
+                        slug: slug(req.body.name)
+                    }).save();
+
                     return res.status(201).json({
                         message: `Tamu atas nama ${req.query.guest} berhasil dibuat.`
                     })
