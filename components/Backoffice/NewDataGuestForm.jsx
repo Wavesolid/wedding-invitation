@@ -46,6 +46,7 @@ export default function NewDataGuestForm() {
         });
         const { status } = response;
         const responseJson = await response.json();
+        console.log(responseJson)
         setLoad(false);
         if(status === 200) {
             setInvalid({
