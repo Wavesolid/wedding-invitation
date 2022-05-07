@@ -12,7 +12,7 @@ async function guest(req, res)
     {
         case 'GET': 
             {
-                const guest = await guestModel.findOne({name: req.query.guest}).exec();
+                const guest = await guestModel.findOne({slug: req.query.guest}).exec();
                 return res.status(201).json({
                     data: guest
                 })

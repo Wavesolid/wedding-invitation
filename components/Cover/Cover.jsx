@@ -2,7 +2,7 @@ import styles from './Cover.module.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-export default function Cover({name})
+export default function Cover({name, slug})
 {  
 
     return (
@@ -49,8 +49,8 @@ export default function Cover({name})
                     >
                         <img src="/Icon/Arrow.svg"></img>
                     </motion.div>
-                    <Link href= {{pathname:`${name === undefined ? `/home` : `/home/${name}` }`,query:{data:true}}}
-                        as={`${name === undefined ? `/home` : `/home/${name}` }`}
+                    <Link href= {{pathname:`${name === undefined ? `/home` : `/home/${slug}` }`,query:{data:true}}}
+                        as={`${name === undefined ? `/home` : `/home/${slug}` }`}
                     >
                         <button type='button' className={styles.buttonCover}>
                             <span>Open Invitation</span>
