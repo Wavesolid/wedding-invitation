@@ -17,7 +17,7 @@ async function UcapanHandler(req, res)
         case 'POST':
             {
                 const guest = await GuestModel.findOne({name: req.query.ucapan}).exec();
-                console.log(guest);
+                console.log( req.query.ucapan);
                 try{
                     if(guest) {
                         const {guestName} = req.body;
