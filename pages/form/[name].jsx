@@ -40,12 +40,12 @@ export async function getServerSideProps(context)
       return {
         notFound: true
       }
-    // } else if(data.isFilled === true || data.isFilled === false ) { 
-    //   return {
-    //     redirect: {
-    //       destination: `/success/${data.name}`
-    //     }
-    //   }
+    } else if(data.isFilled === true ) { 
+      return {
+        redirect: {
+          destination: `/success/${data.name}`
+        }
+      }
     } else {
       return {
         props:{

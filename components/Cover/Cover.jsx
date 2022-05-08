@@ -35,7 +35,7 @@ export default function Cover({name, slug})
                         Kepada yth Bapak/Ibu/Saudara/i
                     </span>
                     <span className={styles.nameGuest}>
-                        {name === undefined ? ' ' :  name.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) } 
+                        {name === undefined ? ' ' : name } 
                     </span>
                     <span className={styles.alertGuest}>
                         {name === undefined ? ' ' : "*mohon maaf apabila ada kesalahan kata dan gelar" } 

@@ -24,7 +24,7 @@ export default function Ucapan({name,ucapan}) {
                     </div>
                 }
             </div>
-            
+            { ucapan.length > 0 && 
             <div className="flex flex-col items-center mt-[6rem]">
                 <div className="flex flex-col items-center w-full h-[380px] bg-putih border-y-[3px] border-emas py-[18px] text-emas overflow-scroll overflow-x-hidden" >
                     {
@@ -36,6 +36,8 @@ export default function Ucapan({name,ucapan}) {
                 </div>
 
             </div>
+            }
+
         </div>
     )
 }
