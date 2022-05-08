@@ -37,6 +37,7 @@ export default function NewDataGuestForm() {
             },
             body: JSON.stringify({
                 ...data,
+                name: data.name.trim(),
                 email: data.email.toLowerCase().trim(),
                 waNumber: data.waNumber.toLowerCase().trim(),
                 totalPerson: data.totalPerson.toLowerCase().trim(),
