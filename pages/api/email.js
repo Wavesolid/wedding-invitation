@@ -27,7 +27,10 @@ export default async function sendEmail(req, res) {
 						{
 							data:
 								`<html>
-									<div style="border: 4px solid gray;padding: 16px;">
+									<div style="border: 16px solid #A28A4A;padding:16px;background-color: #610606;color: #DED6C5;">
+										<div style="text-align:center">
+											<img src="https://i.imgur.com/iX94zuH.png">
+										</div>
 										<div> 
 											<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
 											<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
@@ -37,7 +40,7 @@ export default async function sendEmail(req, res) {
 											<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 											<p>Pukul: <strong>07.30 WIB</strong></p>
 											<br>
-											<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name.replace(regex, '-')}"> disini </a> untuk melihat nomor meja yang 
+											<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
 											disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 											agar mengetahui presensi anda pada pernikahan nanti.</p>
 											<p>
@@ -47,7 +50,7 @@ export default async function sendEmail(req, res) {
 											</p>
 										</div>
 										<div style="text-align:center">
-											<img style="border: 3px solid grey;padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
+											<img style="padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
 										</div>
 									</div>
 								</html>`, alternative: true
@@ -72,8 +75,11 @@ export default async function sendEmail(req, res) {
 					{
 						data:
 							`<html> 
-								<div style="border: 4px solid gray;padding: 16px;">
-									<div> 
+								<div style="border: 16px solid #A28A4A;padding:16px;background-color: #610606;color: #DED6C5;">
+									<div style="text-align:center">
+										<img style="width:10%"  src="https://i.imgur.com/iX94zuH.png">
+									</div>
+									<div color: #DED6C5;> 
 										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
 										<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
 										<p>
@@ -82,7 +88,7 @@ export default async function sendEmail(req, res) {
 										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 										<p>Pukul: <strong>07.30 WIB</strong></p>
 										<br>
-										<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name.replace(regex, '-')}"> disini </a> untuk melihat nomor meja yang 
+										<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
 										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 										agar mengetahui presensi anda pada pernikahan nanti.</p>
 										<p>
@@ -92,7 +98,7 @@ export default async function sendEmail(req, res) {
 										</p>
 									</div>
 									<div style="text-align:center">
-										<img style="border: 3px solid grey;padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
+										<img style="padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
 									</div>
 								</div>
 							</html>`, alternative: true	
