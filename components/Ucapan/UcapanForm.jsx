@@ -92,7 +92,8 @@ export default function UcapanForm(props) {
             <div className="flex flex-col">
                 <span className="font-sambung text-[36px] self-start mb-[16px] mt-[24px]">Doa dan Ucapan</span>
                     <form onSubmit={submitHandler} className="flex flex-col">
-                        <input placeholder="Nama" name="guestName" disabled value={data.guestName} className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]" type="text" />
+                        <input placeholder="Nama" name="guestName" disabled value={data.guestName} className="w-full h-[36px] mb-[4px]  bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]" type="text" />
+                        <span className="text-emas mb-[16px] text-[12px]">*Nama diatas diambil dari nama undangan dan tidak bisa diganti</span>
                         <input placeholder="Domisili" onChange={onChangeHandler} name="domisili" className="w-full h-[36px] mb-[16px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas pb-[1px]"  type="text" />
                         <textarea placeholder="Doa & Ucapan" onChange={onChangeHandler} name="message" className="w-full z-[1] h-[100px] mb-[8px] bg-putih border-[3px] border-emas pl-[12px] text-emas rounded-[15px] focus:outline-[0] placeholder:text-emas" type="text" id="ucapan" >
                         </textarea>
