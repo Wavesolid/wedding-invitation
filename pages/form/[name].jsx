@@ -43,7 +43,7 @@ export async function getServerSideProps(context)
     } else if(data.isFilled === true ) { 
       return {
         redirect: {
-          destination: `/success/${data.name}`
+          destination: `/success/${data.slug}`
         }
       }
     } else {

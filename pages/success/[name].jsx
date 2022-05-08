@@ -52,7 +52,7 @@ export async function getServerSideProps(context)
     } else if(data.isFilled === false) {
         return{
             redirect: {
-                destination: `/form/${data.name}`
+                destination: `/form/${data.slug}`
             }
         }
     }

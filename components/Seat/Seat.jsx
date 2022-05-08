@@ -4,7 +4,7 @@ export default function Seat({props})
 {
     const { totalSouvenir } = props.data;
     const { seatNumber } = props.data;
-    const { name } = props.data;
+    const { slug } = props.data;
 
     return (
         <div className="h-screen bg-merah flex flex-col items-center justify-center">
@@ -23,7 +23,7 @@ export default function Seat({props})
             <div className='rounded-lg bg-merah p-[24px] my-0 mx-auto flex items-center justify-between text-putih'>
                 <div className="w-[50%]">Tunjukan barcode ini ke penerima tamu untuk mengkonfirmasi kehadiran anda</div>
                 <div className='bg-white p-[8px]'>
-                    <QrCodeGenerator name={name} size={100}/>
+                    <QrCodeGenerator slug={slug} size={100}/>
                 </div>
             </div>
         </div>
