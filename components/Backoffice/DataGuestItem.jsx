@@ -14,7 +14,8 @@ export default function DataGuestItem(props){
         totalSouvenir: props.totalSouvenir,
         isCheckIn: props.isCheckIn,
         checkInTime: props.checkInTime,
-        imgurQrCode: props.imgurQrCode
+        imgurQrCode: props.imgurQrCode,
+        slug: props.slug
     })
     const qrs = useRef();   
     useEffect(() => {
@@ -41,6 +42,7 @@ export default function DataGuestItem(props){
     }
 
     const dateFormat = new Date(guestEdit.checkInTime).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+    const link = `${process.env.BASE_URL}/${guestEdit.slug}`;
 
     return(
         <tr>
@@ -67,6 +69,7 @@ export default function DataGuestItem(props){
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isCheckIn}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{dateFormat}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isEmailSent}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{link}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500" ref={qrs}>
                 <img src={guestEdit.imgurQrCode} alt="qrcode"/>
             </td>

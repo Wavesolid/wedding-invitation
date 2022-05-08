@@ -43,18 +43,18 @@ export async function getServerSideProps(context)
             notFound: true
         }
     
-    } else if(data.isFilled === true || data.isFilled === false ) { 
+    } else if(data.isFilled === true) { 
         return {
             props:{
                 responseJson
             }
         }
+    } else if(data.isFilled === false) {
+        return{
+            redirect: {
+                destination: `/form/${data.name}`
+            }
+        }
     }
-    // } else if(data.isFilled === false) {
-    //     return{
-    //         redirect: {
-    //             destination: `/form/${data.name}`
-    //         }
-    //     }
-    // }
+    
 }
