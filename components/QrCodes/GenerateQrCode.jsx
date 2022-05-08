@@ -8,9 +8,10 @@ export default function QrContextGenerator(props)
         return (
                 <Qr
                     size={props.size}
-                    id={props.name}
-                    value={`${url}/${props.name}`}
-                />
+                    id={props.slug}
+                    // value={`${url}/${props.slug}`}
+                    value={`${url}/`}
+                    />
         )
 }
 

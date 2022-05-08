@@ -37,6 +37,7 @@ export default function NewDataGuestForm() {
             },
             body: JSON.stringify({
                 ...data,
+                name: data.name.trim(),
                 email: data.email.toLowerCase().trim(),
                 waNumber: data.waNumber.toLowerCase().trim(),
                 totalPerson: data.totalPerson.toLowerCase().trim(),
@@ -91,7 +92,6 @@ export default function NewDataGuestForm() {
                         <input className="p-2 font-[inherit] rounded-[6px] border-[1px] border-[#ccc] w-[20rem] max-w-full" name='waNumber' value={data.waNumber} onChange={onChangeHandler}></input>
                     </div>
                     <div className="flex flex-wrap gap-4 mb-4 text-left">
-                        <button className='text-red-500 hover:text-red-300 font-bold' >Cancel</button>
                         <button className='text-green-500 hover:text-green-300 font-bold' type='submit'>Add Guest</button>
                     </div>
                 </form>

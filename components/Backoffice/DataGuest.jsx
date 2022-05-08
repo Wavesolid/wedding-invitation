@@ -13,7 +13,8 @@ export default function DataGuest(props){
         waNumber:'',
         totalPerson:'',
         seatNumber:'',
-        totalSouvenir:''
+        totalSouvenir:'',
+        isCheckIn: ''
     });
     const [dataCsv, setDataCsv] = useState([]);
     const [load,setLoad] = useState(false);
@@ -45,6 +46,7 @@ export default function DataGuest(props){
                 ...prevData,
                 [name] : value
             }
+            console.log(updateData);
             setGuestData(props.dataGuest.filter((data) => (
                 data.name.toLowerCase().includes(updateData.name.toLowerCase()) && 
                 data.email.toLowerCase().includes(updateData.email.toLowerCase()) && 
@@ -52,8 +54,8 @@ export default function DataGuest(props){
                 data.totalPerson.toString().includes(updateData.totalPerson.toLowerCase()) &&
                 data.seatNumber.toString().includes(updateData.seatNumber.toLowerCase()) &&
                 data.totalSouvenir.toString().includes(updateData.totalSouvenir.toLowerCase()) &&
-                data.isCheckIn.toLowerCase().includes(updateData.isCheckIn.toLowerCase()) &&
-                data.checkInTime.toString().includes(updateData.checkInTime.toLowerCase()))))
+                data.isCheckIn.toLowerCase().includes(updateData.isCheckIn.toLowerCase())
+            )))
             return updateData;
         })  
         
@@ -206,6 +208,7 @@ export default function DataGuest(props){
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Status Checkin</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Checkin Date</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email Sent Status</th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">link</th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">QR Code</th>
                             <th scope="col" className="relative px-6 py-3">
                                 <span className="sr-only">Edit</span>
@@ -268,6 +271,7 @@ export default function DataGuest(props){
                                                 qr = {generateQrCode(dataGuests.name)}
                                                 imgurQrCode = {dataGuests.imgurQrCode}
                                                 refQr = {refQr}
+                                                slug ={dataGuests.slug}                                           
                                             />
                                     ))
                                 }

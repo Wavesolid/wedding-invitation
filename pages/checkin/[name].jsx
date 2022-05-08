@@ -32,12 +32,6 @@ export async function getServerSideProps(context) {
         return {
             notFound: true
         }
-    // } else if (data.isFilled === false) {
-    //     return {
-    //         redirect: {
-    //             destination: `/index/${data.name}`
-    //         }
-    //     }
     } else {
         return {
             props: {
