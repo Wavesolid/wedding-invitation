@@ -247,6 +247,15 @@ export default function DataGuest(props){
                                 <td>
 
                                 </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
                                 <td className='flex justify-center'>
                                     <button className='text-indigo-600 hover:text-indigo-900' onClick={onResetHandler}>Reset</button>
                                 </td>
