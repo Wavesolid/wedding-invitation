@@ -76,7 +76,7 @@ export default function DataGuestItem(props){
                 <div className="text-sm text-center text-gray-900">{guestEdit.email}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-center">
-                <a className="text-indigo-600 hover:text-indigo-900" href={`https://api.whatsapp.com/send?text=${waMsg}&phone=${guestEdit.waNumber}`}> {guestEdit.waNumber} </a>
+                <a className="text-indigo-600 hover:text-indigo-900" target="_blank" rel="noreferrer" href={`https://api.whatsapp.com/send?text=${waMsg}&phone=${guestEdit.waNumber}`}> {guestEdit.waNumber} </a>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalPerson}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
