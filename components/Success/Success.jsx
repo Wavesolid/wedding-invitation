@@ -26,7 +26,8 @@ export default function Success(props){
                 </div>
             </div>
 
-            <h2 className="text-[18px] font-medium text-center w-[340px] mt-4">Nomor Bangku akan berupa Qr Code dan dikirim melalui email atau nomor whatsapp yang telah diberikan.</h2>
+            <h2 className="text-[18px] font-medium text-center w-[340px] mt-4">Nomor meja akan dikirim berupa qr code melalui email atau nomor whatsapp yang telah diberikan.</h2>
+            <h2 className="text-[18px] font-medium text-center w-[340px] mt-4">Mohon hadir sebelum waktu yang ditentukan untuk kelancaran acara.</h2>
         </div>
     )
 }
