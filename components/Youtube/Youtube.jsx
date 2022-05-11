@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Youtube(){
 
@@ -33,20 +34,15 @@ export default function Youtube(){
 
     },[inView])
 
-    const handlerClick = () => {
-        window.open('www.google.com')
-    }
-
     return(
         <div className="flex flex-col items-center font-kapital-bold text-emas">
             <motion.span animate={animation} className="text-[24px] mt-[26px] mb-[8px]">Live Streaming</motion.span>
             <motion.span animate={animation} className="text-[16px]">Akad <span className='font-tanda-huruf'>&#38;</span> Upacara Panggih </motion.span>
-            <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] my-[24px] hover:bg-putih hover:text-emas transition duration-300" onClick={handlerClick}>
-                    <span>Klik Disini</span>
-                </button>
-            <div ref={ref} className="border-8 rounded-[8px] border-emas mb-[18px] w-[316px] h-[222px] flex items-center justify-center">
-                {/* <iframe width="300" height="206" src="https://www.youtube.com/embed/citnw038UQ0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
-                <span className='text-emas text-[36px] font-kapital'>Coming Soon!</span>
+            <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] my-[24px] hover:bg-putih hover:text-emas transition duration-300">
+                <a href="https://youtu.be/7Q459zopocE" target="_blank" rel="noopener noreferrer"><span>Klik Disini</span></a>
+            </button>
+            <div ref={ref} className="border-8 rounded-[8px] border-emas mb-[18px] w-[320px] h-[180px] flex items-center justify-center">
+                <Image width={320} height={180} src="/Photo/thumbnail.jpg"></Image>
             </div> 
         </div>
     )
