@@ -2,7 +2,7 @@ export default function Success(props){
     return(
         <div className="h-screen bg-putih flex flex-col items-center justify-center text-merah">
             <h1 className="text-[36px] font-bold text-center mb-[18px]">Terima Kasih!</h1>
-            <h2 className="text-[18px] font-medium w-[340px] text-center ">Kami senantiasa senang menunggu kehadiran anda pada acara</h2>
+            <h2 className="text-[18px] font-medium w-[340px] text-center ">Kami dengan senang hati menunggu kehadiran anda </h2>
             
             <span className="font-sambung text-[36px] text-center mt-4">Wedding <br/> Neysa <span className="font-tanda-huruf">&</span> Gintano</span>
 
