@@ -4,7 +4,7 @@ export default function Success(props){
             <h1 className="text-[36px] font-bold text-center mb-[18px]">Terima Kasih!</h1>
             <h2 className="text-[18px] font-medium w-[340px] text-center ">Kami dengan senang hati menunggu kehadiran anda </h2>
             
-            <span className="font-sambung text-[36px] text-center mt-4">Wedding <br/> Neysa <span className="font-tanda-huruf">&</span> Gintano</span>
+            <span className="font-sambung text-[36px] text-center mt-4"> The Wedding of <br/> Neysa <span className="font-tanda-huruf">&</span> Gintano</span>
 
             <div className='bg-merah border-[5px] w-[88%] rounded-[5px] p-[12px] border-emas flex flex-col items-center font-kapital-bold'>
                 <div className='flex flex-col items-center w-[100%] text-emas'>
