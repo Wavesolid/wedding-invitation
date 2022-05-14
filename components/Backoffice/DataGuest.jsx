@@ -192,71 +192,76 @@ export default function DataGuest(props){
                         <button className='text-indigo-700 hover:text-indigo-400 font-bold' onClick={sendEmail}>Send Email</button>
                     </div>
                 </div>
-                <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
+
+                <div className='overflow-x-auto h-[70vh]'>
+                    <table className="relative min-w-full divide-y divide-gray-200">
+                        <thead className="">
                             <tr>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Name</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">No. Wa</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Person</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Konfirmasi Kehadiran</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Nomor Bangku</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Total Souvenir</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Status Checkin</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Checkin Date</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Email Sent Status</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">link</th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 text-center uppercase tracking-wider">QR Code</th>
-                            <th scope="col" className="relative px-6 py-3">
-                                <span className="sr-only">Edit</span>
-                            </th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Name</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Email</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">No. Wa</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Total Person</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Konfirmasi Kehadiran</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Nomor Bangku</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Total Souvenir</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Status Checkin</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Checkin Date</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">Email Sent Status</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">link</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium">QR Code</th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium"></th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium"></th>
+                                <th scope="col" className="sticky top-0 py-6 bg-gray-50 text-gray-500 text-xs uppercase font-medium"></th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
                             <tr>
-                                <td>
-                                    <input placeholder='Search by Name' className='border-2' type='text' name='name' value={filterGuest.name} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by Name' className='border-2 p-1 rounded' type='text' name='name' value={filterGuest.name} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by Email'  className='border-2' type='email' name='email' value={filterGuest.email} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by Email'  className='border-2 p-1 rounded' type='email' name='email' value={filterGuest.email} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by No. Wa'  className='border-2' type='tel' name='waNumber' value={filterGuest.waNumber} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by No. Wa'  className='border-2 p-1 rounded' type='tel' name='waNumber' value={filterGuest.waNumber} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by Jumlah'  className='border-2'  type='text' name='totalPerson' value={filterGuest.totalPerson} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by Jumlah'  className='border-2 p-1 rounded'  type='text' name='totalPerson' value={filterGuest.totalPerson} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by No. Bangku'  className='border-2'  type='text' name='seatNumber' value={filterGuest.seatNumber} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center' >
+                                    <select className='border-2 p-1 rounded' name="kehadiran">
+                                        <option value="pending">Pending</option>
+                                        <option value="konfirmasi">Konfirmasi</option>
+                                    </select>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by Total Souvenir'  className='border-2'  type='text' name='totalSouvenir' value={filterGuest.totalSouvenir} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by No. Bangku'  className='border-2 p-1 rounded'  type='text' name='seatNumber' value={filterGuest.seatNumber} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by CheckIn Status'  className='border-2'  type='text' name='isCheckIn' value={filterGuest.isCheckIn} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by Total Souvenir'  className='border-2 p-1 rounded'  type='text' name='totalSouvenir' value={filterGuest.totalSouvenir} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
-                                    <input placeholder='Search by checkIn Time'  className='border-2'  type='text' name='checkInTime' value={filterGuest.checkInTime} onChange={onFilterHandler}/>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by CheckIn Status'  className='border-2 p-1 rounded'  type='text' name='isCheckIn' value={filterGuest.isCheckIn} onChange={onFilterHandler}/>
                                 </td>
-                                <td>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
+                                    <input placeholder='Search by checkIn Time'  className='border-2 p-1 rounded'  type='text' name='checkInTime' value={filterGuest.checkInTime} onChange={onFilterHandler}/>
+                                </td>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center' >
 
                                 </td>
-                                <td>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
 
                                 </td>
-                                <td>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
 
                                 </td>
-                                <td>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
 
                                 </td>
-                                <td>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center'>
 
                                 </td>
-                                <td className='flex justify-center'>
+                                <td className='sticky top-[62px] bg-gray-50 px-6 py-4 text-center '>
                                     <button className='text-indigo-600 hover:text-indigo-900' onClick={onResetHandler}>Reset</button>
                                 </td>
                             </tr>
@@ -285,9 +290,7 @@ export default function DataGuest(props){
                                     ))
                                 }
                         </tbody>
-                        </table>
-                    </div>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>
