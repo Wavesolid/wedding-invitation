@@ -111,13 +111,13 @@ export default function DataGuestItem(props){
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalSouvenir}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500 flex justify-center">
                 {guestEdit.isCheckIn === "Pending" && 
-                    <div className='bg-red-200 rounded-[20px] w-[50%] p-1'>
+                    <div className='bg-red-200 rounded-[20px] w-[100%] p-1'>
                         <span className='text-red-900'>Pending</span>
                     </div>
                 }
 
                 {guestEdit.isCheckIn === "Checked In" && 
-                    <div className='bg-green-200 rounded-[20px] w-[50%] p-1'>
+                    <div className='bg-green-200 rounded-[20px] w-[100%] p-1'>
                         <span className='text-green-900'>Checked In</span>
                     </div>
                 }
