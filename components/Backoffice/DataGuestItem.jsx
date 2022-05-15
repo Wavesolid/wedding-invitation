@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect} from 'react';
+import ConfirmModal from '../Modal/ConfirmModal'
 
 export default function DataGuestItem(props){
     const [guestEdit, setguestEdit] = useState({
@@ -16,11 +17,7 @@ export default function DataGuestItem(props){
         checkInTime: props.checkInTime,
         imgurQrCode: props.imgurQrCode,
         slug: props.slug
-    })
-    const qrs = useRef();   
-    useEffect(() => {
-        props.refQr(qrs.current.innerHTML, qrs.current.children[0])
-    })
+    });
 
     const clickHandler = () => {
         props.onEdit(guestEdit);
@@ -39,6 +36,25 @@ export default function DataGuestItem(props){
             imgurQrCode: props.imgurQrCode,
             emailCount: props.emailCount
         });
+    }
+
+    const [confirm, setConfirm] = useState();
+
+    const checkInHandler = () => {
+        setConfirm({
+            title: "Confirmation",
+            content: "Apakah anda yakin?"
+        })
+    }
+
+    const confirmHandler = () => {
+        const url = `${process.env.BASE_URL}/checkin/${guestEdit.slug}`;
+        window.open(url,'_blank')
+        setConfirm(null);
+    }
+
+    const confirmCancelHandler = () => {
+        setConfirm(null);
     }
 
     const dateFormat = new Date(guestEdit.checkInTime).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
@@ -71,31 +87,58 @@ export default function DataGuestItem(props){
 
     return(
         <tr>
-            <td className="px-6 py-4 whitespace-nowrap">
-                <div className="flex items-center justify-center">
-                    <div>
-                        <div className="text-sm font-medium text-gray-900">{guestEdit.name}</div>
-                    </div>
-                </div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-center text-gray-900">{guestEdit.email}</div>
-            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.name}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900">{guestEdit.email}</td>
             <td className="px-6 py-4 whitespace-nowrap text-center">
                 <a className="text-indigo-600 hover:text-indigo-900" target="_blank" rel="noreferrer" href={`https://api.whatsapp.com/send?text=${waMsg}&phone=${indonesianNumber}`}> {guestEdit.waNumber} </a>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalPerson}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                {guestEdit.isFilled === true && "Hadir"}
-                {guestEdit.isFilled !== true && "Pending"}
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500 flex justify-center">
+                {guestEdit.isFilled === true && 
+            
+                <div className='bg-green-200 rounded-[20px] w-full p-1'>
+                    <span className='text-green-900'>Konfirmasi</span>
+                </div>
+
+                }
+                {guestEdit.isFilled !== true &&
+                    <div className='bg-red-200 rounded-[20px] w-full p-1'>
+                        <span className='text-red-900'>Pending</span>
+                    </div>
+                }
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.seatNumber}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.totalSouvenir}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isCheckIn}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500 flex justify-center">
+                {guestEdit.isCheckIn === "Pending" && 
+                    <div className='bg-red-200 rounded-[20px] w-[100%] p-1'>
+                        <span className='text-red-900'>Pending</span>
+                    </div>
+                }
+
+                {guestEdit.isCheckIn === "Checked In" && 
+                    <div className='bg-green-200 rounded-[20px] w-[100%] p-1'>
+                        <span className='text-green-900'>Checked In</span>
+                    </div>
+                }
+            </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{dateFormat}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{guestEdit.isEmailSent}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500 flex justify-center">
+                
+                {guestEdit.isEmailSent === "Pending" && 
+                    <div className='bg-red-200 rounded-[20px] w-full px-6'>
+                        <span className='text-red-900'>Pending</span>
+                    </div>
+                }
+
+                {guestEdit.isEmailSent === "Sent" && 
+                    <div className='bg-green-200 rounded-[20px] w-full px-6'>
+                        <span className='text-green-900'>Sent</span>
+                    </div>
+                }
+            </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{link}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500" ref={qrs}>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                 <img src={guestEdit.imgurQrCode} alt="qrcode"/>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -104,6 +147,10 @@ export default function DataGuestItem(props){
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <button onClick={sendEmailHandler} className="text-indigo-600 hover:text-indigo-900">Send Per Email</button>
             </td>
+            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <button onClick={checkInHandler} className="text-indigo-600 hover:text-indigo-900">Check In</button>
+            </td>
+            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} positionBox={'md:!left-[38%]'} onConfirm={confirmHandler} onCancel={confirmCancelHandler} />}
         </tr>
     )
 }
