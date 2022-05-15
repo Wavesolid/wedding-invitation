@@ -17,11 +17,7 @@ export default function DataGuestItem(props){
         checkInTime: props.checkInTime,
         imgurQrCode: props.imgurQrCode,
         slug: props.slug
-    })
-    const qrs = useRef();   
-    useEffect(() => {
-        props.refQr(qrs.current.innerHTML, qrs.current.children[0])
-    })
+    });
 
     const clickHandler = () => {
         props.onEdit(guestEdit);
@@ -142,7 +138,7 @@ export default function DataGuestItem(props){
                 }
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">{link}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500" ref={qrs}>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                 <img src={guestEdit.imgurQrCode} alt="qrcode"/>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

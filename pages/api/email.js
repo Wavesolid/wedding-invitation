@@ -66,6 +66,11 @@ export default async function sendEmail(req, res) {
 				messages.push(message)
 			});
 		} else {
+			if(guests.email === "") {
+				return res.status(406).json({
+					messages: "Tamu ini tidak memasukan email"
+				});
+			}
 			const message = await client.sendAsync({
 				text: '',
 				from: 'Gintano & Nesya',
@@ -119,7 +124,7 @@ export default async function sendEmail(req, res) {
 			messages
 		});
 	} catch (err) {
-		console.log(err)
+		console.log(err.message)
 		return res.status(400).json({
 			err
 		})
