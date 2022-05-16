@@ -42,7 +42,9 @@ export default function Youtube(){
                 <a href="https://youtu.be/7Q459zopocE" target="_blank" rel="noopener noreferrer"><span>Klik Disini</span></a>
             </button>
             <div ref={ref} className="border-8 rounded-[8px] border-emas mb-[18px] w-[320px] h-[180px] flex items-center justify-center">
-                <Image width={320} height={180} src="/Photo/thumbnail.jpg"></Image>
+
+                <Image width={320} height={180} src="/Photo/thumbnail.png"></Image>
+
             </div> 
         </div>
     )
