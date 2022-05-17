@@ -12,7 +12,6 @@ const client = new SMTPClient({
 export default async function sendEmail(req, res) {
 	const {guests} = req.body;
 	const name = guests.name.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
-	const regex = /\s/g
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -117,14 +116,11 @@ export default async function sendEmail(req, res) {
 				isEmailSent: "Sent"
 			});
 			messages.push(message)
-
 		}
-
 		return res.status(201).json({
 			messages
 		});
 	} catch (err) {
-		console.log(err.message)
 		return res.status(400).json({
 			err
 		})
