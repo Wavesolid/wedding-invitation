@@ -40,7 +40,7 @@ export default async function sendEmail(req, res) {
 											<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 											<p>Pukul: <strong>07.30 WIB</strong></p>
 											<br>
-											<p>Mohon klik link <a href="${process.env.BASE_URL}/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+											<p>Mohon klik link <a href="${process.env.BASE_URL}/seat/${guests.slug}"> disini </a> untuk melihat nomor meja yang 
 											disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 											agar mengetahui presensi anda pada pernikahan nanti.</p>
 											<p>
@@ -93,7 +93,7 @@ export default async function sendEmail(req, res) {
 										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 										<p>Pukul: <strong>07.30 WIB</strong></p>
 										<br>
-										<p>Mohon klik link <a href="${process.env.BASE_URL}/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+										<p>Mohon klik link <a href="${process.env.BASE_URL}/seat/${guests.slug}"> disini </a> untuk melihat nomor meja yang 
 										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 										agar mengetahui presensi anda pada pernikahan nanti.</p>
 										<p>
