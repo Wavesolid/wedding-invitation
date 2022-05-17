@@ -70,6 +70,7 @@ export default async function sendEmail(req, res) {
 					messages: "Tamu ini tidak memasukan email"
 				});
 			}
+			console.log(guests.slug)
 			const message = await client.sendAsync({
 				text: '',
 				from: 'Gintano & Nesya',
