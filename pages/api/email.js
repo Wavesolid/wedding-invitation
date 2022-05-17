@@ -11,8 +11,6 @@ const client = new SMTPClient({
 
 export default async function sendEmail(req, res) {
 	const {guests} = req.body;
-	const name = guests.name.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
-	const regex = /\s/g
 	let messages = [];
 	try {
 		validateAdminLogin(req);
@@ -32,7 +30,7 @@ export default async function sendEmail(req, res) {
 											<img src="https://i.imgur.com/iX94zuH.png">
 										</div>
 										<div> 
-											<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
+											<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${guest.name}</strong></h2>
 											<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
 											<p>
 											<br>
@@ -40,7 +38,7 @@ export default async function sendEmail(req, res) {
 											<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 											<p>Pukul: <strong>07.30 WIB</strong></p>
 											<br>
-											<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+											<p>Mohon klik link <a href="${process.env.BASE_URL}/seat/${guest.slug}"> disini </a> untuk melihat nomor meja yang 
 											disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 											agar mengetahui presensi anda pada pernikahan nanti.</p>
 											<p>
@@ -50,7 +48,7 @@ export default async function sendEmail(req, res) {
 											</p>
 										</div>
 										<div style="text-align:center">
-											<img style="padding: 8px;background-color: white;" src=${guests.imgurQrCode}>
+											<img style="padding: 8px;background-color: white;" src=${guest.imgurQrCode}>
 										</div>
 									</div>
 								</html>`, alternative: true
@@ -85,7 +83,7 @@ export default async function sendEmail(req, res) {
 										<img style="width:10%"  src="https://i.imgur.com/iX94zuH.png">
 									</div>
 									<div color: #DED6C5;> 
-										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${name}</strong></h2>
+										<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${guests.name}</strong></h2>
 										<p>Terima kasih telah melakukan konfirmasi kehadiran pada acara pernikahan Neysa Almira dan Gintano Scorpy.
 										<p>
 										<br>
@@ -93,7 +91,7 @@ export default async function sendEmail(req, res) {
 										<p>Hari/Tanggal: <strong>Minggu/29 Mei 2022</strong><p>
 										<p>Pukul: <strong>07.30 WIB</strong></p>
 										<br>
-										<p>Mohon klik link <a href="https://weddingneysagintano.vercel.app/seat/${guests.name}"> disini </a> untuk melihat nomor meja yang 
+										<p>Mohon klik link <a href="${process.env.BASE_URL}/seat/${guests.slug}"> disini </a> untuk melihat nomor meja yang 
 										disediakan beserta barcode yang akan ditunjukkan ke penerima tamu
 										agar mengetahui presensi anda pada pernikahan nanti.</p>
 										<p>
@@ -117,14 +115,11 @@ export default async function sendEmail(req, res) {
 				isEmailSent: "Sent"
 			});
 			messages.push(message)
-
 		}
-
 		return res.status(201).json({
 			messages
 		});
 	} catch (err) {
-		console.log(err.message)
 		return res.status(400).json({
 			err
 		})
