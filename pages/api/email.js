@@ -27,7 +27,7 @@ export default async function sendEmail(req, res) {
 								`<html>
 									<div style="border: 16px solid #A28A4A;padding:16px;background-color: #610606;color: #DED6C5;">
 										<div style="text-align:center">
-											<img src="https://i.imgur.com/iX94zuH.png">
+											<img style="width:10%" src="https://i.imgur.com/iX94zuH.png">
 										</div>
 										<div> 
 											<h2>Kepada <strong>yth Bapak/Ibu/Saudari/i ${guest.name}</strong></h2>
