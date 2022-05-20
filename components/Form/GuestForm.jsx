@@ -90,8 +90,8 @@ export default function GuestForm({props})
     return(
         <div>
             {load === true && <Loader/>}
-            {invalid && <Modal title={invalid.title} content={invalid.content} positionBox={'md:!left-[38%]'} onConfirm={invalidHandler} />}
-            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} positionBox={'md:!left-[38%]'} onConfirm={confirmHandler} onCancel={confirmCancelHandler} />}
+            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
+            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} onConfirm={confirmHandler} onCancel={confirmCancelHandler} />}
             <div className="h-screen bg-merah flex flex-col items-center justify-center text-emas">
                 <h1 className=" text-[36px] mb-[8px] font-kapital-bold">Form Kehadiran</h1>
                 <p className="w-[200px] mb-[20px] text-[16px] text-emas text-center">Mohon konfirmasi sebelum tanggal <strong>22 Mei 2022</strong></p>
