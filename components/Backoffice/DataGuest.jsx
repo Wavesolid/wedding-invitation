@@ -3,10 +3,12 @@ import { CSVLink } from 'react-csv';
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
+import ConfirmModal from '../Modal/ConfirmModal';
 import QrCodeGenerator from '../QrCodes/GenerateQrCode';
 
 export default function DataGuest(props){
     const [guestData, setGuestData] = useState(props.dataGuest)
+    const [confirm, setConfirm] = useState();
     const [filterGuest, setFilterGuest] = useState({
         name: '',
         email:'',
@@ -121,8 +123,17 @@ export default function DataGuest(props){
         }
         props.onSendEmailGuest(guestData);
     }
-    const sendEmail = async() =>
-    {      
+
+    const sendEmail = () => {
+        setConfirm({
+            title: "Confirmation",
+            content: "Apakah anda yakin?"
+        })
+    }
+
+    const confirmSendEmailHandler = async() =>
+    {    
+        setConfirm(null);
         setLoad(true);
         const {dataGuest} = props;
         const guests = dataGuest.filter((guest) => guest.email !== "")
@@ -153,6 +164,11 @@ export default function DataGuest(props){
         }
     }
 
+    const confirmCancelHandler = () => {
+        setConfirm(null)
+    }
+
+
     function generateQrCode(name) 
     {
         return <QrCodeGenerator name={name} size={70}/>
@@ -181,6 +197,7 @@ export default function DataGuest(props){
         <div>
             {load === true && <Loader/>}
             {modal && <Modal title={modal.title} content={modal.content} onConfirm={modalHandler} />}
+            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} onConfirm={confirmSendEmailHandler} onCancel={confirmCancelHandler} />}
             <div className="flex flex-col w-[80%] my-0 mx-auto">
                 <div className='flex justify-between'>
                     <div className='inline-block pt-2'>

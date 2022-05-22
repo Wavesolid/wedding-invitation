@@ -2,7 +2,7 @@ export default function Modal(props){
     return(
         <div>
             <div className="fixed top-0 left-0 w-[100%] h-screen z-[10] bg-black-rgba"></div>
-            <div className={`fixed top-[30vh] left-[10%] md:left-[25%] rounded-[10px] w-[80%] max-w-[350px] z-[100] bg-[#F2C777] ${props.positionBox}`}>
+            <div className={`fixed top-[30vh] left-[10%] md:left-[25%] rounded-[10px] w-[80%] max-w-[350px] z-[100] bg-[#F2C777] md:!left-[38%]`}>
                 <header className="bg-[#0D0D0D] text-[white] p-4">
                     {props.title}
                 </header>
