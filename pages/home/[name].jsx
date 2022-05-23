@@ -24,6 +24,10 @@ export default function Home(props)
       props.responseJson.data.name
     );
 
+    const [totalPerson, setTotalPerson] = useState(
+      props.responseJson.data.totalPerson
+    );
+
     const [isFilled, setIsFilled] = useState(
       props.responseJson.data.isFilled
     );
@@ -42,7 +46,7 @@ export default function Home(props)
             <Surat/>
             <Profile/>
             <Datetime name={guest}/>
-            <EntryForm name={guest} isFilled={isFilled} slug={slug}/>
+            <EntryForm name={guest} totalPerson={totalPerson} isFilled={isFilled} slug={slug}/>
             <Ucapan name={guest} ucapan={ucapan}/>
             <Gallery/>
             <Protokol name={guest} />

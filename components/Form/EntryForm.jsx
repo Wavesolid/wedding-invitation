@@ -1,11 +1,14 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 import Location from '../Location/Location.jsx';
+import Modal from '../Modal/Modal'
 
 
-export default function EntryForm({name,isFilled, slug}){
+export default function EntryForm({name,totalPerson,isFilled, slug}){
+
+    const [invalid, setInvalid] = useState();
 
     const {ref,inView} = useInView({
         threshold:1,
@@ -53,6 +56,17 @@ export default function EntryForm({name,isFilled, slug}){
         }
     },[inView])
 
+    const clickHandler = () => {
+        setInvalid({
+            title: "Invalid",
+            content: "Anda telah mengkonfirmasi untuk tidak hadir pada acara ini"
+        });
+    }
+
+    const invalidHandler = () => {
+        setInvalid(null);
+    }
+
     return(
         <div className='bg-putih'>
             <div className="bg-merah h-auto flex flex-col items-center rounded-b-[130px] p-[24px] pb-[85px]">
@@ -73,12 +87,18 @@ export default function EntryForm({name,isFilled, slug}){
                                 <span className="text-[14px] ">22 Mei 2022</span>
                             </div>
                         </div>
-                        <Link href={`/form/${slug}`}>
-                        <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-putih hover:text-emas transition duration-300" >
-                            <span>Klik Disini</span>
-                        </button>
-                        </Link>
-
+                        { totalPerson > 0 && 
+                            <Link href={`/form/${slug}`}>
+                                <button type='button' className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px] hover:bg-putih hover:text-emas transition duration-300" >
+                                    <span>Klik Disini</span>
+                                </button>
+                            </Link>
+                        }
+                        { totalPerson <= 0 && 
+                            <button type='button' onClick={clickHandler} className="border-[5px] text-emas border-emas bg-merah rounded-[25px] text-[14px] p-[4px] w-[120px] mb-[16px]" >
+                                <span>Klik Disini</span>
+                            </button>
+                        }
                     </div>
 
                     <div>
@@ -87,7 +107,7 @@ export default function EntryForm({name,isFilled, slug}){
                     </div>
 
                 </div>
-
+                {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
             </div>
         </div>
     )
