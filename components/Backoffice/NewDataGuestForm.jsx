@@ -68,7 +68,7 @@ export default function NewDataGuestForm() {
     return(
         <div>
             {load === true && <Loader/>}
-            {invalid && <Modal title={invalid.title} content={invalid.content} positionBox={'md:!left-[38%]'} onConfirm={invalidHandler} />}
+            {invalid && <Modal title={invalid.title} content={invalid.content} onConfirm={invalidHandler} />}
             <div className="w-[80%] my-4 mx-auto">
                 <form className="grid grid-cols-2 grid-rows-3 auto-cols-auto auto-rows-auto" onSubmit={onSubmitHandler}>
                     <div className="flex flex-wrap gap-4 mb-4 text-left items-center">

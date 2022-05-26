@@ -24,6 +24,16 @@ export default function DataGuestItem(props){
     }
 
     const sendEmailHandler = () => {
+
+        setConfirm({
+            title: "Confirmation",
+            content: "Apakah anda yakin?"
+        })
+
+    }
+
+    const confirmEmailHandler = () => {
+        setConfirm(null);
         props.onSend({
             name: props.name,
             email: props.email,
@@ -82,7 +92,7 @@ export default function DataGuestItem(props){
         })
     } 
 
-    const waMsg = `Kepada+yth+Bapak%2FIbu%2FSaudari%2Fi+*${formattedName}*+%0D%0ATerima+kasih+telah+melakukan+konfirmasi+kehadiran+pada+acara+pernikahan+Neysa+Almira+dan+Gintano+Scorpy.%0D%0A%0D%0AAcara+akan+dilaksanakan+pada+%3A%0D%0A%0D%0A%F0%9F%97%93Hari%2Ftgl+%3A%0D%0A*Minggu%2C+29+Mei+2022*+%0D%0A%0D%0A%F0%9F%95%9BPukul+%3A%0D%0A*07.30+WIB+%7C+Akad+Nikah*%0D%0A*11.00+WIB+%7C+Resepsi*%0D%0A%0D%0AMohon+klik+link+${process.env.BASE_URL}/seat/${guestEdit.slug}+untuk+melihat+nomor+meja+yang+disediakan+beserta+barcode+yang+akan+ditunjukkan+ke+penerima+tamu+agar+mengetahui+presensi+anda+pada+pernikahan+nanti.%0D%0ADimohon+undangan+dapat+hadir+tepat+waktu+demi+kelancaran+berlangsungnya+acara.%0D%0A%0D%0ATerimakasih.`
+    const waMsg = `Kepada+yth+Bapak%2FIbu%2FSaudari%2Fi+*${formattedName.join(" ")}*+%0D%0ATerima+kasih+telah+melakukan+konfirmasi+kehadiran+pada+acara+pernikahan+Neysa+Almira+dan+Gintano+Scorpy.%0D%0A%0D%0AAcara+akan+dilaksanakan+pada+%3A%0D%0A%0D%0A%F0%9F%97%93Hari%2Ftgl+%3A%0D%0A*Minggu%2C+29+Mei+2022*+%0D%0A%0D%0A%F0%9F%95%9BPukul+%3A%0D%0A*07.30+WIB+%7C+Akad+Nikah*%0D%0A*11.00+WIB+%7C+Resepsi*%0D%0A%0D%0AMohon+klik+link+${process.env.BASE_URL}/seat/${guestEdit.slug}+untuk+melihat+nomor+meja+yang+disediakan+beserta+barcode+yang+akan+ditunjukkan+ke+penerima+tamu+agar+mengetahui+presensi+anda+pada+pernikahan+nanti.%0D%0ADimohon+undangan+dapat+hadir+tepat+waktu+demi+kelancaran+berlangsungnya+acara.%0D%0A%0D%0ATerimakasih.`
 
     return(
         <tr>
@@ -149,7 +159,8 @@ export default function DataGuestItem(props){
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <button onClick={checkInHandler} className="text-indigo-600 hover:text-indigo-900">Check In</button>
             </td>
-            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} positionBox={'md:!left-[38%]'} onConfirm={confirmHandler} onCancel={confirmCancelHandler} />}
+            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} onConfirm={confirmHandler} onCancel={confirmCancelHandler} />}
+            {confirm && <ConfirmModal title={confirm.title} content={confirm.content} onConfirm={confirmEmailHandler} onCancel={confirmCancelHandler} />}
         </tr>
     )
 }
